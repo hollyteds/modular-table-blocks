@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "modular-table-blocks/row",
+  "version": "0.1.0",
+  "title": "Table Row",
+  "category": "design",
+  "icon": "table-row-after",
+  "textdomain": "modular-table-blocks",
+  "parent": ["modular-table-blocks/table"],
+  "allowedBlocks": ["modular-table-blocks/cell"],
+  "attributes": {
+    "styleTokens": { "type": "object" },
+    "section": { "type": "string", "enum": ["head", "body", "foot"], "default": "body" }
+  },
+  "usesContext": ["modular-table-blocks/columns"],
+  "supports": { "html": false, "reusable": false, "inserter": false },
+  "editorScript": "mtb-editor"
+}

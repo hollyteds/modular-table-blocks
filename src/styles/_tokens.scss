@@ -1,0 +1,24 @@
+@mixin typography {
+	color: var(--mtb-text-color, inherit);
+	font-size: var(--mtb-font-size, inherit);
+	line-height: var(--mtb-line-height, inherit);
+}
+
+@mixin table {
+
+	@include typography;
+
+	width: var(--mtb-table-width, 100%);
+	background-color: var(--mtb-background-color, transparent);
+}
+
+@mixin cell {
+
+	@include typography;
+
+	padding-block: var(--mtb-cell-padding-block, 0.75em);
+	padding-inline: var(--mtb-cell-padding-inline, 1em);
+	border: var(--mtb-border-width, 1px) var(--mtb-border-style, solid) var(--mtb-border-color, currentColor);
+	background-color: var(--mtb-cell-background-color, transparent);
+	vertical-align: top;
+}

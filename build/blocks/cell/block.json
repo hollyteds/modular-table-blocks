@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "modular-table-blocks/cell",
+  "version": "0.1.0",
+  "title": "Table Cell",
+  "category": "design",
+  "icon": "table-cell-after",
+  "textdomain": "modular-table-blocks",
+  "parent": [
+    "modular-table-blocks/row"
+  ],
+  "allowedBlocks": [
+    "core/paragraph"
+  ],
+  "attributes": {
+    "styleTokens": {
+      "type": "object"
+    },
+    "tag": {
+      "type": "string",
+      "enum": [
+        "td",
+        "th"
+      ],
+      "default": "td"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "",
+        "col",
+        "row",
+        "colgroup",
+        "rowgroup"
+      ],
+      "default": ""
+    },
+    "colSpan": {
+      "type": "number",
+      "default": 1
+    },
+    "rowSpan": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "inserter": false
+  },
+  "editorScript": "mtb-editor"
+}

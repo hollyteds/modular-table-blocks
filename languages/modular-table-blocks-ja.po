@@ -1,0 +1,173 @@
+# Copyright (C) 2026 
+# This file is distributed under the same license as the Modular Table Blocks plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Modular Table Blocks 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modular-table-blocks\n"
+"Last-Translator: Modular Table Blocks contributors\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-20T19:40:26+00:00\n"
+"PO-Revision-Date: 2026-10-21 00:00+0900\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: modular-table-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Modular Table Blocks"
+msgstr "Modular Table Blocks"
+
+#. Description of the plugin
+msgid "Independently editable table, row and cell blocks. M0 technical preview."
+msgstr "テーブル・行・セルを独立して編集できるブロックです。M0技術検証版。"
+
+#: build/index.js:1
+msgid "Text color"
+msgstr "文字色"
+
+#: build/index.js:1
+msgid "Table background"
+msgstr "テーブルの背景色"
+
+#: build/index.js:1
+msgid "Cell background"
+msgstr "セルの背景色"
+
+#: build/index.js:1
+msgid "Border color"
+msgstr "罫線の色"
+
+#: build/index.js:1
+msgid "Border width"
+msgstr "罫線の太さ"
+
+#: build/index.js:1
+msgid "Border style"
+msgstr "罫線の種類"
+
+#: build/index.js:1
+msgid "Cell vertical padding"
+msgstr "セルの上下余白"
+
+#: build/index.js:1
+msgid "Cell horizontal padding"
+msgstr "セルの左右余白"
+
+#: build/index.js:1
+msgid "Font size"
+msgstr "文字サイズ"
+
+#: build/index.js:1
+msgid "Line height"
+msgstr "行間"
+
+#: build/index.js:1
+msgid "Table width"
+msgstr "テーブルの幅"
+
+#: build/index.js:1
+msgid "Leave empty to inherit. See README for accepted values."
+msgstr "空欄にすると上位の設定を継承します。入力できる値はREADMEをご覧ください。"
+
+#: build/index.js:1
+msgid "Invalid value. This change has not been saved."
+msgstr "入力値が正しくありません。この変更は保存されていません。"
+
+#: build/index.js:1
+msgid "Table styles"
+msgstr "テーブルのスタイル"
+
+#: build/index.js:1
+msgid "Table settings"
+msgstr "テーブル設定"
+
+#: build/index.js:1
+msgid "Caption"
+msgstr "キャプション"
+
+#: build/index.js:1
+msgid "Modular Table"
+msgstr "モジュラーテーブル"
+
+#: build/index.js:1
+msgid "Choose 1–20 rows and columns. Structure editing is not available in this technical preview."
+msgstr "行数と列数を1〜20で指定してください。この技術検証版では、作成後に行・列の構造を変更できません。"
+
+#: build/index.js:1
+msgid "Rows"
+msgstr "行数"
+
+#: build/index.js:1
+msgid "Columns"
+msgstr "列数"
+
+#: build/index.js:1
+msgid "Create table"
+msgstr "テーブルを作成"
+
+#: build/index.js:1
+msgid "The table grid is inconsistent. Content is preserved; automatic repair is not available."
+msgstr "テーブルの行と列の構成に不整合があります。内容は保持されていますが、自動修復には対応していません。"
+
+#: build/index.js:1
+msgid "Cell settings"
+msgstr "セル設定"
+
+#: build/index.js:1
+msgid "Cell type"
+msgstr "セルの種類"
+
+#: build/index.js:1
+msgid "Data cell"
+msgstr "データセル"
+
+#: build/index.js:1
+msgid "Header cell"
+msgstr "見出しセル"
+
+#: build/index.js:1
+msgid "Header association"
+msgstr "見出しとの関連付け"
+
+#: build/index.js:1
+msgid "None"
+msgstr "なし"
+
+#: build/index.js:1
+msgid "Column"
+msgstr "列"
+
+#: build/index.js:1
+msgid "Row"
+msgstr "行"
+
+#: build/index.js:1
+msgid "Column group"
+msgstr "列グループ"
+
+#: build/index.js:1
+msgid "Row group"
+msgstr "行グループ"
+
+#: build/blocks/cell/block.json
+msgctxt "block title"
+msgid "Table Cell"
+msgstr "テーブルセル"
+
+#: build/blocks/row/block.json
+msgctxt "block title"
+msgid "Table Row"
+msgstr "テーブル行"
+
+#: build/blocks/table/block.json
+msgctxt "block title"
+msgid "Modular Table"
+msgstr "モジュラーテーブル"
+
+#: build/blocks/table/block.json
+msgctxt "block description"
+msgid "A table with independently editable rows and cells."
+msgstr "行とセルをそれぞれ独立して編集できるテーブルです。"

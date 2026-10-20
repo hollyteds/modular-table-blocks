@@ -1,0 +1,39 @@
+@use "../../styles/tokens";
+
+.modular-table-blocks-editor {
+
+	@include tokens.table;
+
+	padding: 12px;
+	border: 1px solid #757575;
+
+	&__label {
+		margin: 0 0 8px;
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	&__row {
+
+		@include tokens.typography;
+
+		display: grid;
+		gap: 0;
+		margin: 0;
+	}
+
+	&__cell {
+
+		@include tokens.cell;
+
+		min-width: 0;
+		margin: 0;
+		overflow-wrap: anywhere;
+	}
+
+	&__cell:focus-within,
+	&__row:focus-visible {
+		outline: 2px solid #005a9c;
+		outline-offset: -3px;
+	}
+}

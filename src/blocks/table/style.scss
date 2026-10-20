@@ -1,0 +1,23 @@
+@use "../../styles/tokens";
+
+:where(.wp-block-modular-table-blocks-table) {
+
+	@include tokens.table;
+
+	border-collapse: collapse;
+
+	> caption {
+		padding: 0.5em;
+		text-align: start;
+	}
+
+	> :where(thead, tbody, tfoot) > :where(tr) {
+
+		@include tokens.typography;
+	}
+
+	> :where(thead, tbody, tfoot) > :where(tr) > :where(td, th) {
+
+		@include tokens.cell;
+	}
+}

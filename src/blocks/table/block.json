@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "modular-table-blocks/table",
+  "version": "0.1.0",
+  "title": "Modular Table",
+  "category": "design",
+  "icon": "editor-table",
+  "description": "A table with independently editable rows and cells.",
+  "textdomain": "modular-table-blocks",
+  "allowedBlocks": ["modular-table-blocks/row"],
+  "attributes": {
+    "styleTokens": { "type": "object" },
+    "columns": { "type": "array", "default": [{}, {}, {}] },
+    "caption": { "type": "string", "default": "" }
+  },
+  "providesContext": { "modular-table-blocks/columns": "columns" },
+  "supports": { "html": false, "align": ["wide", "full"] },
+  "editorScript": "mtb-editor",
+  "style": "file:../../style-index.css",
+  "editorStyle": "file:../../index.css"
+}

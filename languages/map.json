@@ -1,0 +1,6 @@
+{
+  "build/index.js": "build/index.js",
+  "build/blocks/table/block.json": "build/index.js",
+  "build/blocks/row/block.json": "build/index.js",
+  "build/blocks/cell/block.json": "build/index.js"
+}
