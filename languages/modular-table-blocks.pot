@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-20T19:40:26+00:00\n"
+"POT-Creation-Date: 2026-10-21T07:48:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: modular-table-blocks\n"
@@ -19,7 +19,11 @@ msgid "Modular Table Blocks"
 msgstr ""
 
 #. Description of the plugin
-msgid "Independently editable table, row and cell blocks. M0 technical preview."
+msgid "Independently editable table, row and cell blocks."
+msgstr ""
+
+#: includes/render-table.php:94
+msgid "Scrollable table"
 msgstr ""
 
 #: build/index.js:1
@@ -71,6 +75,7 @@ msgid "Leave empty to inherit. See README for accepted values."
 msgstr ""
 
 #: build/index.js:1
+#: build/index.js:2
 msgid "Invalid value. This change has not been saved."
 msgstr ""
 
@@ -79,74 +84,275 @@ msgid "Table styles"
 msgstr ""
 
 #: build/index.js:1
+msgid "The table grid is inconsistent. Structure changes are disabled."
+msgstr ""
+
+#: build/index.js:1
+msgid "Split cells spanning these rows before moving or duplicating a row."
+msgstr ""
+
+#: build/index.js:1
+msgid "Choose a rectangular range inside the table."
+msgstr ""
+
+#: build/index.js:1
+msgid "The range must contain at least two complete cells. Include every part of existing merged cells."
+msgstr ""
+
+#: build/index.js:1
+msgid "This cell is not merged."
+msgstr ""
+
+#: build/index.js:1
+msgid "This operation would cross a header or section boundary. Split the affected cells first."
+msgstr ""
+
+#: build/index.js:1
+msgid "The selection changed. Select the row or cell again."
+msgstr ""
+
+#: build/index.js:1
+msgid "The last row cannot be deleted."
+msgstr ""
+
+#: build/index.js:1
+msgid "The last column cannot be deleted."
+msgstr ""
+
+#: build/index.js:1
+msgid "Tables support up to 100 rows and 50 columns."
+msgstr ""
+
+#: build/index.js:1
+msgid "The table changed while confirmation was open. Review the operation again."
+msgstr ""
+
+#: build/index.js:1
+msgid "The operation could not be applied."
+msgstr ""
+
+#: build/index.js:1
+msgid "Add row at end"
+msgstr ""
+
+#: build/index.js:1
+msgid "Add column at end"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert row above"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert row below"
+msgstr ""
+
+#: build/index.js:1
+msgid "Duplicate row"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move row up"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move row down"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete row"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert column before"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert column after"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete column"
+msgstr ""
+
+#: build/index.js:1
+msgid "Merge cells"
+msgstr ""
+
+#: build/index.js:1
+msgid "Split cell"
+msgstr ""
+
+#: build/index.js:1
+msgid "Table structure"
+msgstr ""
+
+#: build/index.js:1
+msgid "All content will be kept in the top-left cell in reading order. The top-left cell settings will be used. Splitting later keeps the content there and creates empty cells."
+msgstr ""
+
+#: build/index.js:1
+msgid "Rows to merge"
+msgstr ""
+
+#: build/index.js:1
+msgid "Columns to merge"
+msgstr ""
+
+#: build/index.js:1
+msgid "Cancel"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete content?"
+msgstr ""
+
+#: build/index.js:1
+msgid "This row or column contains content. Deleting it will remove that content. You can undo this change."
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete content"
+msgstr ""
+
+#. translators: %d: one-based column number.
+#: build/index.js:2
+msgid "Column %d width"
+msgstr ""
+
+#: build/index.js:2
+msgid "Leave empty for automatic width. Use %, px, rem or em."
+msgstr ""
+
+#: build/index.js:2
 msgid "Table settings"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Caption"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
+msgid "Header row"
+msgstr ""
+
+#: build/index.js:2
+msgid "The first row is displayed as column headers. Individual cell settings are preserved."
+msgstr ""
+
+#: build/index.js:2
+msgid "Split cells crossing the first row before enabling the header row."
+msgstr ""
+
+#: build/index.js:2
+msgid "Horizontal scrolling"
+msgstr ""
+
+#: build/index.js:2
+msgid "Adds a focusable scroll container for wide tables."
+msgstr ""
+
+#: build/index.js:2
+msgid "Column widths"
+msgstr ""
+
+#: build/index.js:2
 msgid "Modular Table"
 msgstr ""
 
-#: build/index.js:1
-msgid "Choose 1–20 rows and columns. Structure editing is not available in this technical preview."
+#: build/index.js:2
+msgid "Choose 1–20 rows and columns."
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Rows"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Columns"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Create table"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "The table grid is inconsistent. Content is preserved; automatic repair is not available."
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Cell settings"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
+msgid "Horizontal alignment"
+msgstr ""
+
+#: build/index.js:2
+msgid "Inherit"
+msgstr ""
+
+#: build/index.js:2
+msgid "Left"
+msgstr ""
+
+#: build/index.js:2
+msgid "Center"
+msgstr ""
+
+#: build/index.js:2
+msgid "Right"
+msgstr ""
+
+#: build/index.js:2
+msgid "Vertical alignment"
+msgstr ""
+
+#: build/index.js:2
+msgid "Top"
+msgstr ""
+
+#: build/index.js:2
+msgid "Middle"
+msgstr ""
+
+#: build/index.js:2
+msgid "Bottom"
+msgstr ""
+
+#: build/index.js:2
 msgid "Cell type"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Data cell"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Header cell"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Header association"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "None"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Column"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Row"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Column group"
 msgstr ""
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Row group"
 msgstr ""
 

@@ -18,7 +18,8 @@ interface Selectors {
 }
 
 interface Actions {
-	insertBlocks: ( blocks: unknown[] ) => void;
+	replaceInnerBlocks: (clientId: string, blocks: unknown[], updateSelection?: boolean) => void;
+	insertBlocks: ( blocks: unknown[], index?: number, rootClientId?: string ) => void;
 	resetBlocks: ( blocks: unknown[] ) => void;
 	selectBlock: ( clientId: string ) => void;
 	updateBlockAttributes: ( clientId: string, attributes: Record<string, unknown> ) => void;
@@ -31,6 +32,7 @@ interface Actions {
 declare global {
 	interface Window {
 		wp: {
+			apiFetch: <T>(options: { path: string; method?: string; data?: Record<string, unknown> }) => Promise<T>;
 			blocks: typeof Blocks;
 			i18n: typeof import('@wordpress/i18n');
 			blockEditor: typeof import('@wordpress/block-editor');

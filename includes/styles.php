@@ -72,5 +72,15 @@ function child_attributes(\WP_Block $block, string $kind): string {
     }
     $html = ' class="' . \esc_attr($classes) . '"';
     $style = token_style($block->attributes['styleTokens'] ?? array());
+    if ($kind === 'cell') {
+        $horizontal = $block->attributes['horizontalAlign'] ?? '';
+        $vertical = $block->attributes['verticalAlign'] ?? 'top';
+        if (\in_array($horizontal, array('left', 'center', 'right'), true)) {
+            $style .= 'text-align:' . $horizontal . ';';
+        }
+        if (\in_array($vertical, array('middle', 'bottom'), true)) {
+            $style .= 'vertical-align:' . $vertical . ';';
+        }
+    }
     return $html . ($style !== '' ? ' style="' . \esc_attr($style) . '"' : '');
 }

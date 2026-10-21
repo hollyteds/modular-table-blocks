@@ -6,6 +6,7 @@
 
 	padding: 12px;
 	border: 1px solid #757575;
+	overflow-x: auto;
 
 	&__label {
 		margin: 0 0 8px;
@@ -20,20 +21,62 @@
 		display: grid;
 		gap: 0;
 		margin: 0;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: none;
+	}
+
+	&__rows--grid {
+		display: grid;
+		grid-auto-rows: minmax(4rem, auto);
 	}
 
 	&__cell {
 
 		@include tokens.cell;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 
+		/* Theme block margins can center grid items at their content width. */
+		box-sizing: border-box;
+		width: 100%;
 		min-width: 0;
+		max-width: none;
 		margin: 0;
+		pointer-events: auto;
 		overflow-wrap: anywhere;
+
+		> :where(.wp-block-paragraph, .wp-block-heading, .wp-block-list) {
+			box-sizing: border-box;
+			width: 100%;
+			min-width: 0;
+			max-width: none;
+		}
 	}
 
 	&__cell:focus-within,
 	&__row:focus-visible {
 		outline: 2px solid #005a9c;
 		outline-offset: -3px;
+	}
+
+	&__row--header > &__cell,
+	&__cell--header {
+		font-weight: 700;
+	}
+
+	/* Keep theme block sizing from shrinking the subgrid and its cell borders. */
+	& &__rows--grid > &__row,
+	&__rows--grid > &__row > &__cell {
+		align-self: stretch;
+		justify-self: stretch;
+		height: auto;
+		min-height: 0;
+		max-height: none;
+		margin: 0;
+	}
+
+	& &__rows--grid > &__row {
+		pointer-events: none;
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Modular Table Blocks
- * Description: Independently editable table, row and cell blocks. M0 technical preview.
+ * Description: Independently editable table, row and cell blocks.
  * Version: 0.1.0
  * Requires at least: 6.6
  * Requires PHP: 7.4

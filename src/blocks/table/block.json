@@ -12,9 +12,11 @@
   "attributes": {
     "styleTokens": { "type": "object" },
     "columns": { "type": "array", "default": [{}, {}, {}] },
-    "caption": { "type": "string", "default": "" }
+    "caption": { "type": "string", "default": "" },
+    "headerRows": { "type": "number", "default": 0 },
+    "responsiveMode": { "type": "string", "enum": ["none", "scroll"], "default": "none" }
   },
-  "providesContext": { "modular-table-blocks/columns": "columns" },
+  "providesContext": { "modular-table-blocks/columns": "columns", "modular-table-blocks/headerRows": "headerRows" },
   "supports": { "html": false, "align": ["wide", "full"] },
   "editorScript": "mtb-editor",
   "style": "file:../../style-index.css",

@@ -12,19 +12,29 @@ import {
 	PanelBody,
 	Placeholder,
 	TextControl,
+	ToggleControl,
 } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { useMemo, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { buildGrid, validateGrid } from '../../grid/build-grid';
+import { validateGrid } from '../../grid/build-grid';
+import { tableGrid, placements } from '../../grid/layout';
+import { TableLayout } from '../../grid/layout-context';
+import { columnTemplate } from '../../styles/columns';
 import StylePanel from '../../components/style-panel';
 import { tokenStyle } from '../../styles/tokens';
 import type { StyleTokens } from '../../styles/tokens';
+import StructureControls from '../../components/structure-controls';
+import { planOperation } from '../../grid/operations';
+import type { BlockTree } from '../../grid/operations';
+import ColumnWidthControl from '../../components/column-width-control';
 
 export type TableAttributes = {
 	columns: Record<string, unknown>[];
 	caption: string;
 	styleTokens?: StyleTokens;
+	headerRows: number;
+	responsiveMode: 'none' | 'scroll';
 };
 
 export default function TableEdit({
@@ -34,17 +44,37 @@ export default function TableEdit({
 }: BlockEditProps<TableAttributes>) {
 	const [initialRows, setInitialRows] = useState('3');
 	const [initialColumns, setInitialColumns] = useState('3');
+	const [headerError, setHeaderError] = useState(false);
 	const rows = useSelect(
 		(select) => select(blockEditorStore).getBlocks(clientId),
 		[clientId]
 	);
-	const { replaceInnerBlocks } = useDispatch(blockEditorStore);
+	const { replaceBlocks } = useDispatch(blockEditorStore);
 	const blockProps = useBlockProps({
-		className: 'modular-table-blocks-editor',
+		className: `modular-table-blocks-editor${attributes.responsiveMode === 'scroll' ? ' modular-table-blocks-editor--scroll' : ''}`,
 		style: tokenStyle(attributes.styleTokens),
 	});
+	const layout = useMemo(() => {
+		const table = {
+			clientId,
+			name: 'modular-table-blocks/table',
+			attributes,
+			innerBlocks: rows,
+		};
+		const errors = validateGrid(tableGrid(table));
+		return {
+			valid: errors.length === 0,
+			cells: errors.length ? [] : placements(table),
+			errors,
+		};
+	}, [rows, attributes, clientId]);
 	const innerProps = useInnerBlocksProps(
-		{ className: 'modular-table-blocks-editor__rows' },
+		{
+			className: `modular-table-blocks-editor__rows${layout.valid ? ' modular-table-blocks-editor__rows--grid' : ''}`,
+			style: layout.valid
+				? { gridTemplateColumns: columnTemplate(attributes.columns) }
+				: undefined,
+		},
 		{
 			allowedBlocks: ['modular-table-blocks/row'],
 			templateLock: 'all',
@@ -60,49 +90,35 @@ export default function TableEdit({
 		Number.isInteger(columnCount) &&
 		columnCount >= 1 &&
 		columnCount <= 20;
-	const errors = validateGrid(
-		buildGrid(
-			rows.map((row) =>
-				row.innerBlocks.map((cell) => ({
-					clientId: cell.clientId,
-					colSpan:
-						typeof cell.attributes.colSpan === 'number'
-							? cell.attributes.colSpan
-							: NaN,
-					rowSpan:
-						typeof cell.attributes.rowSpan === 'number'
-							? cell.attributes.rowSpan
-							: NaN,
-				}))
-			),
-			attributes.columns.length
-		)
-	);
+	const errors = layout.errors;
 	const insert = () => {
 		if (!valid) {
 			return;
 		}
-		setAttributes({
-			columns: Array.from({ length: columnCount }, () => ({})),
-		});
-		replaceInnerBlocks(
-			clientId,
-			Array.from({ length: rowCount }, () =>
-				createBlock(
-					'modular-table-blocks/row',
-					{},
-					Array.from({ length: columnCount }, () =>
-						createBlock('modular-table-blocks/cell', {}, [
-							createBlock('core/paragraph'),
-						])
-					)
-				)
-			),
-			false
+		const plan = planOperation(
+			{
+				clientId,
+				name: 'modular-table-blocks/table',
+				attributes,
+				innerBlocks: [],
+			},
+			{ type: 'initialize', rows: rowCount, columns: columnCount }
 		);
+		if (plan.changes) {
+			const makeBlock = (
+				block: BlockTree
+			): ReturnType<typeof createBlock> =>
+				createBlock(
+					block.name,
+					block.attributes,
+					block.innerBlocks.map(makeBlock)
+				);
+			replaceBlocks(clientId, [makeBlock(plan.changes)]);
+		}
 	};
 	return (
 		<>
+			<StructureControls clientId={clientId} />
 			<InspectorControls>
 				<PanelBody title={__('Table settings', 'modular-table-blocks')}>
 					<TextControl
@@ -110,6 +126,73 @@ export default function TableEdit({
 						value={attributes.caption}
 						onChange={(caption) => setAttributes({ caption })}
 					/>
+					<ToggleControl
+						label={__('Header row', 'modular-table-blocks')}
+						help={__(
+							'The first row is displayed as column headers. Individual cell settings are preserved.',
+							'modular-table-blocks'
+						)}
+						checked={attributes.headerRows > 0}
+						onChange={(checked) => {
+							if (
+								checked &&
+								layout.cells.some(
+									(p) => p.row === 0 && p.height > 1
+								)
+							) {
+								setHeaderError(true);
+								return;
+							}
+							setHeaderError(false);
+							setAttributes({ headerRows: checked ? 1 : 0 });
+						}}
+					/>
+					{headerError && (
+						<Notice status="warning" isDismissible={false}>
+							{__(
+								'Split cells crossing the first row before enabling the header row.',
+								'modular-table-blocks'
+							)}
+						</Notice>
+					)}
+					<ToggleControl
+						label={__(
+							'Horizontal scrolling',
+							'modular-table-blocks'
+						)}
+						help={__(
+							'Adds a focusable scroll container for wide tables.',
+							'modular-table-blocks'
+						)}
+						checked={attributes.responsiveMode === 'scroll'}
+						onChange={(checked) =>
+							setAttributes({
+								responsiveMode: checked ? 'scroll' : 'none',
+							})
+						}
+					/>
+				</PanelBody>
+				<PanelBody
+					title={__('Column widths', 'modular-table-blocks')}
+					initialOpen={false}
+				>
+					{attributes.columns.map((column, index) => (
+						<ColumnWidthControl
+							key={index}
+							index={index}
+							value={column?.width}
+							onChange={(width) =>
+								setAttributes({
+									columns: attributes.columns.map(
+										(item, i) =>
+											i === index
+												? { ...item, width }
+												: item
+									),
+								})
+							}
+						/>
+					))}
 				</PanelBody>
 				<StylePanel
 					table
@@ -117,57 +200,59 @@ export default function TableEdit({
 					onChange={(styleTokens) => setAttributes({ styleTokens })}
 				/>
 			</InspectorControls>
-			<div {...blockProps}>
-				{rows.length === 0 ? (
-					<Placeholder
-						label={__('Modular Table', 'modular-table-blocks')}
-						instructions={__(
-							'Choose 1–20 rows and columns. Structure editing is not available in this technical preview.',
-							'modular-table-blocks'
-						)}
-					>
-						<TextControl
-							type="number"
-							min={1}
-							max={20}
-							label={__('Rows', 'modular-table-blocks')}
-							value={initialRows}
-							onChange={setInitialRows}
-						/>
-						<TextControl
-							type="number"
-							min={1}
-							max={20}
-							label={__('Columns', 'modular-table-blocks')}
-							value={initialColumns}
-							onChange={setInitialColumns}
-						/>
-						<Button
-							variant="primary"
-							disabled={!valid}
-							onClick={insert}
+			<TableLayout.Provider value={layout}>
+				<div {...blockProps}>
+					{rows.length === 0 ? (
+						<Placeholder
+							label={__('Modular Table', 'modular-table-blocks')}
+							instructions={__(
+								'Choose 1–20 rows and columns.',
+								'modular-table-blocks'
+							)}
 						>
-							{__('Create table', 'modular-table-blocks')}
-						</Button>
-					</Placeholder>
-				) : (
-					<>
-						<p className="modular-table-blocks-editor__label">
-							{attributes.caption ||
-								__('Modular Table', 'modular-table-blocks')}
-						</p>
-						{errors.length > 0 && (
-							<Notice status="warning" isDismissible={false}>
-								{__(
-									'The table grid is inconsistent. Content is preserved; automatic repair is not available.',
-									'modular-table-blocks'
-								)}
-							</Notice>
-						)}
-						<div {...innerProps} />
-					</>
-				)}
-			</div>
+							<TextControl
+								type="number"
+								min={1}
+								max={20}
+								label={__('Rows', 'modular-table-blocks')}
+								value={initialRows}
+								onChange={setInitialRows}
+							/>
+							<TextControl
+								type="number"
+								min={1}
+								max={20}
+								label={__('Columns', 'modular-table-blocks')}
+								value={initialColumns}
+								onChange={setInitialColumns}
+							/>
+							<Button
+								variant="primary"
+								disabled={!valid}
+								onClick={insert}
+							>
+								{__('Create table', 'modular-table-blocks')}
+							</Button>
+						</Placeholder>
+					) : (
+						<>
+							<p className="modular-table-blocks-editor__label">
+								{attributes.caption ||
+									__('Modular Table', 'modular-table-blocks')}
+							</p>
+							{errors.length > 0 && (
+								<Notice status="warning" isDismissible={false}>
+									{__(
+										'The table grid is inconsistent. Content is preserved; automatic repair is not available.',
+										'modular-table-blocks'
+									)}
+								</Notice>
+							)}
+							<div {...innerProps} />
+						</>
+					)}
+				</div>
+			</TableLayout.Provider>
 		</>
 	);
 }

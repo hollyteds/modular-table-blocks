@@ -3,16 +3,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Modular Table Blocks 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modular-table-blocks\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modular-table-"
+"blocks\n"
+"POT-Creation-Date: 2026-10-21T07:48:59+00:00\n"
+"PO-Revision-Date: 2026-10-21 00:00+0900\n"
 "Last-Translator: Modular Table Blocks contributors\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-20T19:40:26+00:00\n"
-"PO-Revision-Date: 2026-10-21 00:00+0900\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: modular-table-blocks\n"
 
@@ -21,8 +22,12 @@ msgid "Modular Table Blocks"
 msgstr "Modular Table Blocks"
 
 #. Description of the plugin
-msgid "Independently editable table, row and cell blocks. M0 technical preview."
-msgstr "テーブル・行・セルを独立して編集できるブロックです。M0技術検証版。"
+msgid "Independently editable table, row and cell blocks."
+msgstr "テーブル・行・セルを独立して編集できるブロックです。"
+
+#: includes/render-table.php:94
+msgid "Scrollable table"
+msgstr "横スクロール可能なテーブル"
 
 #: build/index.js:1
 msgid "Text color"
@@ -70,9 +75,10 @@ msgstr "テーブルの幅"
 
 #: build/index.js:1
 msgid "Leave empty to inherit. See README for accepted values."
-msgstr "空欄にすると上位の設定を継承します。入力できる値はREADMEをご覧ください。"
+msgstr ""
+"空欄にすると上位の設定を継承します。入力できる値はREADMEをご覧ください。"
 
-#: build/index.js:1
+#: build/index.js:1 build/index.js:2
 msgid "Invalid value. This change has not been saved."
 msgstr "入力値が正しくありません。この変更は保存されていません。"
 
@@ -81,74 +87,293 @@ msgid "Table styles"
 msgstr "テーブルのスタイル"
 
 #: build/index.js:1
+msgid "The table grid is inconsistent. Structure changes are disabled."
+msgstr "テーブルの行と列の構成に不整合があるため、構造を変更できません。"
+
+#: build/index.js:1
+msgid "Split cells spanning these rows before moving or duplicating a row."
+msgstr "行を移動・複製する前に、対象の行にまたがる結合セルを分割してください。"
+
+#: build/index.js:1
+msgid "Choose a rectangular range inside the table."
+msgstr "テーブル内の長方形の範囲を選択してください。"
+
+#: build/index.js:1
+msgid ""
+"The range must contain at least two complete cells. Include every part of "
+"existing merged cells."
+msgstr "範囲には2つ以上のセル全体を含めてください。既存の結合セルは全体を範囲に含める必要があります。"
+
+#: build/index.js:1
+msgid "This cell is not merged."
+msgstr "このセルは結合されていません。"
+
+#: build/index.js:1
+msgid ""
+"This operation would cross a header or section boundary. Split the affected "
+"cells first."
+msgstr "見出しまたはセクションの境界をまたぐ操作です。先に対象のセルを分割してください。"
+
+#: build/index.js:1
+msgid "The selection changed. Select the row or cell again."
+msgstr "選択状態が変わりました。行またはセルを選択し直してください。"
+
+#: build/index.js:1
+msgid "The last row cannot be deleted."
+msgstr "最後の行は削除できません。"
+
+#: build/index.js:1
+msgid "The last column cannot be deleted."
+msgstr "最後の列は削除できません。"
+
+#: build/index.js:1
+msgid "Tables support up to 100 rows and 50 columns."
+msgstr "テーブルは最大100行・50列まで対応しています。"
+
+#: build/index.js:1
+msgid ""
+"The table changed while confirmation was open. Review the operation again."
+msgstr "確認中にテーブルが変更されました。操作内容を確認し直してください。"
+
+#: build/index.js:1
+msgid "The operation could not be applied."
+msgstr "操作を適用できませんでした。"
+
+#: build/index.js:1
+msgid "Add row at end"
+msgstr "末尾に行を追加"
+
+#: build/index.js:1
+msgid "Add column at end"
+msgstr "末尾に列を追加"
+
+#: build/index.js:1
+msgid "Insert row above"
+msgstr "上に行を挿入"
+
+#: build/index.js:1
+msgid "Insert row below"
+msgstr "下に行を挿入"
+
+#: build/index.js:1
+msgid "Duplicate row"
+msgstr "行を複製"
+
+#: build/index.js:1
+msgid "Move row up"
+msgstr "行を上へ移動"
+
+#: build/index.js:1
+msgid "Move row down"
+msgstr "行を下へ移動"
+
+#: build/index.js:1
+msgid "Delete row"
+msgstr "行を削除"
+
+#: build/index.js:1
+msgid "Insert column before"
+msgstr "前に列を挿入"
+
+#: build/index.js:1
+msgid "Insert column after"
+msgstr "後ろに列を挿入"
+
+#: build/index.js:1
+msgid "Delete column"
+msgstr "列を削除"
+
+#: build/index.js:1
+msgid "Merge cells"
+msgstr "セルを結合"
+
+#: build/index.js:1
+msgid "Split cell"
+msgstr "セルを分割"
+
+#: build/index.js:1
+msgid "Table structure"
+msgstr "テーブルの構造"
+
+#: build/index.js:1
+msgid ""
+"All content will be kept in the top-left cell in reading order. The top-left "
+"cell settings will be used. Splitting later keeps the content there and "
+"creates empty cells."
+msgstr "すべての内容を読み順に左上セルへまとめ、左上セルの設定を使用します。後で分割すると、内容は左上セルに残り、他のセルは空になります。"
+
+#: build/index.js:1
+msgid "Rows to merge"
+msgstr "結合する行数"
+
+#: build/index.js:1
+msgid "Columns to merge"
+msgstr "結合する列数"
+
+#: build/index.js:1
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: build/index.js:1
+msgid "Delete content?"
+msgstr "内容を削除しますか？"
+
+#: build/index.js:1
+msgid ""
+"This row or column contains content. Deleting it will remove that content. "
+"You can undo this change."
+msgstr ""
+"この行または列には内容が含まれています。削除すると内容も削除されます。この操"
+"作は元に戻せます。"
+
+#: build/index.js:1
+msgid "Delete content"
+msgstr "内容を削除"
+
+#. translators: %d: one-based column number.
+#: build/index.js:2
+msgid "Column %d width"
+msgstr "%d列目の幅"
+
+#: build/index.js:2
+msgid "Leave empty for automatic width. Use %, px, rem or em."
+msgstr "空欄にすると幅を自動調整します。%、px、rem、emを使用できます。"
+
+#: build/index.js:2
 msgid "Table settings"
 msgstr "テーブル設定"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Caption"
 msgstr "キャプション"
 
-#: build/index.js:1
+#: build/index.js:2
+msgid "Header row"
+msgstr "見出し行"
+
+#: build/index.js:2
+msgid ""
+"The first row is displayed as column headers. Individual cell settings are "
+"preserved."
+msgstr "先頭行を列の見出しとして表示します。各セルの設定は保持されます。"
+
+#: build/index.js:2
+msgid "Split cells crossing the first row before enabling the header row."
+msgstr "見出し行を有効にする前に、先頭行をまたぐ結合セルを分割してください。"
+
+#: build/index.js:2
+msgid "Horizontal scrolling"
+msgstr "横スクロール"
+
+#: build/index.js:2
+msgid "Adds a focusable scroll container for wide tables."
+msgstr "幅の広いテーブルに、キーボードで操作できるスクロール領域を追加します。"
+
+#: build/index.js:2
+msgid "Column widths"
+msgstr "列幅"
+
+#: build/index.js:2
 msgid "Modular Table"
 msgstr "モジュラーテーブル"
 
-#: build/index.js:1
-msgid "Choose 1–20 rows and columns. Structure editing is not available in this technical preview."
-msgstr "行数と列数を1〜20で指定してください。この技術検証版では、作成後に行・列の構造を変更できません。"
+#: build/index.js:2
+msgid "Choose 1–20 rows and columns."
+msgstr "行数と列数を1〜20で指定してください。"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Rows"
 msgstr "行数"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Columns"
 msgstr "列数"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Create table"
 msgstr "テーブルを作成"
 
-#: build/index.js:1
-msgid "The table grid is inconsistent. Content is preserved; automatic repair is not available."
-msgstr "テーブルの行と列の構成に不整合があります。内容は保持されていますが、自動修復には対応していません。"
+#: build/index.js:2
+msgid ""
+"The table grid is inconsistent. Content is preserved; automatic repair is "
+"not available."
+msgstr ""
+"テーブルの行と列の構成に不整合があります。内容は保持されていますが、自動修復"
+"には対応していません。"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Cell settings"
 msgstr "セル設定"
 
-#: build/index.js:1
+#: build/index.js:2
+msgid "Horizontal alignment"
+msgstr "水平揃え"
+
+#: build/index.js:2
+msgid "Inherit"
+msgstr "継承"
+
+#: build/index.js:2
+msgid "Left"
+msgstr "左揃え"
+
+#: build/index.js:2
+msgid "Center"
+msgstr "中央揃え"
+
+#: build/index.js:2
+msgid "Right"
+msgstr "右揃え"
+
+#: build/index.js:2
+msgid "Vertical alignment"
+msgstr "垂直揃え"
+
+#: build/index.js:2
+msgid "Top"
+msgstr "上揃え"
+
+#: build/index.js:2
+msgid "Middle"
+msgstr "中央揃え"
+
+#: build/index.js:2
+msgid "Bottom"
+msgstr "下揃え"
+
+#: build/index.js:2
 msgid "Cell type"
 msgstr "セルの種類"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Data cell"
 msgstr "データセル"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Header cell"
 msgstr "見出しセル"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Header association"
 msgstr "見出しとの関連付け"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "None"
 msgstr "なし"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Column"
 msgstr "列"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Row"
 msgstr "行"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Column group"
 msgstr "列グループ"
 
-#: build/index.js:1
+#: build/index.js:2
 msgid "Row group"
 msgstr "行グループ"
 
@@ -171,3 +396,12 @@ msgstr "モジュラーテーブル"
 msgctxt "block description"
 msgid "A table with independently editable rows and cells."
 msgstr "行とセルをそれぞれ独立して編集できるテーブルです。"
+
+#~ msgid "Structure changes for merged cells will be available in M2."
+#~ msgstr "結合セルを含むテーブルの構造変更はM2で対応予定です。"
+
+#~ msgid ""
+#~ "Rows with explicit head or foot sections cannot be changed safely yet."
+#~ msgstr ""
+#~ "見出し・フッターのセクションを個別指定した行は、現在安全に構造変更できませ"
+#~ "ん。"

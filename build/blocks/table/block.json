@@ -26,10 +26,23 @@
     "caption": {
       "type": "string",
       "default": ""
+    },
+    "headerRows": {
+      "type": "number",
+      "default": 0
+    },
+    "responsiveMode": {
+      "type": "string",
+      "enum": [
+        "none",
+        "scroll"
+      ],
+      "default": "none"
     }
   },
   "providesContext": {
-    "modular-table-blocks/columns": "columns"
+    "modular-table-blocks/columns": "columns",
+    "modular-table-blocks/headerRows": "headerRows"
   },
   "supports": {
     "html": false,

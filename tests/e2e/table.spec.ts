@@ -1,22 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { openEditor } from './login';
 
-test.beforeEach(async ({ page }) => {
-	await page.goto('/wp-login.php');
-	await page
-		.getByLabel('Username or Email Address')
-		.fill(process.env.WP_USERNAME || 'admin');
-	await page
-		.getByLabel('Password', { exact: true })
-		.fill(process.env.WP_PASSWORD || 'password');
-	await page.getByRole('button', { name: 'Log In', exact: true }).click();
-	await page.goto('/wp-admin/post-new.php');
-	const welcome = page.getByRole('button', { name: 'Close', exact: true });
-	if (await welcome.isVisible()) {
-		await welcome.click();
-	}
-	await page.waitForFunction(
-		() => !!window.wp?.blocks?.getBlockType('modular-table-blocks/table')
-	);
+test.beforeEach(async ({ page, context }) => {
+	await openEditor(page, context);
 });
 
 test('M0: 2×2 nested editing, keyboard, save/reload, round-trip and public DOM', async ({

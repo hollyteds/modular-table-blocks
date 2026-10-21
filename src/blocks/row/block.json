@@ -13,7 +13,7 @@
     "styleTokens": { "type": "object" },
     "section": { "type": "string", "enum": ["head", "body", "foot"], "default": "body" }
   },
-  "usesContext": ["modular-table-blocks/columns"],
+  "usesContext": ["modular-table-blocks/columns", "modular-table-blocks/headerRows"],
   "supports": { "html": false, "reusable": false, "inserter": false },
   "editorScript": "mtb-editor"
 }

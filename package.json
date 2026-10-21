@@ -2,14 +2,14 @@
   "name": "modular-table-blocks",
   "version": "0.1.0",
   "private": true,
-  "description": "Nested table blocks for the WordPress block editor (M0).",
+  "description": "Nested table blocks for the WordPress block editor.",
   "engines": {
     "node": ">=20.19.0"
   },
   "scripts": {
     "start": "wp-scripts start",
     "build": "wp-scripts build",
-    "i18n:pot": "wp-env run cli -- wp i18n make-pot /var/www/html/wp-content/plugins/modular-table-blocks /var/www/html/wp-content/plugins/modular-table-blocks/languages/modular-table-blocks.pot --include=modular-table-blocks.php,build --domain=modular-table-blocks",
+    "i18n:pot": "wp-env run cli -- wp i18n make-pot /var/www/html/wp-content/plugins/modular-table-blocks /var/www/html/wp-content/plugins/modular-table-blocks/languages/modular-table-blocks.pot --include=modular-table-blocks.php,includes,build --domain=modular-table-blocks",
     "i18n:mo": "wp-env run cli -- wp i18n make-mo /var/www/html/wp-content/plugins/modular-table-blocks/languages",
     "i18n:json": "wp-env run cli -- wp i18n make-json /var/www/html/wp-content/plugins/modular-table-blocks/languages --no-purge --pretty-print --use-map=/var/www/html/wp-content/plugins/modular-table-blocks/languages/map.json",
     "i18n:build": "npm run i18n:mo && npm run i18n:json",

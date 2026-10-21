@@ -28,7 +28,8 @@
     }
   },
   "usesContext": [
-    "modular-table-blocks/columns"
+    "modular-table-blocks/columns",
+    "modular-table-blocks/headerRows"
   ],
   "supports": {
     "html": false,

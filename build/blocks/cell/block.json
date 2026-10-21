@@ -11,11 +11,34 @@
     "modular-table-blocks/row"
   ],
   "allowedBlocks": [
-    "core/paragraph"
+    "core/paragraph",
+    "core/list",
+    "core/heading",
+    "core/image",
+    "core/buttons"
   ],
   "attributes": {
     "styleTokens": {
       "type": "object"
+    },
+    "horizontalAlign": {
+      "type": "string",
+      "enum": [
+        "",
+        "left",
+        "center",
+        "right"
+      ],
+      "default": ""
+    },
+    "verticalAlign": {
+      "type": "string",
+      "enum": [
+        "top",
+        "middle",
+        "bottom"
+      ],
+      "default": "top"
     },
     "tag": {
       "type": "string",

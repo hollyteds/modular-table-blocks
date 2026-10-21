@@ -6,6 +6,10 @@
 
 	border-collapse: collapse;
 
+	> colgroup > col {
+		width: var(--mtb-column-width, auto);
+	}
+
 	> caption {
 		padding: 0.5em;
 		text-align: start;
@@ -19,5 +23,18 @@
 	> :where(thead, tbody, tfoot) > :where(tr) > :where(td, th) {
 
 		@include tokens.cell;
+	}
+}
+
+.modular-table-blocks-scroll {
+	overflow-x: auto;
+
+	> .wp-block-modular-table-blocks-table {
+		min-width: var(--mtb-scroll-min-width, 40rem);
+	}
+
+	&:focus-visible {
+		outline: 2px solid currentcolor;
+		outline-offset: 2px;
 	}
 }
