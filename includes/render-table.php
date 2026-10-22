@@ -34,7 +34,7 @@ function render_cell(\WP_Block $cell, bool $header = false, int $remaining_rows 
 }
 
 function render_table(array $attributes, string $content, \WP_Block $block): string {
-    $style = \ModularTableBlocks\Styles\token_style($attributes['styleTokens'] ?? array());
+    $style = \ModularTableBlocks\Styles\block_style($attributes);
     $html = '<table ' . \get_block_wrapper_attributes($style !== '' ? array('style' => $style) : array()) . '>';
     $caption = $attributes['caption'] ?? '';
     if (\is_string($caption) && $caption !== '') {

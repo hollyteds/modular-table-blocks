@@ -7,17 +7,80 @@
   "category": "design",
   "icon": "table-cell-after",
   "textdomain": "modular-table-blocks",
-  "parent": ["modular-table-blocks/row"],
-  "allowedBlocks": ["core/paragraph", "core/list", "core/heading", "core/image", "core/buttons"],
+  "parent": [
+    "modular-table-blocks/row"
+  ],
+  "allowedBlocks": [
+    "core/paragraph",
+    "core/list",
+    "core/heading",
+    "core/image",
+    "core/buttons"
+  ],
   "attributes": {
-    "styleTokens": { "type": "object" },
-    "horizontalAlign": { "type": "string", "enum": ["", "left", "center", "right"], "default": "" },
-    "verticalAlign": { "type": "string", "enum": ["top", "middle", "bottom"], "default": "top" },
-    "tag": { "type": "string", "enum": ["td", "th"], "default": "td" },
-    "scope": { "type": "string", "enum": ["", "col", "row", "colgroup", "rowgroup"], "default": "" },
-    "colSpan": { "type": "number", "default": 1 },
-    "rowSpan": { "type": "number", "default": 1 }
+    "styleTokens": {
+      "type": "object"
+    },
+    "horizontalAlign": {
+      "type": "string",
+      "enum": [
+        "",
+        "left",
+        "center",
+        "right"
+      ],
+      "default": ""
+    },
+    "verticalAlign": {
+      "type": "string",
+      "enum": [
+        "top",
+        "middle",
+        "bottom"
+      ],
+      "default": "top"
+    },
+    "tag": {
+      "type": "string",
+      "enum": [
+        "td",
+        "th"
+      ],
+      "default": "td"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "",
+        "col",
+        "row",
+        "colgroup",
+        "rowgroup"
+      ],
+      "default": ""
+    },
+    "colSpan": {
+      "type": "number",
+      "default": 1
+    },
+    "rowSpan": {
+      "type": "number",
+      "default": 1
+    }
   },
-  "supports": { "html": false, "reusable": false, "inserter": false },
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "inserter": false,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "color": {
+      "text": true,
+      "background": false
+    }
+  },
   "editorScript": "mtb-editor"
 }

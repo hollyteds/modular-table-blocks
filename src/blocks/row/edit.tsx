@@ -1,20 +1,24 @@
 import type { BlockEditProps } from '@wordpress/blocks';
 import {
-	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { useContext } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 import { TableLayout } from '../../grid/layout-context';
 import StylePanel from '../../components/style-panel';
-import { tokenStyle } from '../../styles/tokens';
+import { editorStyle } from '../../styles/native';
+import type { NativeStyleAttributes } from '../../styles/native';
 import type { StyleTokens } from '../../styles/tokens';
 import StructureControls from '../../components/structure-controls';
 import { columnTemplate } from '../../styles/columns';
 
-export type RowAttributes = { section: string; styleTokens?: StyleTokens };
+export type RowAttributes = NativeStyleAttributes & {
+	section: string;
+	styleTokens?: StyleTokens;
+};
 
 export default function RowEdit({
 	context,
@@ -35,11 +39,19 @@ export default function RowEdit({
 		1,
 		...layout.cells.filter((p) => p.row === index).map((p) => p.height)
 	);
+	const description = sprintf(
+		/* translators: %d: one-based row number. */ __(
+			'Table row %d',
+			'modular-table-blocks'
+		),
+		index + 1
+	);
 	const props = useInnerBlocksProps(
 		useBlockProps({
+			'aria-describedby': `mtb-row-position-${clientId}`,
 			className: `modular-table-blocks-editor__row${header ? ' modular-table-blocks-editor__row--header' : ''}`,
 			style: {
-				...tokenStyle(attributes.styleTokens),
+				...editorStyle(attributes),
 				gridTemplateColumns: layout.valid
 					? 'subgrid'
 					: columnTemplate(columns),
@@ -60,13 +72,20 @@ export default function RowEdit({
 	return (
 		<>
 			<StructureControls clientId={clientId} />
-			<InspectorControls>
-				<StylePanel
-					tokens={attributes.styleTokens}
-					onChange={(styleTokens) => setAttributes({ styleTokens })}
-				/>
-			</InspectorControls>
-			<div {...props} />
+			<StylePanel
+				clientId={clientId}
+				tokens={attributes.styleTokens}
+				onChange={(styleTokens) => setAttributes({ styleTokens })}
+			/>
+			<div {...props}>
+				<span
+					id={`mtb-row-position-${clientId}`}
+					className="modular-table-blocks-editor__position"
+				>
+					{description}
+				</span>
+				{props.children}
+			</div>
 		</>
 	);
 }

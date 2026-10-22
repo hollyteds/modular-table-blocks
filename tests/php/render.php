@@ -89,3 +89,19 @@ foreach (range('A', 'I') as $label) {
 $covered = '<!-- wp:modular-table-blocks/table {"columns":[{},{}]} --><!-- wp:modular-table-blocks/row -->' . $merged_cell . '<!-- /wp:modular-table-blocks/row --><!-- wp:modular-table-blocks/row /--><!-- /wp:modular-table-blocks/table -->';
 check(\substr_count(\do_blocks($covered), '<tr') === 2, 'Fully covered row lost');
 echo "M2 merged HTML, content preservation and covered rows checks passed.\n";
+
+$native_source = '<!-- wp:modular-table-blocks/table {"columns":[{}],"style":{"typography":{"fontSize":"150%","lineHeight":"1.5"},"color":{"text":"#123456"}}} --><!-- wp:modular-table-blocks/row {"style":{"color":{"text":"#008800"}}} --><!-- wp:modular-table-blocks/cell {"textColor":"contrast","style":{"typography":{"fontSize":"32px","lineHeight":2,"textAlign":"right"}},"styleTokens":{"cellPaddingBlock":"12px","cellPaddingTop":"3px","borderWidth":"2px","borderLeftWidth":"0","borderTopStyle":"dashed"}} --><!-- wp:paragraph --><p>Native styles</p><!-- /wp:paragraph --><!-- /wp:modular-table-blocks/cell --><!-- /wp:modular-table-blocks/row --><!-- /wp:modular-table-blocks/table -->';
+$native_html = \do_blocks($native_source);
+$dom->loadHTML('<!doctype html><html><body>' . $native_html . '</body></html>');
+$xpath = new \DOMXPath($dom);
+$row_style = $xpath->query('//table/tbody/tr')->item(0)->getAttribute('style');
+$cell_style = $xpath->query('//table/tbody/tr/td')->item(0)->getAttribute('style');
+check(\strpos($xpath->query('//table/tbody/tr/td')->item(0)->getAttribute('class'), 'has-contrast-color') !== false, 'Native preset class lost');
+check(\strpos($row_style, 'color:#008800') !== false, 'Native row text color lost');
+foreach (array('font-size:', 'line-height:2', 'text-align:right', 'var(--wp--preset--color--contrast)', '--mtb-cell-padding-top:3px', '--mtb-cell-padding-bottom:12px', '--mtb-border-left-width:0', '--mtb-border-top-style:dashed') as $declaration) {
+    check(\strpos($cell_style, $declaration) !== false, 'Native/directional cell style lost: ' . $declaration);
+}
+check($xpath->query('//table/tbody/tr/td/p[text()="Native styles"]')->length === 1, 'Native styles changed semantic content');
+$unsafe_native = \ModularTableBlocks\Styles\block_style(array('style' => array('color' => array('text' => 'red;position:fixed'), 'typography' => array('fontSize' => '12px;position:fixed', 'textAlign' => 'right;position:fixed', 'lineHeight' => array('invalid')))));
+check($unsafe_native === '', 'Unsafe or malformed native styles emitted');
+echo "Native typography, presets, directional styles and invalid input checks passed.\n";

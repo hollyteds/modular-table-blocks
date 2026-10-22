@@ -49,7 +49,16 @@
     "align": [
       "wide",
       "full"
-    ]
+    ],
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "color": {
+      "text": true,
+      "background": false
+    }
   },
   "editorScript": "mtb-editor",
   "style": "file:../../style-index.css",

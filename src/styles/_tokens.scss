@@ -12,13 +12,18 @@
 	background-color: var(--mtb-background-color, transparent);
 }
 
-@mixin cell {
+@mixin cell($padding-priority: null) {
 
 	@include typography;
 
-	padding-block: var(--mtb-cell-padding-block, 0.75em);
-	padding-inline: var(--mtb-cell-padding-inline, 1em);
-	border: var(--mtb-border-width, 1px) var(--mtb-border-style, solid) var(--mtb-border-color, currentColor);
+	padding-top: var(--mtb-cell-padding-top, var(--mtb-cell-padding-block, 0.75em)) $padding-priority;
+	border-top: var(--mtb-border-top-width, var(--mtb-border-width, 1px)) var(--mtb-border-top-style, var(--mtb-border-style, solid)) var(--mtb-border-top-color, var(--mtb-border-color, currentColor));
+	padding-right: var(--mtb-cell-padding-right, var(--mtb-cell-padding-inline, 1em)) $padding-priority;
+	border-right: var(--mtb-border-right-width, var(--mtb-border-width, 1px)) var(--mtb-border-right-style, var(--mtb-border-style, solid)) var(--mtb-border-right-color, var(--mtb-border-color, currentColor));
+	padding-bottom: var(--mtb-cell-padding-bottom, var(--mtb-cell-padding-block, 0.75em)) $padding-priority;
+	border-bottom: var(--mtb-border-bottom-width, var(--mtb-border-width, 1px)) var(--mtb-border-bottom-style, var(--mtb-border-style, solid)) var(--mtb-border-bottom-color, var(--mtb-border-color, currentColor));
+	padding-left: var(--mtb-cell-padding-left, var(--mtb-cell-padding-inline, 1em)) $padding-priority;
+	border-left: var(--mtb-border-left-width, var(--mtb-border-width, 1px)) var(--mtb-border-left-style, var(--mtb-border-style, solid)) var(--mtb-border-left-color, var(--mtb-border-color, currentColor));
 	background-color: var(--mtb-cell-background-color, transparent);
 	vertical-align: top;
 }

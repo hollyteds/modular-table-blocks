@@ -1,6 +1,11 @@
 @use "../../styles/tokens";
 
-:where(.wp-block-modular-table-blocks-table) {
+/* Draw the table grid with cell borders, without an additional theme border. */
+:root table.wp-block-modular-table-blocks-table {
+	border: none;
+}
+
+.wp-block-modular-table-blocks-table {
 
 	@include tokens.table;
 
@@ -15,14 +20,19 @@
 		text-align: start;
 	}
 
-	> :where(thead, tbody, tfoot) > :where(tr) {
+	> :where(thead, tbody, tfoot) > .wp-block-modular-table-blocks-row {
 
 		@include tokens.typography;
 	}
 
-	> :where(thead, tbody, tfoot) > :where(tr) > :where(td, th) {
+	> :where(thead, tbody, tfoot) > .wp-block-modular-table-blocks-row > .wp-block-modular-table-blocks-cell {
 
-		@include tokens.cell;
+		/* Theme cell padding often uses !important; keep token inheritance. */
+		@include tokens.cell($padding-priority: !important);
+
+		text-align: inherit;
+		word-break: normal;
+		overflow-wrap: anywhere;
 	}
 }
 

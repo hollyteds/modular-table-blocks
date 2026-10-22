@@ -164,7 +164,10 @@ modular-table-blocks/
 
 - 継承スタイルの設定UIを改善する。テキスト入力を可能な限り避け、色・寸法・文字サイズ・罫線などにGutenberg提供のUIコンポーネントを可能な限り使用する。
 - 明示設定と継承状態を区別し、「継承に戻す」操作で該当する個別設定を解除できるようにする。保存済みの属性値とスタイルの継承順序を維持する。
-- このUI改善はM3で実装する。WordPress 6.6との互換性、キーボード操作、保存・再読み込み、個別設定の解除と継承への復帰を検証する。
+- 文字色・文字サイズ・行間・水平揃えは標準のブロックサポートを使用する。罫線と余白はスタイルタブの別パネルに置き、標準グループと同じBorderBoxControl・SpacingSizesControl・ToolsPanelItemを使用する。影は追加しない。6.6の実験的なエクスポートと新しいAPIの差は互換層で吸収する。方向の表示切り替えだけでは値を書き換えない。旧タイポグラフィー・水平揃えは読み込み時に標準属性へ移行する。
+- Gutenbergのブロック名は上書きせず、行・セルの位置を `aria-describedby` で補足する。説明要素は編集時のみとし、Gridのレイアウトへ影響させず、公開HTMLへ保存しない。
+- Chromium・Firefox・WebKitで結合表示とM3操作を検証し、設定UI・公開表のアクセシビリティ検査とキーボード操作、保存復元、個別設定の解除を確認する。
+- 配布ZIPはWordPress Scriptsで生成し、実行ファイル・翻訳・GPL-2.0-or-laterのライセンスと再ビルド用ソースを同梱する。ZIP展開物を独立したプラグインディレクトリにして、両WordPress環境で登録と描画を検証する。詳細と結果は [M3の設計判断](docs/decisions/0005-m3-quality-and-distribution.md) に記録する。
 
 ## 11. リスクと記録すべき設計判断
 - エディターDOMの制約とブラウザーによるテーブルHTMLの補正。
@@ -212,7 +215,7 @@ register_blocks();
 
 
 ## 12. CSSカスタムプロパティによるスタイル設計
-スタイルはSass（`.scss`）で管理し、利用者が変更する可能性のある値はCSSカスタムプロパティ（`--mtb-*`）として公開する。テーマ全体・テーブル単位・行単位・セル単位で設定可能とする。CSSの継承を利用し、未設定のブロックは上位の設定を受け継ぐ。
+スタイルはSass（`.scss`）で管理する。文字色・文字サイズ・行間・水平揃えは標準のブロックサポートとCSSの継承を使用し、ほかの可変値はCSSカスタムプロパティ（`--mtb-*`）として公開する。テーマ全体・テーブル単位・行単位・セル単位で設定可能とする。CSSの継承を利用し、未設定のブロックは上位の設定を受け継ぐ。
 
 ### 優先順位
 1. プラグインのフォールバック値（`var()` の第2引数）
@@ -222,6 +225,10 @@ register_blocks();
 5. 個別セルの `--mtb-*`
 
 上記は設計上の意図であり、実際のCSSの優先順位はオリジン、レイヤー、詳細度、宣言順、継承に従う。テーマからの上書きを阻害しないよう、プラグイン既定値を各ブロックのラッパーに無条件で宣言しない。利用者がブロック設定で明示的に指定した値だけを当該要素のカスタムプロパティとして出力する。
+
+公開側の `table` 本体には `:root table.wp-block-modular-table-blocks-table { border: none; }` を適用し、テーマの外枠とセルの罫線の重複を防ぐ。重要指定は使わず、個別クラス付きのCSSによる明示的な外枠の追加は可能とする。罫線トークンはセルへ引き継ぐ。
+
+公開セルの実プロパティには、テーブル・行・セルのプラグイン固有クラスを組み合わせたセレクターを使用し、テーマの一般的な `td` / `th` 装飾を上書きする。テーマの `padding: … !important` と競合する余白宣言に限り、公開側で `!important` を許容する。値の取得元は引き続き `--mtb-*` とし、トークンの継承順位を維持する。水平揃えの既定値は `inherit`、文字分割は `normal` とし、長い文字列は `overflow-wrap: anywhere` で折り返す。他のテーブルやセル内コンテンツへの一括リセットは行わない。
 
 ### 公開トークン例
 | トークン | 用途 |
@@ -244,13 +251,16 @@ register_blocks();
   font-size: var(--mtb-font-size, inherit);
   line-height: var(--mtb-line-height, inherit);
 
-  :where(th, td) {
-    padding-block: var(--mtb-cell-padding-block, 0.75em);
-    padding-inline: var(--mtb-cell-padding-inline, 1em);
+  > :where(thead, tbody, tfoot) > .wp-block-modular-table-blocks-row > .wp-block-modular-table-blocks-cell {
+    padding-block: var(--mtb-cell-padding-block, 0.75em) !important;
+    padding-inline: var(--mtb-cell-padding-inline, 1em) !important;
     border: var(--mtb-border-width, 1px)
       var(--mtb-border-style, solid)
       var(--mtb-border-color, currentColor);
     background-color: var(--mtb-cell-background-color, transparent);
+    text-align: inherit;
+    word-break: normal;
+    overflow-wrap: anywhere;
   }
 }
 ```
@@ -274,9 +284,13 @@ register_blocks();
 行・セルの個別設定は、対象のブロックラッパーで同じトークンを上書きする。実際の公開HTMLにおいて、行・セルのラッパーが `tr` / `td` / `th` と一致することを確認する。セルのプロパティはセル要素自身で参照し、親側のセレクターだけに依存しない。
 
 ### Gutenbergとの連携
-- 継承スタイルの設定UIをGutenberg提供コンポーネント中心へ置き換える作業はM3で行う。テキスト入力を可能な限り避ける方針とし、詳細はマイルストーンのM3を参照する。
+- 継承スタイルの設定UIはM3でGutenberg提供コンポーネント中心へ置き換える。色・プリセット・寸法・罫線を選択式にし、自由なCSSテキスト入力を避ける。詳細はマイルストーンのM3を参照する。
 - 色、余白、タイポグラフィは `theme.json` のプリセットやWordPress標準ブロックサポートと整合させる。
-- インスペクターの値はブロック属性に保存し、明示設定されたトークンのみ出力する。未設定は出力せず継承させる。
+- 標準サポートの項目は標準属性に保存し、行・セルも公開Style Engineで描画する。背景色・罫線・余白・幅は明示設定のトークンのみ出力する。標準タイポグラフィーを明示した場合は対応する旧トークンを `initial` で遮断し、子が計算済みの値を継承できるようにする。
 - 値の検証を行い、任意のCSS文字列の無検証出力を禁止する。色、長さ、キーワード、列幅の許可範囲を定義する。
 - エディターと公開画面でトークン名と見た目を一致させる。エディター固有の操作UIは公開CSSと分離する。
 - `README.md` に全トークンの一覧・初期値・スコープ・使用例を記載し、グローバル、テーブル、行、セルでの上書きおよびテーマ変更の回帰テストを実施する。
+
+### 標準サポートと方向別UIへの移行
+
+変更の範囲・互換対応・検証は [標準サポートと方向別スタイル](docs/decisions/0006-native-supports-and-directional-styles.md) を参照する。既存の背景色・セル共通罫線・余白は標準の自然継承とは異なるため、トークンを保持する。背景色・垂直揃え・列幅・横スクロールは今回の標準サポート移行の対象外とする。配布ZIPは今回生成せず、実装後の検証までとする。

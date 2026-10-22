@@ -14,6 +14,15 @@
 		font-weight: 600;
 	}
 
+	&__position {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
 	&__row {
 
 		@include tokens.typography;
@@ -79,4 +88,36 @@
 	& &__rows--grid > &__row {
 		pointer-events: none;
 	}
+}
+
+.modular-table-blocks-style-control {
+	margin-block: 0 16px;
+	min-width: 0;
+
+	&__status {
+		overflow-wrap: anywhere;
+	}
+}
+
+/* WP 6.6 spacing sliders expose an unnamed tooltip while their value is unset. */
+.modular-table-blocks-padding-control [role="tooltip"]:empty {
+	display: none;
+}
+
+.modular-table-blocks-color-control {
+	margin-bottom: 12px;
+
+	.components-button {
+		gap: 8px;
+		max-width: 100%;
+		height: auto;
+		min-height: 32px;
+		white-space: normal;
+	}
+}
+
+.modular-table-blocks-color-popover {
+	width: 248px;
+	max-width: 80vw;
+	padding: 12px;
 }

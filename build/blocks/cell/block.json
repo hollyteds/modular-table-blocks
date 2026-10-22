@@ -71,7 +71,16 @@
   "supports": {
     "html": false,
     "reusable": false,
-    "inserter": false
+    "inserter": false,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "color": {
+      "text": true,
+      "background": false
+    }
   },
   "editorScript": "mtb-editor"
 }

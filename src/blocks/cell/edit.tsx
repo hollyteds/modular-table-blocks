@@ -5,16 +5,17 @@ import {
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
 import { PanelBody, SelectControl } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { useContext } from '@wordpress/element';
 import { TableLayout } from '../../grid/layout-context';
 import StylePanel from '../../components/style-panel';
-import { tokenStyle } from '../../styles/tokens';
+import { editorStyle } from '../../styles/native';
+import type { NativeStyleAttributes } from '../../styles/native';
 import type { StyleTokens } from '../../styles/tokens';
 import StructureControls from '../../components/structure-controls';
 import { CELL_CONTENT_BLOCKS } from '../../content';
 
-export type CellAttributes = {
+export type CellAttributes = NativeStyleAttributes & {
 	tag: 'td' | 'th';
 	scope: '' | 'col' | 'row' | 'colgroup' | 'rowgroup';
 	colSpan: number;
@@ -31,16 +32,26 @@ export default function CellEdit({
 }: BlockEditProps<CellAttributes>) {
 	const layout = useContext(TableLayout);
 	const position = layout.cells.find((p) => p.cell.clientId === clientId);
+	const description = position
+		? sprintf(
+				/* translators: 1: row number, 2: column number. */ __(
+					'Table cell: row %1$d, column %2$d',
+					'modular-table-blocks'
+				),
+				position.row + 1,
+				position.column + 1
+			)
+		: __('Table cell', 'modular-table-blocks');
 	const props = useInnerBlocksProps(
 		useBlockProps({
+			'aria-describedby': `mtb-cell-position-${clientId}`,
 			className: `modular-table-blocks-editor__cell${attributes.tag === 'th' ? ' modular-table-blocks-editor__cell--header' : ''}`,
 			style: {
-				...tokenStyle(attributes.styleTokens),
+				...editorStyle(attributes),
 				gridColumn: position
 					? `${position.column + 1} / span ${position.width}`
 					: undefined,
 				gridRow: position ? `1 / span ${position.height}` : undefined,
-				textAlign: attributes.horizontalAlign || undefined,
 				alignContent: (
 					{ top: 'start', middle: 'center', bottom: 'end' } as const
 				)[attributes.verticalAlign],
@@ -53,34 +64,6 @@ export default function CellEdit({
 			<StructureControls clientId={clientId} />
 			<InspectorControls>
 				<PanelBody title={__('Cell settings', 'modular-table-blocks')}>
-					<SelectControl
-						label={__(
-							'Horizontal alignment',
-							'modular-table-blocks'
-						)}
-						value={attributes.horizontalAlign}
-						options={[
-							{
-								label: __('Inherit', 'modular-table-blocks'),
-								value: '',
-							},
-							{
-								label: __('Left', 'modular-table-blocks'),
-								value: 'left',
-							},
-							{
-								label: __('Center', 'modular-table-blocks'),
-								value: 'center',
-							},
-							{
-								label: __('Right', 'modular-table-blocks'),
-								value: 'right',
-							},
-						]}
-						onChange={(
-							horizontalAlign: CellAttributes['horizontalAlign']
-						) => setAttributes({ horizontalAlign })}
-					/>
 					<SelectControl
 						label={__('Vertical alignment', 'modular-table-blocks')}
 						value={attributes.verticalAlign}
@@ -161,12 +144,21 @@ export default function CellEdit({
 						/>
 					)}
 				</PanelBody>
-				<StylePanel
-					tokens={attributes.styleTokens}
-					onChange={(styleTokens) => setAttributes({ styleTokens })}
-				/>
 			</InspectorControls>
-			<div {...props} />
+			<StylePanel
+				clientId={clientId}
+				tokens={attributes.styleTokens}
+				onChange={(styleTokens) => setAttributes({ styleTokens })}
+			/>
+			<div {...props}>
+				<span
+					id={`mtb-cell-position-${clientId}`}
+					className="modular-table-blocks-editor__position"
+				>
+					{description}
+				</span>
+				{props.children}
+			</div>
 		</>
 	);
 }

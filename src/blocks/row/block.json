@@ -7,13 +7,43 @@
   "category": "design",
   "icon": "table-row-after",
   "textdomain": "modular-table-blocks",
-  "parent": ["modular-table-blocks/table"],
-  "allowedBlocks": ["modular-table-blocks/cell"],
+  "parent": [
+    "modular-table-blocks/table"
+  ],
+  "allowedBlocks": [
+    "modular-table-blocks/cell"
+  ],
   "attributes": {
-    "styleTokens": { "type": "object" },
-    "section": { "type": "string", "enum": ["head", "body", "foot"], "default": "body" }
+    "styleTokens": {
+      "type": "object"
+    },
+    "section": {
+      "type": "string",
+      "enum": [
+        "head",
+        "body",
+        "foot"
+      ],
+      "default": "body"
+    }
   },
-  "usesContext": ["modular-table-blocks/columns", "modular-table-blocks/headerRows"],
-  "supports": { "html": false, "reusable": false, "inserter": false },
+  "usesContext": [
+    "modular-table-blocks/columns",
+    "modular-table-blocks/headerRows"
+  ],
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "inserter": false,
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "color": {
+      "text": true,
+      "background": false
+    }
+  },
   "editorScript": "mtb-editor"
 }

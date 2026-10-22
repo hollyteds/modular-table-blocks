@@ -7,8 +7,24 @@ export const tokenNames = {
 	borderColor: '--mtb-border-color',
 	borderWidth: '--mtb-border-width',
 	borderStyle: '--mtb-border-style',
+	borderTopColor: '--mtb-border-top-color',
+	borderRightColor: '--mtb-border-right-color',
+	borderBottomColor: '--mtb-border-bottom-color',
+	borderLeftColor: '--mtb-border-left-color',
+	borderTopWidth: '--mtb-border-top-width',
+	borderRightWidth: '--mtb-border-right-width',
+	borderBottomWidth: '--mtb-border-bottom-width',
+	borderLeftWidth: '--mtb-border-left-width',
+	borderTopStyle: '--mtb-border-top-style',
+	borderRightStyle: '--mtb-border-right-style',
+	borderBottomStyle: '--mtb-border-bottom-style',
+	borderLeftStyle: '--mtb-border-left-style',
 	cellPaddingBlock: '--mtb-cell-padding-block',
 	cellPaddingInline: '--mtb-cell-padding-inline',
+	cellPaddingTop: '--mtb-cell-padding-top',
+	cellPaddingRight: '--mtb-cell-padding-right',
+	cellPaddingBottom: '--mtb-cell-padding-bottom',
+	cellPaddingLeft: '--mtb-cell-padding-left',
 	fontSize: '--mtb-font-size',
 	lineHeight: '--mtb-line-height',
 	tableWidth: '--mtb-table-width',
@@ -47,7 +63,7 @@ export function isValidToken(key: TokenKey, value: unknown): value is string {
 			value
 		);
 	}
-	if (key === 'borderStyle') {
+	if (/^border.*Style$/.test(key)) {
 		return ['none', 'solid', 'dashed', 'dotted', 'double'].includes(value);
 	}
 	if (key === 'lineHeight') {
@@ -81,10 +97,9 @@ export function isValidToken(key: TokenKey, value: unknown): value is string {
 		const [min, max] = bounds[unit as keyof typeof bounds];
 		return amount >= min && amount <= max;
 	}
-	const max =
-		key === 'borderWidth'
-			? { px: 20, em: 1, rem: 1 }
-			: { px: 200, em: 10, rem: 10 };
+	const max = /^border.*Width$/.test(key)
+		? { px: 20, em: 1, rem: 1 }
+		: { px: 200, em: 10, rem: 10 };
 	return (
 		unit !== '%' && amount >= 0 && amount <= max[unit as keyof typeof max]
 	);
@@ -97,6 +112,27 @@ export function tokenStyle(tokens: unknown): CSSProperties {
 			const value = (tokens as Record<string, unknown>)[key];
 			if (isValidToken(key, value)) {
 				style[tokenNames[key]] = value;
+				// Materialize local shorthand values so they override inherited sides.
+				for (const side of ['Top', 'Right', 'Bottom', 'Left']) {
+					let sideKey: string | undefined;
+					if (
+						['borderColor', 'borderWidth', 'borderStyle'].includes(
+							key
+						)
+					) {
+						sideKey = `border${side}${key.slice(6)}`;
+					} else if (
+						(key === 'cellPaddingBlock' &&
+							['Top', 'Bottom'].includes(side)) ||
+						(key === 'cellPaddingInline' &&
+							['Left', 'Right'].includes(side))
+					) {
+						sideKey = `cellPadding${side}`;
+					}
+					if (sideKey) {
+						style[tokenNames[sideKey as TokenKey]] = value;
+					}
+				}
 			}
 		}
 	}

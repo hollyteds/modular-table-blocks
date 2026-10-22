@@ -8,16 +8,58 @@
   "icon": "editor-table",
   "description": "A table with independently editable rows and cells.",
   "textdomain": "modular-table-blocks",
-  "allowedBlocks": ["modular-table-blocks/row"],
+  "allowedBlocks": [
+    "modular-table-blocks/row"
+  ],
   "attributes": {
-    "styleTokens": { "type": "object" },
-    "columns": { "type": "array", "default": [{}, {}, {}] },
-    "caption": { "type": "string", "default": "" },
-    "headerRows": { "type": "number", "default": 0 },
-    "responsiveMode": { "type": "string", "enum": ["none", "scroll"], "default": "none" }
+    "styleTokens": {
+      "type": "object"
+    },
+    "columns": {
+      "type": "array",
+      "default": [
+        {},
+        {},
+        {}
+      ]
+    },
+    "caption": {
+      "type": "string",
+      "default": ""
+    },
+    "headerRows": {
+      "type": "number",
+      "default": 0
+    },
+    "responsiveMode": {
+      "type": "string",
+      "enum": [
+        "none",
+        "scroll"
+      ],
+      "default": "none"
+    }
   },
-  "providesContext": { "modular-table-blocks/columns": "columns", "modular-table-blocks/headerRows": "headerRows" },
-  "supports": { "html": false, "align": ["wide", "full"] },
+  "providesContext": {
+    "modular-table-blocks/columns": "columns",
+    "modular-table-blocks/headerRows": "headerRows"
+  },
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "color": {
+      "text": true,
+      "background": false
+    }
+  },
   "editorScript": "mtb-editor",
   "style": "file:../../style-index.css",
   "editorStyle": "file:../../index.css"

@@ -459,9 +459,10 @@ test('row and column operations are atomic, preserve contents and support undo/r
 test('header, alignment, widths and keyboard scrolling survive save and reload', async ({
 	page,
 }) => {
+	await page.getByRole('button', { name: 'Align text', exact: true }).click();
 	await page
-		.getByLabel('Horizontal alignment', { exact: true })
-		.selectOption('right');
+		.getByRole('menuitemradio', { name: 'Align text right', exact: true })
+		.click();
 	await page
 		.getByLabel('Vertical alignment', { exact: true })
 		.selectOption('bottom');
@@ -478,8 +479,20 @@ test('header, alignment, widths and keyboard scrolling survive save and reload',
 	await page
 		.getByRole('button', { name: 'Column widths', exact: true })
 		.click();
-	await page.getByLabel('Column 1 width', { exact: true }).fill('900px');
-	await page.getByLabel('Column 2 width', { exact: true }).fill('300px');
+	await page
+		.getByRole('group', { name: 'Column 1 width', exact: true })
+		.getByRole('combobox', { name: 'Select unit', exact: true })
+		.selectOption('px');
+	await page
+		.getByRole('spinbutton', { name: 'Column 1 width', exact: true })
+		.fill('900');
+	await page
+		.getByRole('group', { name: 'Column 2 width', exact: true })
+		.getByRole('combobox', { name: 'Select unit', exact: true })
+		.selectOption('px');
+	await page
+		.getByRole('spinbutton', { name: 'Column 2 width', exact: true })
+		.fill('300');
 	await page.evaluate(() =>
 		window.wp.data
 			.dispatch('core/editor')

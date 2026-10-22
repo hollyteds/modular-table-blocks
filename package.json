@@ -25,9 +25,14 @@
     "test:php:latest": "wp-env --config=.wp-env.latest.json run cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/render.php",
     "env:stop": "wp-env stop",
     "env:cli": "wp-env run cli",
-    "test:php": "wp-env run tests-cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/render.php"
+    "test:php": "wp-env run tests-cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/render.php",
+    "package": "npm run build && wp-scripts plugin-zip",
+    "test:package": "wp-env run tests-cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/package.php",
+    "test:package:latest": "wp-env --config=.wp-env.latest.json run cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/package.php",
+    "test:e2e:compat": "playwright test --config=playwright.compat.config.ts"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.64.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.20.5",
@@ -45,6 +50,7 @@
     "@wordpress/element": "^9.0.0",
     "@wordpress/env": "^11.17.0",
     "@wordpress/eslint-plugin": "^24.5.0",
+    "@wordpress/hooks": "^4.57.0",
     "@wordpress/i18n": "^6.30.0",
     "@wordpress/jest-preset-default": "^14.2.0",
     "@wordpress/scripts": "^35.0.0",
@@ -55,5 +61,18 @@
     "stylelint": "^16.26.1",
     "stylelint-scss": "^6.14.0",
     "typescript": "5.9"
-  }
+  },
+  "files": [
+    "build/",
+    "includes/",
+    "languages/",
+    "modular-table-blocks.php",
+    "README.md",
+    "CHANGELOG.md",
+    "src/",
+    "webpack.config.cjs",
+    "tsconfig.json",
+    "LICENSE"
+  ],
+  "license": "GPL-2.0-or-later"
 }

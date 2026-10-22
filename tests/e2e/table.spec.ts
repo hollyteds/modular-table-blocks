@@ -227,7 +227,7 @@ test('CSS tokens inherit through site/table/row/cell in editor and public output
 	).toHaveCSS('display', 'table-row');
 });
 
-test('style inspector validates, saves and clears explicit values', async ({
+test('style inspector selects presets, saves and clears explicit values', async ({
 	page,
 }) => {
 	await page.evaluate(() => {
@@ -244,12 +244,15 @@ test('style inspector validates, saves and clears explicit values', async ({
 			]);
 		window.wp.data.dispatch('core/block-editor').selectBlock(cell.clientId);
 	});
-	await page
-		.getByRole('button', { name: 'Table styles', exact: true })
-		.click();
-	const color = page.getByLabel('Text color', { exact: true });
-	await color.fill('red;position:fixed');
-	await expect(color).toHaveAttribute('aria-invalid', 'true');
+	const open = async () => {
+		await page
+			.getByRole('button', { name: 'Table styles', exact: true })
+			.click();
+		await page
+			.getByRole('button', { name: 'Cell background', exact: true })
+			.click();
+	};
+	await open();
 	const tokens = () =>
 		page.evaluate(
 			() =>
@@ -257,8 +260,11 @@ test('style inspector validates, saves and clears explicit values', async ({
 					.innerBlocks[0].innerBlocks[0].attributes.styleTokens
 		);
 	expect(await tokens()).toBeUndefined();
-	await color.fill('#ff0000');
-	expect(await tokens()).toEqual({ textColor: '#ff0000' });
+	await page.getByRole('option', { name: /^(?:Color: )?Contrast$/ }).click();
+	await page.keyboard.press('Escape');
+	expect(await tokens()).toEqual({
+		cellBackgroundColor: 'var(--wp--preset--color--contrast)',
+	});
 	await page.evaluate(() =>
 		window.wp.data.dispatch('core/editor').savePost()
 	);
@@ -266,16 +272,25 @@ test('style inspector validates, saves and clears explicit values', async ({
 	const canvas = page.frameLocator('iframe[name="editor-canvas"]');
 	await expect(
 		canvas.locator('.modular-table-blocks-editor__cell')
-	).toHaveCSS('color', 'rgb(255, 0, 0)');
-	await page.evaluate(() => {
-		const cell = window.wp.data.select('core/block-editor').getBlocks()[0]
-			.innerBlocks[0].innerBlocks[0];
-		window.wp.data.dispatch('core/block-editor').selectBlock(cell.clientId);
-	});
+	).toHaveAttribute(
+		'style',
+		/--mtb-cell-background-color: var\(--wp--preset--color--contrast\)/
+	);
+	await page.evaluate(() =>
+		window.wp.data
+			.dispatch('core/block-editor')
+			.selectBlock(
+				window.wp.data.select('core/block-editor').getBlocks()[0]
+					.innerBlocks[0].innerBlocks[0].clientId
+			)
+	);
+	await open();
 	await page
-		.getByRole('button', { name: 'Table styles', exact: true })
+		.getByRole('button', {
+			name: 'Reset Cell background to inherit',
+			exact: true,
+		})
 		.click();
-	await color.fill('');
 	expect(await tokens()).toEqual({});
 	await expect
 		.poll(() =>
@@ -283,14 +298,14 @@ test('style inspector validates, saves and clears explicit values', async ({
 				.locator('.modular-table-blocks-editor__cell')
 				.evaluate((node) =>
 					(node as HTMLElement).style.getPropertyValue(
-						'--mtb-text-color'
+						'--mtb-cell-background-color'
 					)
 				)
 		)
 		.toBe('');
 });
 
-test('Japanese catalogs translate metadata, controls and validation without changing saved content', async ({
+test('Japanese catalogs translate metadata and style controls without changing saved content', async ({
 	page,
 }) => {
 	await page.goto('/wp-admin/post-new.php?mtb_test_locale=ja');
@@ -329,14 +344,32 @@ test('Japanese catalogs translate metadata, controls and validation without chan
 		page.getByRole('button', { name: 'テーブル設定', exact: true })
 	).toBeVisible();
 	await page
+		.getByRole('tab', { name: /^(Styles|スタイル)$/, exact: true })
+		.click();
+	await expect(
+		page.locator('.modular-table-blocks-padding-control')
+	).toContainText('余白');
+	await expect(
+		page.locator('.modular-table-blocks-border-control')
+	).toContainText('罫線');
+	await page
+		.getByRole('tab', { name: /^(Settings|設定)$/, exact: true })
+		.click();
+	await page
 		.getByRole('button', { name: 'テーブルのスタイル', exact: true })
 		.click();
-	await page.getByLabel('文字色', { exact: true }).fill('invalid');
+	await page
+		.getByRole('button', { name: 'セルの背景色', exact: true })
+		.click();
+	await page
+		.getByRole('button', { name: '現在の文字色', exact: true })
+		.click();
+	await page.keyboard.press('Escape');
 	await expect(
-		page.getByText(
-			'入力値が正しくありません。この変更は保存されていません。',
-			{ exact: true }
-		)
+		page.getByRole('button', {
+			name: 'セルの背景色を継承に戻す',
+			exact: true,
+		})
 	).toBeVisible();
 	const catalog = await page.evaluate(() => ({
 		title: window.wp.i18n._x(

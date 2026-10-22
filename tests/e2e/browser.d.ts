@@ -9,6 +9,7 @@ export interface TestBlock {
 }
 
 interface Selectors {
+	getSettings: () => Record<string, unknown>;
 	getBlocks: ( root?: string ) => TestBlock[];
 	getSelectedBlockClientId: () => string | null;
 	getEditedPostContent: () => string;
@@ -18,6 +19,7 @@ interface Selectors {
 }
 
 interface Actions {
+	updateSettings: (settings: Record<string, unknown>) => void;
 	replaceInnerBlocks: (clientId: string, blocks: unknown[], updateSelection?: boolean) => void;
 	insertBlocks: ( blocks: unknown[], index?: number, rootClientId?: string ) => void;
 	resetBlocks: ( blocks: unknown[] ) => void;

@@ -22,14 +22,15 @@ import { tableGrid, placements } from '../../grid/layout';
 import { TableLayout } from '../../grid/layout-context';
 import { columnTemplate } from '../../styles/columns';
 import StylePanel from '../../components/style-panel';
-import { tokenStyle } from '../../styles/tokens';
+import { editorStyle } from '../../styles/native';
+import type { NativeStyleAttributes } from '../../styles/native';
 import type { StyleTokens } from '../../styles/tokens';
 import StructureControls from '../../components/structure-controls';
 import { planOperation } from '../../grid/operations';
 import type { BlockTree } from '../../grid/operations';
 import ColumnWidthControl from '../../components/column-width-control';
 
-export type TableAttributes = {
+export type TableAttributes = NativeStyleAttributes & {
 	columns: Record<string, unknown>[];
 	caption: string;
 	styleTokens?: StyleTokens;
@@ -52,7 +53,7 @@ export default function TableEdit({
 	const { replaceBlocks } = useDispatch(blockEditorStore);
 	const blockProps = useBlockProps({
 		className: `modular-table-blocks-editor${attributes.responsiveMode === 'scroll' ? ' modular-table-blocks-editor--scroll' : ''}`,
-		style: tokenStyle(attributes.styleTokens),
+		style: editorStyle(attributes),
 	});
 	const layout = useMemo(() => {
 		const table = {
@@ -194,12 +195,13 @@ export default function TableEdit({
 						/>
 					))}
 				</PanelBody>
-				<StylePanel
-					table
-					tokens={attributes.styleTokens}
-					onChange={(styleTokens) => setAttributes({ styleTokens })}
-				/>
 			</InspectorControls>
+			<StylePanel
+				clientId={clientId}
+				table
+				tokens={attributes.styleTokens}
+				onChange={(styleTokens) => setAttributes({ styleTokens })}
+			/>
 			<TableLayout.Provider value={layout}>
 				<div {...blockProps}>
 					{rows.length === 0 ? (

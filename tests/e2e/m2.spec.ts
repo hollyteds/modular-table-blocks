@@ -196,6 +196,7 @@ for (const range of [
 
 test('rectangular merge and split preserve content, actual grid geometry, undo and saved HTML', async ({
 	page,
+	browserName,
 }) => {
 	const before = await tree(page);
 	await merge(page, '2', '2');
@@ -254,8 +255,35 @@ test('rectangular merge and split preserve content, actual grid geometry, undo a
 	await overview.click();
 	await select(page, 0, 0);
 	const paragraph = anchor.locator('[contenteditable="true"]').nth(2);
+	await page.bringToFront();
+	if (browserName === 'firefox') {
+		await anchor.click({ position: { x: 4, y: 4 } });
+		await expect(anchor).toBeFocused();
+	}
 	await paragraph.click();
+	await test.info().attach('merged-focus.json', {
+		body: JSON.stringify(
+			await paragraph.evaluate((node) => ({
+				focused: node.ownerDocument.activeElement === node,
+				documentFocused: node.ownerDocument.hasFocus(),
+				active: node.ownerDocument.activeElement?.outerHTML.slice(
+					0,
+					700
+				),
+				paragraph: node.getAttribute('data-block'),
+			}))
+		),
+		contentType: 'application/json',
+	});
 	await expect(paragraph).toBeFocused();
+	expect(
+		await paragraph.evaluate((node) => {
+			const selection = node.ownerDocument.defaultView?.getSelection();
+			return (
+				!!selection?.anchorNode && node.contains(selection.anchorNode)
+			);
+		})
+	).toBe(true);
 	await select(page, 0, 0);
 	await page.screenshot({
 		path: test.info().outputPath('merged-editor.png'),

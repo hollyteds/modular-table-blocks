@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Modular Table Blocks 0.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modular-table-"
 "blocks\n"
-"POT-Creation-Date: 2026-10-21T07:48:59+00:00\n"
-"PO-Revision-Date: 2026-10-21 00:00+0900\n"
+"POT-Creation-Date: 2026-10-21T19:05:36+00:00\n"
+"PO-Revision-Date: 2026-10-22 00:00+0900\n"
 "Last-Translator: Modular Table Blocks contributors\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -30,8 +30,30 @@ msgid "Scrollable table"
 msgstr "横スクロール可能なテーブル"
 
 #: build/index.js:1
-msgid "Text color"
-msgstr "文字色"
+msgid "Transparent"
+msgstr "透明"
+
+#: build/index.js:1
+msgid "Current text color"
+msgstr "現在の文字色"
+
+#: build/index.js:1
+msgid "Border"
+msgstr "罫線"
+
+#: build/index.js:1
+msgid "Padding"
+msgstr "余白"
+
+#: build/index.js:1
+msgid ""
+"Unsupported value or unit. Border: 0–20px or 0–1em/rem; padding: 0–200px or "
+"0–10em/rem."
+msgstr "対応していない値または単位です。罫線は0〜20pxまたは0〜1em/rem、余白は0〜200pxまたは0〜10em/remで指定してください。"
+
+#: build/index.js:1
+msgid "Table styles"
+msgstr "テーブルのスタイル"
 
 #: build/index.js:1
 msgid "Table background"
@@ -42,49 +64,17 @@ msgid "Cell background"
 msgstr "セルの背景色"
 
 #: build/index.js:1
-msgid "Border color"
-msgstr "罫線の色"
-
-#: build/index.js:1
-msgid "Border width"
-msgstr "罫線の太さ"
-
-#: build/index.js:1
-msgid "Border style"
-msgstr "罫線の種類"
-
-#: build/index.js:1
-msgid "Cell vertical padding"
-msgstr "セルの上下余白"
-
-#: build/index.js:1
-msgid "Cell horizontal padding"
-msgstr "セルの左右余白"
-
-#: build/index.js:1
-msgid "Font size"
-msgstr "文字サイズ"
-
-#: build/index.js:1
-msgid "Line height"
-msgstr "行間"
-
-#: build/index.js:1
 msgid "Table width"
 msgstr "テーブルの幅"
 
 #: build/index.js:1
-msgid "Leave empty to inherit. See README for accepted values."
-msgstr ""
-"空欄にすると上位の設定を継承します。入力できる値はREADMEをご覧ください。"
+msgid "Inherited from the parent or site."
+msgstr "親ブロックまたはサイトの設定を継承しています。"
 
-#: build/index.js:1 build/index.js:2
-msgid "Invalid value. This change has not been saved."
-msgstr "入力値が正しくありません。この変更は保存されていません。"
-
+#. translators: %s: setting name.
 #: build/index.js:1
-msgid "Table styles"
-msgstr "テーブルのスタイル"
+msgid "Reset %s to inherit"
+msgstr "%sを継承に戻す"
 
 #: build/index.js:1
 msgid "The table grid is inconsistent. Structure changes are disabled."
@@ -102,7 +92,9 @@ msgstr "テーブル内の長方形の範囲を選択してください。"
 msgid ""
 "The range must contain at least two complete cells. Include every part of "
 "existing merged cells."
-msgstr "範囲には2つ以上のセル全体を含めてください。既存の結合セルは全体を範囲に含める必要があります。"
+msgstr ""
+"範囲には2つ以上のセル全体を含めてください。既存の結合セルは全体を範囲に含める"
+"必要があります。"
 
 #: build/index.js:1
 msgid "This cell is not merged."
@@ -112,7 +104,9 @@ msgstr "このセルは結合されていません。"
 msgid ""
 "This operation would cross a header or section boundary. Split the affected "
 "cells first."
-msgstr "見出しまたはセクションの境界をまたぐ操作です。先に対象のセルを分割してください。"
+msgstr ""
+"見出しまたはセクションの境界をまたぐ操作です。先に対象のセルを分割してくださ"
+"い。"
 
 #: build/index.js:1
 msgid "The selection changed. Select the row or cell again."
@@ -200,7 +194,9 @@ msgid ""
 "All content will be kept in the top-left cell in reading order. The top-left "
 "cell settings will be used. Splitting later keeps the content there and "
 "creates empty cells."
-msgstr "すべての内容を読み順に左上セルへまとめ、左上セルの設定を使用します。後で分割すると、内容は左上セルに残り、他のセルは空になります。"
+msgstr ""
+"すべての内容を読み順に左上セルへまとめ、左上セルの設定を使用します。後で分割"
+"すると、内容は左上セルに残り、他のセルは空になります。"
 
 #: build/index.js:1
 msgid "Rows to merge"
@@ -231,69 +227,74 @@ msgid "Delete content"
 msgstr "内容を削除"
 
 #. translators: %d: one-based column number.
-#: build/index.js:2
+#: build/index.js:1
 msgid "Column %d width"
 msgstr "%d列目の幅"
 
-#: build/index.js:2
-msgid "Leave empty for automatic width. Use %, px, rem or em."
-msgstr "空欄にすると幅を自動調整します。%、px、rem、emを使用できます。"
+#: build/index.js:1
+msgid "Automatic width"
+msgstr "自動幅"
 
-#: build/index.js:2
+#. translators: %d: one-based column number.
+#: build/index.js:1
+msgid "Reset column %d to automatic width"
+msgstr "列%dを自動幅に戻す"
+
+#: build/index.js:1
 msgid "Table settings"
 msgstr "テーブル設定"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Caption"
 msgstr "キャプション"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Header row"
 msgstr "見出し行"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid ""
 "The first row is displayed as column headers. Individual cell settings are "
 "preserved."
 msgstr "先頭行を列の見出しとして表示します。各セルの設定は保持されます。"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Split cells crossing the first row before enabling the header row."
 msgstr "見出し行を有効にする前に、先頭行をまたぐ結合セルを分割してください。"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Horizontal scrolling"
 msgstr "横スクロール"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Adds a focusable scroll container for wide tables."
 msgstr "幅の広いテーブルに、キーボードで操作できるスクロール領域を追加します。"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Column widths"
 msgstr "列幅"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Modular Table"
 msgstr "モジュラーテーブル"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Choose 1–20 rows and columns."
 msgstr "行数と列数を1〜20で指定してください。"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Rows"
 msgstr "行数"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Columns"
 msgstr "列数"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Create table"
 msgstr "テーブルを作成"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid ""
 "The table grid is inconsistent. Content is preserved; automatic repair is "
 "not available."
@@ -301,79 +302,73 @@ msgstr ""
 "テーブルの行と列の構成に不整合があります。内容は保持されていますが、自動修復"
 "には対応していません。"
 
-#: build/index.js:2
+#. translators: %d: one-based row number.
+#: build/index.js:1
+msgid "Table row %d"
+msgstr "テーブル行%d"
+
+#. translators: 1: row number, 2: column number.
+#: build/index.js:1
+msgid "Table cell: row %1$d, column %2$d"
+msgstr "テーブルセル: %1$d行目、%2$d列目"
+
+#: build/index.js:1
+msgid "Table cell"
+msgstr "テーブルセル"
+
+#: build/index.js:1
 msgid "Cell settings"
 msgstr "セル設定"
 
-#: build/index.js:2
-msgid "Horizontal alignment"
-msgstr "水平揃え"
-
-#: build/index.js:2
-msgid "Inherit"
-msgstr "継承"
-
-#: build/index.js:2
-msgid "Left"
-msgstr "左揃え"
-
-#: build/index.js:2
-msgid "Center"
-msgstr "中央揃え"
-
-#: build/index.js:2
-msgid "Right"
-msgstr "右揃え"
-
-#: build/index.js:2
+#: build/index.js:1
 msgid "Vertical alignment"
 msgstr "垂直揃え"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Top"
 msgstr "上揃え"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Middle"
 msgstr "中央揃え"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Bottom"
 msgstr "下揃え"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Cell type"
 msgstr "セルの種類"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Data cell"
 msgstr "データセル"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Header cell"
 msgstr "見出しセル"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Header association"
 msgstr "見出しとの関連付け"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "None"
 msgstr "なし"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Column"
 msgstr "列"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Row"
 msgstr "行"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Column group"
 msgstr "列グループ"
 
-#: build/index.js:2
+#: build/index.js:1
 msgid "Row group"
 msgstr "行グループ"
 
@@ -396,6 +391,135 @@ msgstr "モジュラーテーブル"
 msgctxt "block description"
 msgid "A table with independently editable rows and cells."
 msgstr "行とセルをそれぞれ独立して編集できるテーブルです。"
+
+#~ msgid "Right"
+#~ msgstr "右揃え"
+
+#~ msgid "Left"
+#~ msgstr "左揃え"
+
+#~ msgid "All sides"
+#~ msgstr "全方向"
+
+#~ msgid "Vertical"
+#~ msgstr "上下"
+
+#~ msgid "Horizontal"
+#~ msgstr "左右"
+
+#~ msgid "Borders"
+#~ msgstr "罫線"
+
+#~ msgid "Cell padding"
+#~ msgstr "セルの余白"
+
+#~ msgid "Unsupported value or unit for %s."
+#~ msgstr "%sでは、その値または単位を使用できません。"
+
+#~ msgid "%s directions"
+#~ msgstr "%sの指定方向"
+
+#~ msgid "All directions"
+#~ msgstr "全方向"
+
+#~ msgid "2 directions"
+#~ msgstr "2方向"
+
+#~ msgid "4 directions"
+#~ msgstr "4方向"
+
+#~ msgid "Border width"
+#~ msgstr "罫線の太さ"
+
+#~ msgid "Border style"
+#~ msgstr "罫線の種類"
+
+#~ msgid "Border color"
+#~ msgstr "罫線の色"
+
+#~ msgid "%1$s: %2$s"
+#~ msgstr "%1$s：%2$s"
+
+#~ msgid "Mixed values. Editing applies to these directions."
+#~ msgstr ""
+#~ "異なる値が設定されています。変更すると指定方向にまとめて適用します。"
+
+#~ msgid "Inherit"
+#~ msgstr "継承"
+
+#~ msgid "Solid"
+#~ msgstr "実線"
+
+#~ msgid "Dashed"
+#~ msgstr "破線"
+
+#~ msgid "Dotted"
+#~ msgstr "点線"
+
+#~ msgid "Double"
+#~ msgstr "二重線"
+
+#~ msgid "%s preset"
+#~ msgstr "%sのプリセット"
+
+#~ msgid "%s presets"
+#~ msgstr "%sのプリセット"
+
+#~ msgid "Mixed"
+#~ msgstr "異なる値"
+
+#~ msgid "Borders and padding"
+#~ msgstr "罫線・余白"
+
+#~ msgid ""
+#~ "Unset settings inherit from the parent or site. Reset a setting to "
+#~ "restore inheritance."
+#~ msgstr ""
+#~ "未設定の項目は親ブロックまたはサイトの設定を継承します。個別設定を解除する"
+#~ "と継承に戻ります。"
+
+#~ msgid "%s unit"
+#~ msgstr "%sの単位"
+
+#~ msgid "Text color"
+#~ msgstr "文字色"
+
+#~ msgid "Cell vertical padding"
+#~ msgstr "セルの上下余白"
+
+#~ msgid "Cell horizontal padding"
+#~ msgstr "セルの左右余白"
+
+#~ msgid "Font size"
+#~ msgstr "文字サイズ"
+
+#~ msgid "Line height"
+#~ msgstr "行間"
+
+#~ msgid "Parent color"
+#~ msgstr "親要素の色"
+
+#~ msgid "Normal"
+#~ msgstr "標準"
+
+#~ msgid "Custom: %s"
+#~ msgstr "個別設定: %s"
+
+#~ msgid "Horizontal alignment"
+#~ msgstr "水平揃え"
+
+#~ msgid "Center"
+#~ msgstr "中央揃え"
+
+#~ msgid "Leave empty to inherit. See README for accepted values."
+#~ msgstr ""
+#~ "空欄にすると上位の設定を継承します。入力できる値はREADMEをご覧ください。"
+
+#~ msgid "Invalid value. This change has not been saved."
+#~ msgstr "入力値が正しくありません。この変更は保存されていません。"
+
+#~ msgid "Leave empty for automatic width. Use %, px, rem or em."
+#~ msgstr "空欄にすると幅を自動調整します。%、px、rem、emを使用できます。"
 
 #~ msgid "Structure changes for merged cells will be available in M2."
 #~ msgstr "結合セルを含むテーブルの構造変更はM2で対応予定です。"
