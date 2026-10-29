@@ -1,0 +1,110 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "modular-table-blocks/table",
+	"version": "0.2.0",
+	"title": "Modular Table",
+	"category": "design",
+	"icon": "editor-table",
+	"description": "A table with independently editable cells.",
+	"textdomain": "modular-table-blocks",
+	"allowedBlocks": ["modular-table-blocks/cell"],
+	"attributes": {
+		"styleTokens": {
+			"type": "object"
+		},
+		"borderCollapse": {
+			"type": "string",
+			"enum": ["collapse", "separate"]
+		},
+		"columns": {
+			"type": "array",
+			"default": [{}, {}, {}]
+		},
+		"columnWidthMode": {
+			"type": "string",
+			"enum": ["equal", "auto", "custom"]
+		},
+		"caption": {
+			"type": "string",
+			"default": ""
+		},
+		"captionEnabled": {
+			"type": "boolean"
+		},
+		"captionSide": {
+			"type": "string",
+			"enum": ["top", "bottom"]
+		},
+		"captionAlign": {
+			"type": "string",
+			"enum": ["left", "center", "right"]
+		},
+		"headerRows": {
+			"type": "number",
+			"default": 0
+		},
+		"responsiveMode": {
+			"type": "string",
+			"enum": ["none", "scroll"],
+			"default": "none"
+		},
+		"rowCount": {
+			"type": "number",
+			"default": 0
+		},
+		"verticalAlign": {
+			"type": "string",
+			"enum": ["top", "middle", "bottom"]
+		},
+		"stripeMode": {
+			"type": "string",
+			"enum": ["none", "rows", "columns"]
+		}
+	},
+	"providesContext": {
+		"modular-table-blocks/headerRows": "headerRows"
+	},
+	"selectors": {
+		"spacing": ":is(.modular-table-blocks-figure, .modular-table-blocks-editor)"
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": false,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalWritingMode": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"__experimentalDefaultControls": {
+				"margin": true
+			}
+		},
+		"dimensions": {
+			"minHeight": true,
+			"__experimentalDefaultControls": {
+				"minHeight": true
+			}
+		}
+	},
+	"editorScript": "mtb-editor",
+	"style": "file:../../style-index.css",
+	"editorStyle": "mtb-editor-styles"
+}

@@ -1,0 +1,689 @@
+@use "../../styles/tokens";
+
+.modular-table-blocks-merge {
+	width: min(760px, 95vw);
+
+	&__scroll {
+		max-height: 45vh;
+		overflow: auto;
+		padding: 4px;
+		border: 1px solid #757575;
+
+		&:focus-visible {
+			outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		gap: 1px;
+		min-width: 100%;
+		width: max-content;
+		isolation: isolate;
+	}
+
+	&__cell.components-button {
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		flex-direction: column;
+		padding: 2px;
+		border: 1px solid #757575;
+		background: #fff;
+		color: #1e1e1e;
+		font-size: 12px;
+
+		&:disabled {
+			background: #f0f0f0;
+			color: #757575;
+		}
+
+		&.is-origin {
+			opacity: 1;
+			background: var(
+				--wp-components-color-accent,
+				var(--wp-admin-theme-color, #3858e9)
+			);
+			color: var(--wp-components-color-accent-inverted, #fff);
+		}
+
+		&[aria-pressed="true"] {
+			--wp-components-color-foreground: var(
+				--wp-components-color-accent,
+				var(--wp-admin-theme-color, #3858e9)
+			);
+			--wp-components-color-foreground-inverted: var(
+				--wp-components-color-accent-inverted,
+				#fff
+			);
+
+			background: var(--wp-components-color-foreground);
+			color: var(--wp-components-color-foreground-inverted);
+			box-shadow: inset 0 0 0 2px var(--wp-admin-theme-color, #3858e9);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+			outline-offset: -3px;
+		}
+	}
+
+	&__origin {
+		font-size: 10px;
+	}
+
+	&__selection {
+		z-index: 1;
+		border: 3px solid
+			var(
+				--wp-components-color-accent,
+				var(--wp-admin-theme-color, #3858e9)
+			);
+		pointer-events: none;
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 16px;
+	}
+}
+
+.modular-table-blocks-editor {
+	/* stylelint-disable length-zero-no-unit -- Grid calc() needs typed length values. */
+	--mtb-editor-column-gap: 0px;
+	--mtb-editor-row-gap: 0px;
+
+	&[data-mtb-border-collapse="separate"] {
+		--mtb-editor-column-gap: var(--mtb-border-spacing-x, 0px);
+		--mtb-editor-row-gap: var(--mtb-border-spacing-y, 0px);
+	}
+	/* stylelint-enable length-zero-no-unit */
+
+	:root &.wp-block-modular-table-blocks-table {
+		box-sizing: border-box;
+
+		/* An unset width variable resolves to the initial auto width. */
+		width: min(var(--mtb-w), 100%);
+		min-width: 0;
+		overflow-x: auto;
+	}
+
+	&--scroll {
+		--mtb-editor-column-min-width: 8rem;
+	}
+
+	&--min-height {
+		display: grid;
+		grid-template-rows: minmax(0, 1fr);
+
+		&[data-mtb-caption] {
+			grid-template-rows: auto minmax(0, 1fr);
+		}
+
+		&[data-mtb-caption="bottom"] {
+			grid-template-rows: minmax(0, 1fr) auto;
+		}
+	}
+
+	:root & > &__caption {
+
+		@include tokens.caption;
+	}
+
+	&__position {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	&__cells--grid {
+		display: grid;
+		grid-auto-rows: minmax(4rem, auto);
+		box-sizing: border-box;
+		/* stylelint-disable length-zero-no-unit -- Match typed gap values used by grid calc(). */
+		column-gap: var(--mtb-editor-column-gap, 0px);
+		row-gap: var(--mtb-editor-row-gap, 0px);
+		padding: var(--mtb-editor-row-gap, 0px)
+			var(--mtb-editor-column-gap, 0px);
+		/* stylelint-enable length-zero-no-unit */
+	}
+
+	&__cell {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		align-content: var(--mtb-cell-align-content, start);
+
+		/* Theme block margins can center grid items at their content width. */
+		box-sizing: border-box;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		margin: 0;
+		pointer-events: auto;
+		overflow-wrap: anywhere;
+
+		> :where(.wp-block-paragraph, .wp-block-heading, .wp-block-list) {
+			box-sizing: border-box;
+			width: 100%;
+			min-width: 0;
+			max-width: none;
+		}
+	}
+
+	&__cell:focus-within {
+		outline: 2px solid #005a9c;
+		outline-offset: -3px;
+	}
+
+	:root & &__cell {
+
+		@include tokens.cell;
+	}
+
+	:root & &__cell--header {
+
+		@include tokens.header;
+	}
+
+	:root &[data-mtb-font-weight] &__cell--header {
+		font-weight: inherit;
+	}
+
+	& &__cells--grid > &__cell {
+		align-self: stretch;
+		justify-self: stretch;
+		height: auto;
+		min-height: 0;
+		max-height: none;
+		margin: 0;
+	}
+}
+
+.modular-table-blocks-style-control {
+	margin-block: 0 16px;
+	min-width: 0;
+
+	&__status {
+		overflow-wrap: anywhere;
+	}
+}
+
+.modular-table-blocks-cell-text {
+	min-width: 0;
+	width: 100%;
+	margin: 0;
+
+	> [contenteditable="true"] {
+		box-sizing: border-box;
+		width: 100%;
+		min-height: 1.5em;
+		background: transparent;
+		font: inherit;
+		color: inherit;
+		text-align: inherit;
+	}
+}
+
+/* A matrix's active item represents focus; an unset value has no selected dot. */
+.modular-table-blocks-alignment-matrix {
+
+	&[inert] {
+		opacity: 0.5;
+	}
+
+	&--empty [role="grid"] [role="gridcell"] > [role="presentation"] {
+		width: 6px;
+		height: 6px;
+		color: var(--wp-components-color-gray-400, #ccc);
+		transform: none;
+	}
+}
+
+.modular-table-blocks-table-settings {
+
+	&__bulk {
+		width: 100%;
+		justify-content: center;
+	}
+
+	& > &__divider {
+		margin-block: 16px;
+		border: 0;
+		border-top: 1px solid var(--wp-components-color-gray-300, #ddd);
+	}
+
+	&__section {
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+}
+
+.modular-table-blocks-settings-tools.components-tools-panel {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.modular-table-blocks-control-stack,
+.modular-table-blocks-settings-tools-content {
+	display: grid;
+	gap: 16px;
+	min-width: 0;
+
+	/* Own the spacing instead of accumulating native control margins. */
+	> * {
+		min-width: 0;
+		margin-block: 0;
+	}
+}
+
+.modular-table-blocks-settings-tools-content {
+	grid-column: 1 / -1;
+}
+
+.modular-table-blocks-spacing-controls {
+	display: grid;
+	gap: 8px;
+	min-width: 0;
+
+	> * {
+		margin-block: 0;
+	}
+}
+
+.modular-table-blocks-caption-alignment {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 11px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.modular-table-blocks-spacing-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 11px;
+	font-weight: 500;
+	text-transform: uppercase;
+
+	.components-button {
+		min-width: 24px;
+		height: 24px;
+		padding: 0;
+	}
+}
+
+.modular-table-blocks-length-range {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 80px;
+	align-items: end;
+	gap: 12px;
+
+	> .components-base-control {
+		min-width: 0;
+		margin-bottom: 0;
+	}
+}
+
+.modular-table-blocks-bulk fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	min-width: 0;
+}
+
+/* Keep the visible controls aligned when native fieldsets stretch across the grid. */
+.modular-table-blocks-border-box-control fieldset {
+
+	&:first-of-type:nth-last-of-type(4),
+	&:last-of-type:nth-of-type(4) {
+		width: fit-content;
+		margin-inline: 0;
+		justify-self: center;
+	}
+
+	&:nth-of-type(3):nth-last-of-type(2) {
+		width: fit-content;
+		margin-inline: 0;
+		justify-self: end;
+	}
+}
+
+/* WP 6.6 spacing sliders expose an unnamed tooltip while their value is unset. */
+.modular-table-blocks-padding-control [role="tooltip"]:empty {
+	display: none;
+}
+
+.modular-table-blocks-color-control {
+
+	/* Each picker is a standalone item, including below the stripe controls. */
+	border: 1px solid var(--wp-components-color-gray-300, #ddd);
+	border-radius: 2px;
+}
+
+.modular-table-blocks-background-rules.components-tools-panel-item {
+	grid-column: 1 / -1;
+	margin: 0;
+
+	/* Join the native color rows with one shared edge, including on WP 6.6. */
+	/* stylelint-disable-next-line selector-class-pattern -- WordPress's public color row class. */
+	:where(.block-editor-tools-panel-color-gradient-settings__item) + & {
+		margin-block-start: -1px;
+
+		.modular-table-blocks-color-control:first-child {
+			border-start-start-radius: 0;
+			border-start-end-radius: 0;
+		}
+	}
+}
+
+
+.modular-table-blocks-color-toggle-content {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	min-width: 0;
+}
+
+.modular-table-blocks-color-popover {
+	max-width: 80vw;
+}
+
+.modular-table-blocks-bulk-layout {
+	display: grid;
+	flex: 1;
+	grid-template-columns: minmax(0, 1fr) 240px;
+	grid-template-rows: minmax(0, 1fr);
+	min-height: 0;
+	gap: 24px;
+	margin-block: 16px 0;
+
+	@media (max-width: 782px) {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+	}
+}
+
+.modular-table-blocks-bulk-settings-column {
+	min-width: 0;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.modular-table-blocks-bulk-selection {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	min-height: 0;
+
+	&-status {
+		flex-shrink: 0;
+		margin: 0;
+		padding-block-start: 12px;
+	}
+
+	&-notifications {
+		flex-shrink: 0;
+		max-height: 35%;
+		overflow: auto;
+	}
+}
+
+.modular-table-blocks-bulk .modular-table-blocks-bulk-settings {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 16px;
+	margin: 0;
+}
+
+.modular-table-blocks-bulk-card {
+	min-width: 0;
+	padding: 10px;
+	border: 1px solid var(--wp-components-color-gray-300, #ddd);
+	border-radius: 2px;
+}
+
+.modular-table-blocks-bulk {
+	width: min(1200px, 95vw);
+	height: 100%;
+
+	/* stylelint-disable-next-line selector-class-pattern -- WordPress Modal's public content class. */
+	.components-modal__content {
+		display: flex;
+		flex-direction: column;
+		min-height: 0;
+		overflow: hidden;
+
+		/* The children wrapper has no class in WordPress 6.6. */
+		> :last-child {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			min-height: 0;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-block: 12px;
+	}
+
+	&__preview {
+		flex: 1;
+		min-height: 0;
+		overflow: auto;
+		border: 1px solid #757575;
+	}
+
+	&__preview:focus-visible,
+	&-selection-notifications:focus-visible {
+		outline: 2px solid
+			var(
+				--wp-components-color-accent,
+				var(--wp-admin-theme-color, #3858e9)
+			);
+	}
+
+	&-preview-surface {
+		position: relative;
+	}
+
+	&-preview-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	&-preview-selection {
+		position: absolute;
+		box-sizing: border-box;
+		border: 2px solid
+			var(
+				--wp-components-color-accent,
+				var(--wp-admin-theme-color, #3858e9)
+			);
+	}
+
+	&-preview-table {
+
+		@include tokens.table;
+		@include tokens.border-layout;
+		@include tokens.column-layout;
+
+		border: none;
+
+		/* Keep intrinsic column/content widths; the preview owns overflow. */
+		width: max-content;
+		min-width: 100%;
+
+		> caption {
+			padding: 8px;
+			font: 14px/1.4 sans-serif;
+			text-align: start;
+		}
+
+		> :where(thead, tbody, tfoot),
+		> :where(thead, tbody, tfoot) > tr,
+		> colgroup,
+		> colgroup > col {
+
+			@include tokens.section;
+		}
+
+		&[data-mtb-column-width-mode="equal"]
+			> colgroup
+			> col:not(.modular-table-blocks-bulk-preview-gutter) {
+			width: calc(
+				(
+						100% - 3rem - (var(--mtb-column-count, 1) + 2) *
+							var(--mtb-column-gap, 0px)
+					) /
+					var(--mtb-column-count, 1)
+			);
+		}
+
+		> tbody > tr > .modular-table-blocks-bulk-preview-cell {
+
+			@include tokens.cell($padding-priority: !important);
+
+			position: relative;
+			min-width: 56px;
+			text-align: inherit;
+			overflow-wrap: anywhere;
+			word-break: normal;
+
+			&.is-header {
+
+				@include tokens.header;
+			}
+		}
+
+		.modular-table-blocks-bulk-preview-measure {
+			position: absolute;
+			width: min-content;
+			height: 0;
+			overflow: hidden;
+			visibility: hidden;
+			white-space: normal;
+
+			/* WebKit does not include overflow-wrap:anywhere in this intrinsic size. */
+			word-break: break-all;
+		}
+
+		.modular-table-blocks-bulk-preview-type {
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			padding: 1px 3px;
+			border: 1px solid #dcdcde;
+			border-radius: 2px;
+			background: #fff;
+			color: #1e1e1e;
+			font: 10px/1.2 sans-serif;
+			letter-spacing: normal;
+			text-transform: none;
+			writing-mode: horizontal-tb;
+			pointer-events: none;
+		}
+
+		.modular-table-blocks-bulk-preview-cell.is-header >
+		.modular-table-blocks-bulk-preview-type {
+			background: #1e1e1e;
+			color: #fff;
+		}
+
+		&[data-mtb-font-weight]
+			> tbody
+			> tr
+			> .modular-table-blocks-bulk-preview-cell.is-header {
+			font-weight: inherit;
+		}
+
+		> :is(thead, tbody) > tr > .modular-table-blocks-bulk-preview-axis {
+			position: sticky;
+			z-index: 2;
+			height: 40px;
+			border: 1px solid #757575;
+			padding: 0 !important;
+			background: #fff;
+			color: #1e1e1e;
+			font: 14px/1.4 sans-serif;
+			text-align: center;
+
+			.components-button {
+
+				/* Fill the table cell even when another cell determines the row height. */
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				min-height: 40px;
+				justify-content: center;
+				font-size: 14px;
+
+				/* Button also adds is-pressed for aria-pressed; use its public color variables. */
+				&[aria-pressed="true"] {
+					--wp-components-color-foreground: var(
+						--wp-components-color-accent,
+						var(--wp-admin-theme-color, #3858e9)
+					);
+					--wp-components-color-foreground-inverted: var(
+						--wp-components-color-accent-inverted,
+						#fff
+					);
+
+					&:hover {
+						--wp-components-color-foreground: var(
+							--wp-components-color-accent-darker-10,
+							var(--wp-admin-theme-color-darker-10, #2145e6)
+						);
+					}
+
+					&:active {
+						--wp-components-color-foreground: var(
+							--wp-components-color-accent-darker-20,
+							var(--wp-admin-theme-color-darker-20, #183ad6)
+						);
+					}
+				}
+			}
+		}
+
+		> thead > tr > .modular-table-blocks-bulk-preview-axis {
+			top: 0;
+		}
+
+		> tbody > tr > .modular-table-blocks-bulk-preview-axis {
+			left: 0;
+		}
+
+		> thead > tr > .modular-table-blocks-bulk-preview-corner {
+			left: 0;
+			z-index: 3;
+		}
+
+		> :is(thead, tbody)
+			> tr
+			> .modular-table-blocks-bulk-preview-axis:first-child {
+			min-width: 3rem;
+		}
+	}
+
+	&-preview-gutter {
+		width: 3rem;
+	}
+}

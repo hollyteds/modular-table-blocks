@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "modular-table-blocks/cell-text",
+  "version": "0.2.0",
+  "title": "Cell text",
+  "category": "text",
+  "icon": "editor-textcolor",
+  "description": "Text for a table cell, with inline formatting and no wrapper tag.",
+  "textdomain": "modular-table-blocks",
+  "parent": [
+    "modular-table-blocks/cell"
+  ],
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "className": false,
+    "customClassName": false,
+    "customCSS": false,
+    "anchor": false,
+    "reusable": false,
+    "renaming": false,
+    "lock": false,
+    "visibility": false
+  },
+  "editorScript": "mtb-editor"
+}

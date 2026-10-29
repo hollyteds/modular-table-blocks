@@ -1,0 +1,82 @@
+[
+	{
+		"name": "unset",
+		"tokens": {},
+		"properties": {}
+	},
+	{
+		"name": "all widths once",
+		"tokens": {
+			"borderWidth": "2px"
+		},
+		"properties": {
+			"--mtb-cell-border-t-width": "2px",
+			"--mtb-cell-border-r-width": "2px",
+			"--mtb-cell-border-b-width": "2px",
+			"--mtb-cell-border-l-width": "2px"
+		}
+	},
+	{
+		"name": "explicit sides and invalid sides",
+		"tokens": {
+			"borderTopWidth": "3px",
+			"borderWidth": "1px",
+			"borderLeftWidth": "100px"
+		},
+		"properties": {
+			"--mtb-cell-border-t-width": "3px",
+			"--mtb-cell-border-r-width": "1px",
+			"--mtb-cell-border-b-width": "1px",
+			"--mtb-cell-border-l-width": "1px"
+		}
+	},
+	{
+		"name": "axis padding with explicit top",
+		"tokens": {
+			"cellPaddingBlock": "8px",
+			"cellPaddingInline": "var(--wp--preset--spacing--40)",
+			"cellPaddingTop": "0"
+		},
+		"properties": {
+			"--mtb-cell-pt": "0",
+			"--mtb-cell-pr": "var(--wp--preset--spacing--40)",
+			"--mtb-cell-pb": "8px",
+			"--mtb-cell-pl": "var(--wp--preset--spacing--40)"
+		}
+	},
+	{
+		"name": "single side zero",
+		"tokens": {
+			"borderTopWidth": "0"
+		},
+		"properties": {
+			"--mtb-cell-border-t-width": "0"
+		}
+	},
+	{
+		"name": "invalid and unknown",
+		"tokens": {
+			"borderWidth": "1px;position:fixed",
+			"cellPaddingBlock": "-1px",
+			"unknown": "bad"
+		},
+		"properties": {}
+	},
+	{
+		"name": "short names and native fallback",
+		"tokens": {
+			"cellBackgroundColor": "#abc",
+			"tableWidth": "80%",
+			"borderSpacingHorizontal": "12px",
+			"borderSpacingVertical": "0",
+			"textColor": "#123"
+		},
+		"properties": {
+			"--mtb-cell-bg": "#abc",
+			"--mtb-w": "80%",
+			"--mtb-border-spacing-x": "12px",
+			"--mtb-border-spacing-y": "0",
+			"--mtb-text-color": "#123"
+		}
+	}
+]

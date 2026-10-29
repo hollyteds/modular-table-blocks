@@ -1,0 +1,115 @@
+[
+  {
+    "table": {},
+    "cell": {
+      "row": 0
+    },
+    "tag": "td",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 1
+    },
+    "cell": {
+      "row": 0,
+      "tag": "td"
+    },
+    "tag": "th",
+    "managed": true
+  },
+  {
+    "table": {
+      "headerRows": 1
+    },
+    "cell": {
+      "row": 1,
+      "tag": "td"
+    },
+    "tag": "td",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 2
+    },
+    "cell": {
+      "row": 1,
+      "tag": "th"
+    },
+    "tag": "th",
+    "managed": true
+  },
+  {
+    "table": {
+      "headerRows": 1
+    },
+    "cell": {
+      "row": 2,
+      "tag": "th"
+    },
+    "tag": "th",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 0
+    },
+    "cell": {
+      "row": 0,
+      "tag": "th"
+    },
+    "tag": "th",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 1
+    },
+    "cell": {
+      "row": -1
+    },
+    "tag": "td",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 1
+    },
+    "cell": {
+      "row": "0"
+    },
+    "tag": "td",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": "1"
+    },
+    "cell": {
+      "row": 0
+    },
+    "tag": "td",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 101
+    },
+    "cell": {
+      "row": 0
+    },
+    "tag": "td",
+    "managed": false
+  },
+  {
+    "table": {
+      "headerRows": 1
+    },
+    "cell": {
+      "row": 0.5
+    },
+    "tag": "td",
+    "managed": false
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "B01",
+    "file": "block-table.svg",
+    "label": "モジュラーテーブル",
+    "master": "B01",
+    "transform": "なし"
+  },
+  {
+    "id": "B02",
+    "file": "block-cell.svg",
+    "label": "テーブルセル",
+    "master": "B02",
+    "transform": "なし"
+  },
+  {
+    "id": "B03",
+    "file": "block-cell-text.svg",
+    "label": "セルテキスト",
+    "master": "B03",
+    "transform": "なし"
+  },
+  {
+    "id": "T01",
+    "file": "import-table.svg",
+    "label": "データを取り込む",
+    "master": "T01",
+    "transform": "なし"
+  },
+  {
+    "id": "T02",
+    "file": "table-structure.svg",
+    "label": "テーブルの構造",
+    "master": "B01",
+    "transform": "なし"
+  },
+  {
+    "id": "T03",
+    "file": "move-rows-columns.svg",
+    "label": "行・列の移動",
+    "master": "T03",
+    "transform": "なし"
+  },
+  {
+    "id": "T04",
+    "file": "merge-split-cells.svg",
+    "label": "セルの結合・分割",
+    "master": "T04",
+    "transform": "なし"
+  },
+  {
+    "id": "R01",
+    "file": "insert-row-above.svg",
+    "label": "上に行を挿入",
+    "master": "R01",
+    "transform": "なし"
+  },
+  {
+    "id": "R02",
+    "file": "insert-row-below.svg",
+    "label": "下に行を挿入",
+    "master": "R01",
+    "transform": "上下反転：translate(0 24) scale(1 -1)"
+  },
+  {
+    "id": "R03",
+    "file": "duplicate-row.svg",
+    "label": "行を複製",
+    "master": "R03",
+    "transform": "なし"
+  },
+  {
+    "id": "R04",
+    "file": "delete-row.svg",
+    "label": "行を削除",
+    "master": "R04",
+    "transform": "なし"
+  },
+  {
+    "id": "C01",
+    "file": "insert-column-before.svg",
+    "label": "前に列を挿入",
+    "master": "R01",
+    "transform": "-90°回転"
+  },
+  {
+    "id": "C02",
+    "file": "insert-column-after.svg",
+    "label": "後ろに列を挿入",
+    "master": "R01",
+    "transform": "90°回転"
+  },
+  {
+    "id": "C03",
+    "file": "duplicate-column.svg",
+    "label": "列を複製",
+    "master": "R03",
+    "transform": "-90°回転"
+  },
+  {
+    "id": "C04",
+    "file": "delete-column.svg",
+    "label": "列を削除",
+    "master": "C04",
+    "transform": "なし"
+  },
+  {
+    "id": "M01",
+    "file": "move-row-up.svg",
+    "label": "行を上へ移動",
+    "master": "M01",
+    "transform": "なし"
+  },
+  {
+    "id": "M02",
+    "file": "move-row-down.svg",
+    "label": "行を下へ移動",
+    "master": "M01",
+    "transform": "上下反転：translate(0 24) scale(1 -1)"
+  },
+  {
+    "id": "M03",
+    "file": "move-column-left.svg",
+    "label": "列を左へ移動",
+    "master": "M01",
+    "transform": "-90°回転"
+  },
+  {
+    "id": "M04",
+    "file": "move-column-right.svg",
+    "label": "列を右へ移動",
+    "master": "M01",
+    "transform": "90°回転"
+  },
+  {
+    "id": "A01",
+    "file": "axes-linked.svg",
+    "label": "横・縦をまとめて設定中",
+    "master": "A01",
+    "transform": "なし"
+  },
+  {
+    "id": "A02",
+    "file": "axes-unlinked.svg",
+    "label": "横・縦を個別に設定中",
+    "master": "A02",
+    "transform": "なし"
+  }
+]

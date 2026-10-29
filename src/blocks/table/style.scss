@@ -1,0 +1,111 @@
+@use "../../styles/tokens";
+
+/* Remove UA figure margins while allowing WordPress block spacing to win. */
+:where(figure.modular-table-blocks-figure) {
+	margin: 0;
+}
+
+/* Figure groups the table; native decoration remains on the table itself. */
+:root figure.modular-table-blocks-figure {
+
+	@include tokens.inherited-text;
+
+	display: flow-root;
+	box-sizing: border-box;
+	min-width: 0;
+
+	/* Only an explicit table width replaces the browser's automatic width. */
+	width: var(--mtb-w, auto);
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	background: transparent;
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+
+	&:not(.alignfull) {
+		margin-inline: 0;
+	}
+}
+
+/* Draw the table grid with cell borders, without an additional theme border. */
+:root table.wp-block-modular-table-blocks-table {
+
+	@include tokens.border-layout;
+	@include tokens.column-layout;
+
+	border: none;
+}
+
+:root .wp-block-modular-table-blocks-table {
+
+	@include tokens.table;
+
+	> colgroup > col {
+		width: auto;
+	}
+
+
+	> caption {
+
+		@include tokens.caption;
+	}
+
+	> :where(thead, tbody, tfoot),
+	> :where(thead, tbody, tfoot) > tr,
+	> colgroup,
+	> colgroup > col {
+
+		@include tokens.section;
+	}
+
+	> :where(thead, tbody, tfoot) > tr > .wp-block-modular-table-blocks-cell {
+
+		/* Theme cell padding often uses !important; keep token inheritance. */
+		@include tokens.cell($padding-priority: !important);
+
+		&:where(th) {
+
+			@include tokens.header;
+		}
+	}
+
+	&[data-mtb-font-weight] > :where(thead, tbody, tfoot) > tr > th.wp-block-modular-table-blocks-cell {
+		font-weight: inherit;
+	}
+
+	&[data-mtb-column-width-mode="equal"] > colgroup > col {
+		width: calc((100% - (var(--mtb-column-count, 1) + 1) * var(--mtb-column-gap, 0px)) / var(--mtb-column-count, 1));
+	}
+
+	&[data-mtb-column-width-mode="custom"] > colgroup > col {
+		width: var(--mtb-column-width, auto);
+	}
+}
+
+:root figure.modular-table-blocks-figure > table.wp-block-modular-table-blocks-table {
+
+	/* The outer width has already been resolved against the post container. */
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+}
+
+:root figure.modular-table-blocks-figure > .modular-table-blocks-scroll > table.wp-block-modular-table-blocks-table {
+	margin: 0;
+}
+
+.modular-table-blocks-scroll {
+	overflow-x: auto;
+
+	> .wp-block-modular-table-blocks-table {
+		min-width: var(--mtb-scroll-min-width, 40rem);
+	}
+
+	&:focus-visible {
+		outline: 2px solid currentcolor;
+		outline-offset: 2px;
+	}
+}

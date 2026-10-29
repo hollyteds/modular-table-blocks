@@ -1,0 +1,860 @@
+# Copyright (C) 2026 
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Modular Table Blocks 0.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/modular-table-blocks\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-29T10:22:29+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: modular-table-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Modular Table Blocks"
+msgstr ""
+
+#. Description of the plugin
+msgid "Independently editable table and cell blocks."
+msgstr ""
+
+#: includes/render-table.php:213
+msgid "Scrollable table"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:16
+msgid "Table width"
+msgstr ""
+
+#: build/index.js:1
+msgid "Theme"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:10
+msgid "Default"
+msgstr ""
+
+#: build/index.js:1
+msgid "Custom"
+msgstr ""
+
+#: build/index.js:1
+msgid "Clear"
+msgstr ""
+
+#: build/index.js:1
+msgid "Cell background rules"
+msgstr ""
+
+#: build/index.js:1
+msgid "Header background (TH)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Data cell stripes (TD)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Row stripes start in the body; merged cells use their top-left position."
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:16
+msgid "None"
+msgstr ""
+
+#: build/index.js:1
+msgctxt "stripe direction"
+msgid "Rows"
+msgstr ""
+
+#: build/index.js:1
+msgctxt "stripe direction"
+msgid "Columns"
+msgstr ""
+
+#: build/index.js:1
+msgid "Stripe background"
+msgstr ""
+
+#: build/index.js:1
+msgid "Border layout"
+msgstr ""
+
+#: build/index.js:1
+msgid "Collapse borders"
+msgstr ""
+
+#: build/index.js:1
+msgid "Separate borders"
+msgstr ""
+
+#: build/index.js:1
+msgid "Spacing"
+msgstr ""
+
+#: build/index.js:1
+msgid "Unlink axes"
+msgstr ""
+
+#: build/index.js:1
+msgid "Link axes"
+msgstr ""
+
+#: build/index.js:1
+msgid "Horizontal and vertical spacing"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:10
+msgid "Multiple values"
+msgstr ""
+
+#: build/index.js:1
+msgid "Horizontal spacing"
+msgstr ""
+
+#: build/index.js:1
+msgid "Vertical spacing"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete other cell contents?"
+msgstr ""
+
+#. translators: %d: number of non-origin cells containing blocks.
+#: build/index.js:1
+msgid "Only the starting cell content will remain. Contents in %d other cell will be deleted, including locked blocks. You can undo this change."
+msgid_plural "Only the starting cell content will remain. Contents in %d other cells will be deleted, including locked blocks. You can undo this change."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: origin row, 2: origin column.
+#: build/index.js:1
+msgid "Start: row %1$d, column %2$d"
+msgstr ""
+
+#. translators: 1: row, 2: column of a cell whose contents will be deleted.
+#: build/index.js:1
+msgid "Delete contents: row %1$d, column %2$d"
+msgstr ""
+
+#. translators: %d: number of additional cells whose contents will be deleted.
+#: build/index.js:1
+msgid "And %d more cell."
+msgid_plural "And %d more cells."
+msgstr[0] ""
+msgstr[1] ""
+
+#: build/index.js:1
+msgid "The table changed. Close and reopen this dialog before merging."
+msgstr ""
+
+#: build/index.js:1
+#: build/table-import.js:2
+msgid "Cancel"
+msgstr ""
+
+#: build/index.js:1
+msgid "Back to range selection"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete contents and merge"
+msgstr ""
+
+#: build/index.js:1
+msgid "Merge cells"
+msgstr ""
+
+#: build/index.js:1
+msgid "Only complete cells within the same header or body section can be merged."
+msgstr ""
+
+#: build/index.js:1
+msgid "Only the starting cell content and settings will remain. If other cells contain blocks, you will be asked to confirm deleting them, including locked blocks. Splitting later creates empty cells."
+msgstr ""
+
+#: build/index.js:1
+msgid "Merge range preview"
+msgstr ""
+
+#: build/index.js:1
+msgid "End cell"
+msgstr ""
+
+#. translators: 1: origin row, 2: origin column.
+#: build/index.js:1
+msgid "Start cell: row %1$d, column %2$d"
+msgstr ""
+
+#. translators: 1: end row, 2: end column.
+#: build/index.js:1
+msgid "End at row %1$d, column %2$d"
+msgstr ""
+
+#: build/index.js:1
+msgid "Start"
+msgstr ""
+
+#. translators: 1: selected row count, 2: selected column count.
+#: build/index.js:1
+msgid "Merge range: %1$d rows × %2$d columns"
+msgstr ""
+
+#: build/index.js:1
+msgid "Choose an end cell."
+msgstr ""
+
+#: build/index.js:1
+msgid "There are no cells that can be merged from this starting cell."
+msgstr ""
+
+#: build/index.js:1
+msgid "The table grid is inconsistent. Structure changes are disabled."
+msgstr ""
+
+#: build/index.js:1
+msgid "Split cells spanning these rows before moving or duplicating a row."
+msgstr ""
+
+#: build/index.js:1
+msgid "Split cells spanning these columns before moving or duplicating a column."
+msgstr ""
+
+#: build/index.js:1
+msgid "Choose a rectangular range inside the table."
+msgstr ""
+
+#: build/index.js:1
+msgid "The range must contain at least two complete cells. Include every part of existing merged cells."
+msgstr ""
+
+#: build/index.js:1
+msgid "This cell is not merged."
+msgstr ""
+
+#: build/index.js:1
+msgid "This operation would cross a header or section boundary. Split the affected cells first."
+msgstr ""
+
+#: build/index.js:1
+msgid "The selection changed. Select the row or cell again."
+msgstr ""
+
+#: build/index.js:1
+msgid "The last row cannot be deleted."
+msgstr ""
+
+#: build/index.js:1
+msgid "The last column cannot be deleted."
+msgstr ""
+
+#: build/index.js:1
+msgid "Tables support up to 100 rows and 50 columns."
+msgstr ""
+
+#: build/index.js:1
+msgid "The table changed while confirmation was open. Review the operation again."
+msgstr ""
+
+#: build/index.js:1
+msgid "Confirm deletion of other cell contents before merging."
+msgstr ""
+
+#: build/index.js:1
+msgid "The operation could not be applied."
+msgstr ""
+
+#: build/index.js:1
+msgid "Add row at end"
+msgstr ""
+
+#: build/index.js:1
+msgid "Add column at end"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert row above"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert row below"
+msgstr ""
+
+#: build/index.js:1
+msgid "Duplicate row"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete row"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert column before"
+msgstr ""
+
+#: build/index.js:1
+msgid "Insert column after"
+msgstr ""
+
+#: build/index.js:1
+msgid "Duplicate column"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete column"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move row up"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move row down"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move column left"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move column right"
+msgstr ""
+
+#: build/index.js:1
+#: build/index.js:16
+#: build/table-import.js:2
+msgid "Import data"
+msgstr ""
+
+#: build/index.js:1
+msgid "Table structure"
+msgstr ""
+
+#: build/index.js:1
+msgid "Move rows and columns"
+msgstr ""
+
+#: build/index.js:1
+msgid "Merge and split cells"
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete content?"
+msgstr ""
+
+#: build/index.js:1
+msgid "This row or column contains content. Deleting it will remove that content. You can undo this change."
+msgstr ""
+
+#: build/index.js:1
+msgid "Delete content"
+msgstr ""
+
+#. translators: %d: one-based column number.
+#: build/index.js:1
+msgid "Column %d width"
+msgstr ""
+
+#: build/index.js:1
+msgid "Cell selection"
+msgstr ""
+
+#: build/index.js:1
+msgid "All cells"
+msgstr ""
+
+#. translators: %d: column number.
+#: build/index.js:4
+msgid "Column %d"
+msgstr ""
+
+#. translators: %d: row number.
+#: build/index.js:7
+msgid "Row %d"
+msgstr ""
+
+#. translators: %1$d: row number, %2$d: column number.
+#: build/index.js:10
+msgid "Cell at row %1$d, column %2$d"
+msgstr ""
+
+#: build/index.js:10
+msgid "Text color"
+msgstr ""
+
+#: build/index.js:10
+msgid "Font size"
+msgstr ""
+
+#: build/index.js:10
+msgid "Font"
+msgstr ""
+
+#: build/index.js:10
+msgid "Appearance"
+msgstr ""
+
+#: build/index.js:10
+msgid "Line height"
+msgstr ""
+
+#: build/index.js:10
+msgid "Letter spacing"
+msgstr ""
+
+#: build/index.js:10
+msgid "Decoration"
+msgstr ""
+
+#: build/index.js:10
+msgid "Letter case"
+msgstr ""
+
+#: build/index.js:10
+msgid "Orientation"
+msgstr ""
+
+#: build/index.js:10
+msgid "Typography"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Alignment"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Cell type"
+msgstr ""
+
+#: build/index.js:10
+msgid "Vertical alignment"
+msgstr ""
+
+#: build/index.js:10
+msgid "Horizontal alignment"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Cell background"
+msgstr ""
+
+#: build/index.js:10
+msgid "Border width"
+msgstr ""
+
+#: build/index.js:10
+msgid "Border style"
+msgstr ""
+
+#: build/index.js:10
+msgid "Border color"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Padding"
+msgstr ""
+
+#: build/index.js:10
+msgid "Top"
+msgstr ""
+
+#: build/index.js:10
+msgid "Middle"
+msgstr ""
+
+#: build/index.js:10
+msgid "Center"
+msgstr ""
+
+#: build/index.js:10
+msgid "Right"
+msgstr ""
+
+#: build/index.js:10
+msgid "Bottom"
+msgstr ""
+
+#: build/index.js:10
+msgid "Left"
+msgstr ""
+
+#: build/index.js:10
+msgid "Header-row cells are managed by the table and are excluded from this change."
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Data cell (TD)"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Header cell (TH)"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Border"
+msgstr ""
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Bulk edit cells"
+msgstr ""
+
+#: build/index.js:10
+msgid "Notifications"
+msgstr ""
+
+#: build/index.js:10
+msgid "Merged cells extend beyond the selection. Only complete cell edges inside the selected rows or columns can change. Other edges are kept. Cell type, background, typography and alignment apply to the whole merged cell even when it is only partly selected."
+msgstr ""
+
+#: build/index.js:10
+msgid "The table structure changed. Close and reopen this dialog before applying."
+msgstr ""
+
+#: build/index.js:10
+msgid "The settings could not be applied. Check the values and table structure."
+msgstr ""
+
+#: build/index.js:10
+msgid "Changes applied."
+msgstr ""
+
+#. translators: %d: number of physical cells.
+#: build/index.js:13
+msgid "%d cells selected"
+msgstr ""
+
+#: build/index.js:13
+msgid "Close"
+msgstr ""
+
+#. translators: %d: number of physical cells.
+#: build/index.js:16
+msgid "Apply to %d cells"
+msgstr ""
+
+#: build/index.js:16
+msgid "Display caption"
+msgstr ""
+
+#: build/index.js:16
+msgid "Caption position"
+msgstr ""
+
+#: build/index.js:16
+msgid "Above table"
+msgstr ""
+
+#: build/index.js:16
+msgid "Below table"
+msgstr ""
+
+#: build/index.js:16
+msgid "Caption alignment"
+msgstr ""
+
+#: build/index.js:16
+msgid "Unsupported value or unit. Border: 0–20px or 0–1em/rem; padding: 0–200px or 0–10em/rem."
+msgstr ""
+
+#: build/index.js:16
+msgid "Background"
+msgstr ""
+
+#: build/index.js:16
+msgid "Use one Cell text block on its own, or other blocks without Cell text. Convert Cell text to a paragraph to add more blocks."
+msgstr ""
+
+#: build/index.js:16
+msgid "Caption"
+msgstr ""
+
+#: build/index.js:16
+msgid "Write caption…"
+msgstr ""
+
+#: build/index.js:16
+msgid "Table settings"
+msgstr ""
+
+#: build/index.js:16
+#: build/table-import.js:2
+msgid "Use first row as headers (TH)"
+msgstr ""
+
+#: build/index.js:16
+msgid "Replaces TH/TD settings in the first row."
+msgstr ""
+
+#: build/index.js:16
+msgid "Split cells crossing the first row before enabling the header row."
+msgstr ""
+
+#: build/index.js:16
+msgid "Horizontal scrolling"
+msgstr ""
+
+#: build/index.js:16
+msgid "Column widths"
+msgstr ""
+
+#: build/index.js:16
+msgid "Column width mode"
+msgstr ""
+
+#: build/index.js:16
+msgid "Equal width"
+msgstr ""
+
+#: build/index.js:16
+msgid "Automatic width"
+msgstr ""
+
+#: build/index.js:16
+msgid "Custom widths"
+msgstr ""
+
+#: build/index.js:16
+msgid "Cell spacing"
+msgstr ""
+
+#: build/index.js:16
+msgid "Modular Table"
+msgstr ""
+
+#: build/index.js:16
+msgid "Choose 1–20 rows and columns."
+msgstr ""
+
+#: build/index.js:16
+#: build/table-import.js:1
+msgid "Rows"
+msgstr ""
+
+#: build/index.js:16
+msgid "Columns"
+msgstr ""
+
+#: build/index.js:16
+msgid "Create table"
+msgstr ""
+
+#: build/index.js:16
+msgid "The table grid is inconsistent. Content is preserved; automatic repair is not available."
+msgstr ""
+
+#. translators: 1: row number, 2: column number.
+#: build/index.js:16
+msgid "Table cell: row %1$d, column %2$d"
+msgstr ""
+
+#: build/index.js:16
+msgid "Table cell"
+msgstr ""
+
+#: build/index.js:16
+msgid "Cell settings"
+msgstr ""
+
+#: build/index.js:16
+msgid "This cell contains Cell text alongside other blocks. Content has been preserved. Convert Cell text to paragraphs or remove extra blocks."
+msgstr ""
+
+#: build/index.js:16
+msgid "Managed by the table header row (TH)."
+msgstr ""
+
+#: build/index.js:16
+msgid "Header association"
+msgstr ""
+
+#: build/index.js:16
+msgid "Column"
+msgstr ""
+
+#: build/index.js:16
+msgid "Row"
+msgstr ""
+
+#: build/index.js:16
+msgid "Column group"
+msgstr ""
+
+#: build/index.js:16
+msgid "Row group"
+msgstr ""
+
+#: build/index.js:16
+msgid "Cell text"
+msgstr ""
+
+#: build/index.js:16
+msgid "Enter cell text…"
+msgstr ""
+
+#. translators: 1: row number, 2: column number.
+#: build/table-import.js:1
+msgid "Row %1$d, column %2$d"
+msgstr ""
+
+#: build/table-import.js:1
+#: build/table-import.js:2
+msgid "Paste table data or enter CSV."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "Import exceeds the limit: 100 rows, 50 columns, 1,000,000 input characters or 200,000 text characters. Nothing was imported."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "The quoted fields are incomplete or invalid. Check the delimiter and quotation marks."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "Paste exactly one HTML table. Nested tables are not supported."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "The HTML table has invalid or overlapping merged cells. Check the source table or paste as tab-separated text."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "Merged cells do not match the import range. Split the affected cells or import as a new table."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "The table grid is inconsistent. Import as a new table or repair the table first."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "Choose an existing cell as the starting position."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "The table or affected contents are locked. Unlock them before importing."
+msgstr ""
+
+#: build/table-import.js:1
+msgid "The table changed. Close and reopen this dialog before importing."
+msgstr ""
+
+#. translators: 1: error message, 2: row number, 3: column number.
+#: build/table-import.js:2
+msgid "%1$s (Row %2$d, column %3$d)"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Table data"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Input format"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Automatic"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "CSV (comma)"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Tab-separated"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "CSV (semicolon)"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "HTML table"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Destination"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Current table"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "New table"
+msgstr ""
+
+#. translators: 1: row count, 2: column count.
+#: build/table-import.js:2
+msgid "%1$d rows × %2$d columns"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Some rows have missing fields. Existing contents at those positions will be kept; explicit empty fields clear contents."
+msgstr ""
+
+#. translators: 1: row number, 2: column number.
+#: build/table-import.js:2
+msgid "Starting at row %1$d, column %2$d"
+msgstr ""
+
+#. translators: %d: number of cells with existing contents.
+#: build/table-import.js:2
+msgid "Replace contents in %d cells. This also removes images and other inner blocks."
+msgstr ""
+
+#. translators: 1: resulting rows, 2: resulting columns.
+#: build/table-import.js:2
+msgid "Expand to %1$d rows × %2$d columns and import"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Import"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Starting cell"
+msgstr ""
+
+#: build/table-import.js:2
+msgid "Import preview"
+msgstr ""
+
+#: build/blocks/cell-text/block.json
+msgctxt "block title"
+msgid "Cell text"
+msgstr ""
+
+#: build/blocks/cell-text/block.json
+msgctxt "block description"
+msgid "Text for a table cell, with inline formatting and no wrapper tag."
+msgstr ""
+
+#: build/blocks/cell/block.json
+msgctxt "block title"
+msgid "Table Cell"
+msgstr ""
+
+#: build/blocks/table/block.json
+msgctxt "block title"
+msgid "Modular Table"
+msgstr ""
+
+#: build/blocks/table/block.json
+msgctxt "block description"
+msgid "A table with independently editable cells."
+msgstr ""

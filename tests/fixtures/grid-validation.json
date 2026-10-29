@@ -1,0 +1,12 @@
+[
+  { "name": "single cell", "rows": 1, "columns": 1, "cells": [{ "row": 0, "column": 0, "rowSpan": 1, "colSpan": 1 }], "valid": true },
+  { "name": "maximum merged grid", "rows": 100, "columns": 50, "cells": [{ "row": 0, "column": 0, "rowSpan": 100, "colSpan": 50 }], "valid": true },
+  { "name": "no rows", "rows": 0, "columns": 1, "cells": [], "valid": false },
+  { "name": "row limit", "rows": 101, "columns": 1, "cells": [], "valid": false },
+  { "name": "column limit", "rows": 1, "columns": 51, "cells": [], "valid": false },
+  { "name": "uncovered position", "rows": 1, "columns": 2, "cells": [{ "row": 0, "column": 0, "rowSpan": 1, "colSpan": 1 }], "valid": false },
+  { "name": "overlap", "rows": 1, "columns": 2, "cells": [{ "row": 0, "column": 0, "rowSpan": 1, "colSpan": 2 }, { "row": 0, "column": 1, "rowSpan": 1, "colSpan": 1 }], "valid": false },
+  { "name": "zero span", "rows": 1, "columns": 1, "cells": [{ "row": 0, "column": 0, "rowSpan": 0, "colSpan": 1 }], "valid": false },
+  { "name": "outside grid", "rows": 1, "columns": 1, "cells": [{ "row": 0, "column": 0, "rowSpan": 1, "colSpan": 2 }], "valid": false },
+  { "name": "negative coordinate", "rows": 1, "columns": 1, "cells": [{ "row": -1, "column": 0, "rowSpan": 1, "colSpan": 1 }], "valid": false }
+]

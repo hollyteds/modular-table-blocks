@@ -1,0 +1,8 @@
+{
+  "build/858.js": "build/index.js",
+  "build/blocks/cell-text/block.json": "build/index.js",
+  "build/blocks/cell/block.json": "build/index.js",
+  "build/blocks/table/block.json": "build/index.js",
+  "build/index.js": "build/index.js",
+  "build/table-import.js": "build/index.js"
+}

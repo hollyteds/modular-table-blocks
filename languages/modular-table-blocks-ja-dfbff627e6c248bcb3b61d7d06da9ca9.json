@@ -1,0 +1,603 @@
+{
+    "translation-revision-date": "2026-10-26 00:00+0900",
+    "generator": "WP-CLI\/2.7.1",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "ja",
+                "plural-forms": "nplurals=1; plural=0;"
+            },
+            "Table width": [
+                "\u30c6\u30fc\u30d6\u30eb\u306e\u5e45"
+            ],
+            "Clear": [
+                "\u30af\u30ea\u30a2"
+            ],
+            "Theme": [
+                "\u30c6\u30fc\u30de"
+            ],
+            "Custom": [
+                "\u30ab\u30b9\u30bf\u30e0"
+            ],
+            "Cell background rules": [
+                "\u30bb\u30eb\u80cc\u666f\u306e\u30eb\u30fc\u30eb"
+            ],
+            "Header background (TH)": [
+                "\u898b\u51fa\u3057\u80cc\u666f\u8272\uff08TH\uff09"
+            ],
+            "Data cell stripes (TD)": [
+                "\u30c7\u30fc\u30bf\u30bb\u30eb\u306e\u30b9\u30c8\u30e9\u30a4\u30d7\uff08TD\uff09"
+            ],
+            "Row stripes start in the body; merged cells use their top-left position.": [
+                "\u884c\u30b9\u30c8\u30e9\u30a4\u30d7\u306f\u672c\u6587\u304b\u3089\u6570\u3048\u3001\u7d50\u5408\u30bb\u30eb\u306f\u5de6\u4e0a\u306e\u4f4d\u7f6e\u3067\u5224\u5b9a\u3057\u307e\u3059\u3002"
+            ],
+            "None": [
+                "\u306a\u3057"
+            ],
+            "Stripe background": [
+                "\u30b9\u30c8\u30e9\u30a4\u30d7\u80cc\u666f\u8272"
+            ],
+            "Border layout": [
+                "\u7f6b\u7dda\u306e\u914d\u7f6e"
+            ],
+            "Collapse borders": [
+                "\u91cd\u306d\u308b"
+            ],
+            "Separate borders": [
+                "\u5206\u96e2\u3059\u308b"
+            ],
+            "Spacing": [
+                "\u9593\u9694"
+            ],
+            "Unlink axes": [
+                "\u6a2a\u30fb\u7e26\u3092\u500b\u5225\u306b\u8a2d\u5b9a"
+            ],
+            "Link axes": [
+                "\u6a2a\u30fb\u7e26\u3092\u307e\u3068\u3081\u3066\u8a2d\u5b9a"
+            ],
+            "Horizontal and vertical spacing": [
+                "\u6a2a\u30fb\u7e26\u306e\u9593\u9694"
+            ],
+            "Multiple values": [
+                "\u8907\u6570\u306e\u5024"
+            ],
+            "Horizontal spacing": [
+                "\u6a2a\u65b9\u5411\u306e\u9593\u9694"
+            ],
+            "Vertical spacing": [
+                "\u7e26\u65b9\u5411\u306e\u9593\u9694"
+            ],
+            "Delete other cell contents?": [
+                "\u4ed6\u306e\u30bb\u30eb\u306e\u5185\u5bb9\u3092\u524a\u9664\u3057\u307e\u3059\u304b\uff1f"
+            ],
+            "Only the starting cell content will remain. Contents in %d other cell will be deleted, including locked blocks. You can undo this change.": [
+                "\u8d77\u70b9\u30bb\u30eb\u306e\u5185\u5bb9\u3060\u3051\u3092\u6b8b\u3057\u307e\u3059\u3002\u4ed6\u306e%d\u500b\u306e\u30bb\u30eb\u306e\u5185\u5bb9\u306f\u3001\u30ed\u30c3\u30af\u3055\u308c\u305f\u30d6\u30ed\u30c3\u30af\u3082\u542b\u3081\u3066\u524a\u9664\u3057\u307e\u3059\u3002\u3053\u306e\u5909\u66f4\u306f\u5143\u306b\u623b\u305b\u307e\u3059\u3002"
+            ],
+            "Start: row %1$d, column %2$d": [
+                "\u8d77\u70b9\uff1a%1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "Delete contents: row %1$d, column %2$d": [
+                "\u5185\u5bb9\u3092\u524a\u9664\uff1a%1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "And %d more cell.": [
+                "\u307b\u304b%d\u500b\u306e\u30bb\u30eb\u3002"
+            ],
+            "The table changed. Close and reopen this dialog before merging.": [
+                "\u8868\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f\u3002\u7d50\u5408\u3059\u308b\u306b\u306f\u3001\u3053\u306e\u753b\u9762\u3092\u9589\u3058\u3066\u958b\u304d\u76f4\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Cancel": [
+                "\u30ad\u30e3\u30f3\u30bb\u30eb"
+            ],
+            "Back to range selection": [
+                "\u7bc4\u56f2\u9078\u629e\u306b\u623b\u308b"
+            ],
+            "Delete contents and merge": [
+                "\u5185\u5bb9\u3092\u524a\u9664\u3057\u3066\u7d50\u5408"
+            ],
+            "Merge cells": [
+                "\u30bb\u30eb\u3092\u7d50\u5408"
+            ],
+            "Only complete cells within the same header or body section can be merged.": [
+                "\u898b\u51fa\u3057\u3068\u672c\u6587\u3092\u307e\u305f\u304c\u305a\u3001\u30bb\u30eb\u5168\u4f53\u3092\u542b\u3080\u7bc4\u56f2\u3067\u7d50\u5408\u3067\u304d\u307e\u3059\u3002"
+            ],
+            "Only the starting cell content and settings will remain. If other cells contain blocks, you will be asked to confirm deleting them, including locked blocks. Splitting later creates empty cells.": [
+                "\u8d77\u70b9\u30bb\u30eb\u306e\u5185\u5bb9\u3068\u8a2d\u5b9a\u3060\u3051\u3092\u6b8b\u3057\u307e\u3059\u3002\u4ed6\u306e\u30bb\u30eb\u306b\u30d6\u30ed\u30c3\u30af\u304c\u3042\u308b\u5834\u5408\u306f\u3001\u30ed\u30c3\u30af\u3055\u308c\u305f\u30d6\u30ed\u30c3\u30af\u3082\u542b\u3081\u3066\u524a\u9664\u3059\u308b\u78ba\u8a8d\u3092\u884c\u3044\u307e\u3059\u3002\u5f8c\u304b\u3089\u5206\u5272\u3059\u308b\u3068\u7a7a\u30bb\u30eb\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002"
+            ],
+            "Merge range preview": [
+                "\u7d50\u5408\u7bc4\u56f2\u306e\u30d7\u30ec\u30d3\u30e5\u30fc"
+            ],
+            "End cell": [
+                "\u7d42\u70b9\u30bb\u30eb"
+            ],
+            "Start cell: row %1$d, column %2$d": [
+                "\u8d77\u70b9\u30bb\u30eb\uff1a%1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "End at row %1$d, column %2$d": [
+                "\u7d42\u70b9\uff1a%1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "Start": [
+                "\u8d77\u70b9"
+            ],
+            "Merge range: %1$d rows \u00d7 %2$d columns": [
+                "\u7d50\u5408\u7bc4\u56f2\uff1a%1$d\u884c\u00d7%2$d\u5217"
+            ],
+            "Choose an end cell.": [
+                "\u7d42\u70b9\u30bb\u30eb\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "There are no cells that can be merged from this starting cell.": [
+                "\u3053\u306e\u8d77\u70b9\u304b\u3089\u7d50\u5408\u3067\u304d\u308b\u30bb\u30eb\u306f\u3042\u308a\u307e\u305b\u3093\u3002"
+            ],
+            "The table grid is inconsistent. Structure changes are disabled.": [
+                "\u30c6\u30fc\u30d6\u30eb\u306e\u884c\u3068\u5217\u306e\u69cb\u6210\u306b\u4e0d\u6574\u5408\u304c\u3042\u308b\u305f\u3081\u3001\u69cb\u9020\u3092\u5909\u66f4\u3067\u304d\u307e\u305b\u3093\u3002"
+            ],
+            "Split cells spanning these rows before moving or duplicating a row.": [
+                "\u884c\u3092\u79fb\u52d5\u30fb\u8907\u88fd\u3059\u308b\u524d\u306b\u3001\u5bfe\u8c61\u306e\u884c\u306b\u307e\u305f\u304c\u308b\u7d50\u5408\u30bb\u30eb\u3092\u5206\u5272\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Split cells spanning these columns before moving or duplicating a column.": [
+                "\u3053\u308c\u3089\u306e\u5217\u3092\u307e\u305f\u3050\u7d50\u5408\u30bb\u30eb\u3092\u5206\u5272\u3057\u3066\u304b\u3089\u3001\u5217\u3092\u79fb\u52d5\u30fb\u8907\u88fd\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Choose a rectangular range inside the table.": [
+                "\u30c6\u30fc\u30d6\u30eb\u5185\u306e\u9577\u65b9\u5f62\u306e\u7bc4\u56f2\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The range must contain at least two complete cells. Include every part of existing merged cells.": [
+                "\u7bc4\u56f2\u306b\u306f2\u3064\u4ee5\u4e0a\u306e\u30bb\u30eb\u5168\u4f53\u3092\u542b\u3081\u3066\u304f\u3060\u3055\u3044\u3002\u65e2\u5b58\u306e\u7d50\u5408\u30bb\u30eb\u306f\u5168\u4f53\u3092\u7bc4\u56f2\u306b\u542b\u3081\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
+            ],
+            "This cell is not merged.": [
+                "\u3053\u306e\u30bb\u30eb\u306f\u7d50\u5408\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002"
+            ],
+            "This operation would cross a header or section boundary. Split the affected cells first.": [
+                "\u898b\u51fa\u3057\u307e\u305f\u306f\u30bb\u30af\u30b7\u30e7\u30f3\u306e\u5883\u754c\u3092\u307e\u305f\u3050\u64cd\u4f5c\u3067\u3059\u3002\u5148\u306b\u5bfe\u8c61\u306e\u30bb\u30eb\u3092\u5206\u5272\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The selection changed. Select the row or cell again.": [
+                "\u9078\u629e\u72b6\u614b\u304c\u5909\u308f\u308a\u307e\u3057\u305f\u3002\u884c\u307e\u305f\u306f\u30bb\u30eb\u3092\u9078\u629e\u3057\u76f4\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The last row cannot be deleted.": [
+                "\u6700\u5f8c\u306e\u884c\u306f\u524a\u9664\u3067\u304d\u307e\u305b\u3093\u3002"
+            ],
+            "The last column cannot be deleted.": [
+                "\u6700\u5f8c\u306e\u5217\u306f\u524a\u9664\u3067\u304d\u307e\u305b\u3093\u3002"
+            ],
+            "Tables support up to 100 rows and 50 columns.": [
+                "\u30c6\u30fc\u30d6\u30eb\u306f\u6700\u5927100\u884c\u30fb50\u5217\u307e\u3067\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u3002"
+            ],
+            "The table changed while confirmation was open. Review the operation again.": [
+                "\u78ba\u8a8d\u4e2d\u306b\u30c6\u30fc\u30d6\u30eb\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f\u3002\u64cd\u4f5c\u5185\u5bb9\u3092\u78ba\u8a8d\u3057\u76f4\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The operation could not be applied.": [
+                "\u64cd\u4f5c\u3092\u9069\u7528\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002"
+            ],
+            "Confirm deletion of other cell contents before merging.": [
+                "\u7d50\u5408\u3059\u308b\u524d\u306b\u3001\u4ed6\u306e\u30bb\u30eb\u306e\u5185\u5bb9\u3092\u524a\u9664\u3059\u308b\u3053\u3068\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Add row at end": [
+                "\u672b\u5c3e\u306b\u884c\u3092\u8ffd\u52a0"
+            ],
+            "Add column at end": [
+                "\u672b\u5c3e\u306b\u5217\u3092\u8ffd\u52a0"
+            ],
+            "Insert row above": [
+                "\u4e0a\u306b\u884c\u3092\u633f\u5165"
+            ],
+            "Insert row below": [
+                "\u4e0b\u306b\u884c\u3092\u633f\u5165"
+            ],
+            "Duplicate row": [
+                "\u884c\u3092\u8907\u88fd"
+            ],
+            "Delete row": [
+                "\u884c\u3092\u524a\u9664"
+            ],
+            "Insert column before": [
+                "\u524d\u306b\u5217\u3092\u633f\u5165"
+            ],
+            "Insert column after": [
+                "\u5f8c\u308d\u306b\u5217\u3092\u633f\u5165"
+            ],
+            "Duplicate column": [
+                "\u5217\u3092\u8907\u88fd"
+            ],
+            "Delete column": [
+                "\u5217\u3092\u524a\u9664"
+            ],
+            "Move row up": [
+                "\u884c\u3092\u4e0a\u3078\u79fb\u52d5"
+            ],
+            "Move row down": [
+                "\u884c\u3092\u4e0b\u3078\u79fb\u52d5"
+            ],
+            "Move column left": [
+                "\u5217\u3092\u5de6\u3078\u79fb\u52d5"
+            ],
+            "Move column right": [
+                "\u5217\u3092\u53f3\u3078\u79fb\u52d5"
+            ],
+            "Import data": [
+                "\u30c7\u30fc\u30bf\u3092\u53d6\u308a\u8fbc\u3080"
+            ],
+            "Table structure": [
+                "\u30c6\u30fc\u30d6\u30eb\u306e\u69cb\u9020"
+            ],
+            "Move rows and columns": [
+                "\u884c\u30fb\u5217\u306e\u79fb\u52d5"
+            ],
+            "Merge and split cells": [
+                "\u30bb\u30eb\u306e\u7d50\u5408\u30fb\u5206\u5272"
+            ],
+            "Delete content?": [
+                "\u5185\u5bb9\u3092\u524a\u9664\u3057\u307e\u3059\u304b\uff1f"
+            ],
+            "This row or column contains content. Deleting it will remove that content. You can undo this change.": [
+                "\u3053\u306e\u884c\u307e\u305f\u306f\u5217\u306b\u306f\u5185\u5bb9\u304c\u542b\u307e\u308c\u3066\u3044\u307e\u3059\u3002\u524a\u9664\u3059\u308b\u3068\u5185\u5bb9\u3082\u524a\u9664\u3055\u308c\u307e\u3059\u3002\u3053\u306e\u64cd\u4f5c\u306f\u5143\u306b\u623b\u305b\u307e\u3059\u3002"
+            ],
+            "Delete content": [
+                "\u5185\u5bb9\u3092\u524a\u9664"
+            ],
+            "Column %d width": [
+                "%d\u5217\u76ee\u306e\u5e45"
+            ],
+            "Cell selection": [
+                "\u30bb\u30eb\u306e\u9078\u629e"
+            ],
+            "All cells": [
+                "\u5168\u30bb\u30eb"
+            ],
+            "Column %d": [
+                "\u5217%d"
+            ],
+            "Row %d": [
+                "\u884c%d"
+            ],
+            "Cell at row %1$d, column %2$d": [
+                "\u884c%1$d\u3001\u5217%2$d\u306e\u30bb\u30eb"
+            ],
+            "Text color": [
+                "\u6587\u5b57\u8272"
+            ],
+            "Font size": [
+                "\u6587\u5b57\u30b5\u30a4\u30ba"
+            ],
+            "Font": [
+                "\u30d5\u30a9\u30f3\u30c8"
+            ],
+            "Default": [
+                "\u30c7\u30d5\u30a9\u30eb\u30c8"
+            ],
+            "Appearance": [
+                "\u5916\u89b3"
+            ],
+            "Line height": [
+                "\u884c\u9593"
+            ],
+            "Letter spacing": [
+                "\u6587\u5b57\u9593\u9694"
+            ],
+            "Decoration": [
+                "\u6587\u5b57\u88c5\u98fe"
+            ],
+            "Letter case": [
+                "\u5927\u6587\u5b57\u30fb\u5c0f\u6587\u5b57"
+            ],
+            "Orientation": [
+                "\u6587\u5b57\u65b9\u5411"
+            ],
+            "Typography": [
+                "\u30bf\u30a4\u30dd\u30b0\u30e9\u30d5\u30a3"
+            ],
+            "Alignment": [
+                "\u4f4d\u7f6e\u63c3\u3048"
+            ],
+            "Cell type": [
+                "\u30bb\u30eb\u306e\u7a2e\u985e"
+            ],
+            "Vertical alignment": [
+                "\u5782\u76f4\u63c3\u3048"
+            ],
+            "Horizontal alignment": [
+                "\u6c34\u5e73\u63c3\u3048"
+            ],
+            "Cell background": [
+                "\u30bb\u30eb\u306e\u80cc\u666f\u8272"
+            ],
+            "Border width": [
+                "\u7f6b\u7dda\u306e\u592a\u3055"
+            ],
+            "Border style": [
+                "\u7f6b\u7dda\u306e\u7a2e\u985e"
+            ],
+            "Border color": [
+                "\u7f6b\u7dda\u306e\u8272"
+            ],
+            "Padding": [
+                "\u4f59\u767d"
+            ],
+            "Top": [
+                "\u4e0a\u63c3\u3048"
+            ],
+            "Middle": [
+                "\u4e2d\u592e\u63c3\u3048"
+            ],
+            "Center": [
+                "\u4e2d\u592e\u63c3\u3048"
+            ],
+            "Right": [
+                "\u53f3\u63c3\u3048"
+            ],
+            "Bottom": [
+                "\u4e0b\u63c3\u3048"
+            ],
+            "Left": [
+                "\u5de6\u63c3\u3048"
+            ],
+            "Header-row cells are managed by the table and are excluded from this change.": [
+                "\u898b\u51fa\u3057\u884c\u306e\u30bb\u30eb\u306f\u89aa\u30c6\u30fc\u30d6\u30eb\u3067\u7ba1\u7406\u3055\u308c\u308b\u305f\u3081\u3001\u3053\u306e\u5909\u66f4\u306e\u5bfe\u8c61\u5916\u3067\u3059\u3002"
+            ],
+            "Data cell (TD)": [
+                "\u30c7\u30fc\u30bf\u30bb\u30eb\uff08TD\uff09"
+            ],
+            "Header cell (TH)": [
+                "\u898b\u51fa\u3057\u30bb\u30eb\uff08TH\uff09"
+            ],
+            "Border": [
+                "\u7f6b\u7dda"
+            ],
+            "Bulk edit cells": [
+                "\u30bb\u30eb\u306e\u4e00\u62ec\u8a2d\u5b9a"
+            ],
+            "Notifications": [
+                "\u901a\u77e5"
+            ],
+            "Merged cells extend beyond the selection. Only complete cell edges inside the selected rows or columns can change. Other edges are kept. Cell type, background, typography and alignment apply to the whole merged cell even when it is only partly selected.": [
+                "\u7d50\u5408\u30bb\u30eb\u304c\u9078\u629e\u7bc4\u56f2\u3092\u8d8a\u3048\u3066\u3044\u307e\u3059\u3002\u7f6b\u7dda\u30fb\u4f59\u767d\u306f\u9078\u629e\u3057\u305f\u884c\u30fb\u5217\u306b\u8fba\u5168\u4f53\u304c\u53ce\u307e\u308b\u5834\u5408\u3060\u3051\u5909\u66f4\u3057\u3001\u305d\u308c\u4ee5\u5916\u306e\u8fba\u306f\u4fdd\u6301\u3057\u307e\u3059\u3002\u30bb\u30eb\u306e\u7a2e\u985e\u30fb\u80cc\u666f\u8272\u30fb\u30bf\u30a4\u30dd\u30b0\u30e9\u30d5\u30a3\u30fc\u30fb\u4f4d\u7f6e\u63c3\u3048\u306f\u3001\u4e00\u90e8\u306e\u9078\u629e\u3067\u3082\u7d50\u5408\u30bb\u30eb\u5168\u4f53\u3078\u53cd\u6620\u3057\u307e\u3059\u3002"
+            ],
+            "The table structure changed. Close and reopen this dialog before applying.": [
+                "\u8868\u306e\u69cb\u9020\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f\u3002\u9069\u7528\u3059\u308b\u306b\u306f\u3001\u3053\u306e\u753b\u9762\u3092\u9589\u3058\u3066\u958b\u304d\u76f4\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The settings could not be applied. Check the values and table structure.": [
+                "\u8a2d\u5b9a\u3092\u9069\u7528\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u5165\u529b\u5024\u3068\u8868\u306e\u69cb\u9020\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Changes applied.": [
+                "\u5909\u66f4\u3092\u9069\u7528\u3057\u307e\u3057\u305f\u3002"
+            ],
+            "%d cells selected": [
+                "%d\u500b\u306e\u30bb\u30eb\u3092\u9078\u629e\u4e2d"
+            ],
+            "Close": [
+                "\u9589\u3058\u308b"
+            ],
+            "Apply to %d cells": [
+                "%d\u500b\u306e\u30bb\u30eb\u306b\u9069\u7528"
+            ],
+            "Display caption": [
+                "\u30ad\u30e3\u30d7\u30b7\u30e7\u30f3\u3092\u8868\u793a"
+            ],
+            "Caption position": [
+                "\u30ad\u30e3\u30d7\u30b7\u30e7\u30f3\u306e\u4f4d\u7f6e"
+            ],
+            "Above table": [
+                "\u8868\u306e\u4e0a"
+            ],
+            "Below table": [
+                "\u8868\u306e\u4e0b"
+            ],
+            "Caption alignment": [
+                "\u30ad\u30e3\u30d7\u30b7\u30e7\u30f3\u306e\u6587\u5b57\u63c3\u3048"
+            ],
+            "Unsupported value or unit. Border: 0\u201320px or 0\u20131em\/rem; padding: 0\u2013200px or 0\u201310em\/rem.": [
+                "\u5bfe\u5fdc\u3057\u3066\u3044\u306a\u3044\u5024\u307e\u305f\u306f\u5358\u4f4d\u3067\u3059\u3002\u7f6b\u7dda\u306f0\u301c20px\u307e\u305f\u306f0\u301c1em\/rem\u3001\u4f59\u767d\u306f0\u301c200px\u307e\u305f\u306f0\u301c10em\/rem\u3067\u6307\u5b9a\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Background": [
+                "\u80cc\u666f"
+            ],
+            "Use one Cell text block on its own, or other blocks without Cell text. Convert Cell text to a paragraph to add more blocks.": [
+                "\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8\u306f1\u3064\u3060\u3051\u914d\u7f6e\u3059\u308b\u304b\u3001\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8\u4ee5\u5916\u306e\u30d6\u30ed\u30c3\u30af\u3092\u4f7f\u7528\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u4ed6\u306e\u30d6\u30ed\u30c3\u30af\u3092\u8ffd\u52a0\u3059\u308b\u306b\u306f\u3001\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8\u3092\u6bb5\u843d\u3078\u5909\u63db\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Caption": [
+                "\u30ad\u30e3\u30d7\u30b7\u30e7\u30f3"
+            ],
+            "Write caption\u2026": [
+                "\u30ad\u30e3\u30d7\u30b7\u30e7\u30f3\u3092\u5165\u529b\u2026"
+            ],
+            "Table settings": [
+                "\u30c6\u30fc\u30d6\u30eb\u8a2d\u5b9a"
+            ],
+            "Use first row as headers (TH)": [
+                "\u5148\u982d\u884c\u3092\u898b\u51fa\u3057\u306b\u3059\u308b\uff08TH\uff09"
+            ],
+            "Replaces TH\/TD settings in the first row.": [
+                "\u5148\u982d\u884c\u306eTH\u30fbTD\u8a2d\u5b9a\u3092\u7f6e\u304d\u63db\u3048\u307e\u3059\u3002"
+            ],
+            "Split cells crossing the first row before enabling the header row.": [
+                "\u898b\u51fa\u3057\u884c\u3092\u6709\u52b9\u306b\u3059\u308b\u524d\u306b\u3001\u5148\u982d\u884c\u3092\u307e\u305f\u3050\u7d50\u5408\u30bb\u30eb\u3092\u5206\u5272\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Horizontal scrolling": [
+                "\u6a2a\u30b9\u30af\u30ed\u30fc\u30eb"
+            ],
+            "Column widths": [
+                "\u5217\u5e45"
+            ],
+            "Column width mode": [
+                "\u5217\u5e45\u306e\u8a2d\u5b9a"
+            ],
+            "Equal width": [
+                "\u5747\u7b49\u5e45"
+            ],
+            "Automatic width": [
+                "\u81ea\u52d5\u5e45"
+            ],
+            "Custom widths": [
+                "\u5e45\u6307\u5b9a"
+            ],
+            "Cell spacing": [
+                "\u30bb\u30eb\u9593\u9694"
+            ],
+            "Modular Table": [
+                "\u30e2\u30b8\u30e5\u30e9\u30fc\u30c6\u30fc\u30d6\u30eb"
+            ],
+            "Choose 1\u201320 rows and columns.": [
+                "\u884c\u6570\u3068\u5217\u6570\u30921\u301c20\u3067\u6307\u5b9a\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Rows": [
+                "\u884c\u6570"
+            ],
+            "Columns": [
+                "\u5217\u6570"
+            ],
+            "Create table": [
+                "\u30c6\u30fc\u30d6\u30eb\u3092\u4f5c\u6210"
+            ],
+            "The table grid is inconsistent. Content is preserved; automatic repair is not available.": [
+                "\u30c6\u30fc\u30d6\u30eb\u306e\u884c\u3068\u5217\u306e\u69cb\u6210\u306b\u4e0d\u6574\u5408\u304c\u3042\u308a\u307e\u3059\u3002\u5185\u5bb9\u306f\u4fdd\u6301\u3055\u308c\u3066\u3044\u307e\u3059\u304c\u3001\u81ea\u52d5\u4fee\u5fa9\u306b\u306f\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u305b\u3093\u3002"
+            ],
+            "Table cell: row %1$d, column %2$d": [
+                "\u30c6\u30fc\u30d6\u30eb\u30bb\u30eb: %1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "Table cell": [
+                "\u30c6\u30fc\u30d6\u30eb\u30bb\u30eb"
+            ],
+            "Cell settings": [
+                "\u30bb\u30eb\u8a2d\u5b9a"
+            ],
+            "This cell contains Cell text alongside other blocks. Content has been preserved. Convert Cell text to paragraphs or remove extra blocks.": [
+                "\u3053\u306e\u30bb\u30eb\u306b\u306f\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8\u306e\u91cd\u8907\u3001\u307e\u305f\u306f\u4ed6\u306e\u30d6\u30ed\u30c3\u30af\u3068\u306e\u6df7\u5728\u304c\u3042\u308a\u307e\u3059\u3002\u5185\u5bb9\u306f\u4fdd\u6301\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8\u3092\u6bb5\u843d\u3078\u5909\u63db\u3059\u308b\u304b\u3001\u4e0d\u8981\u306a\u30d6\u30ed\u30c3\u30af\u3092\u524a\u9664\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Managed by the table header row (TH).": [
+                "\u89aa\u30c6\u30fc\u30d6\u30eb\u306e\u898b\u51fa\u3057\u884c\uff08TH\uff09\u8a2d\u5b9a\u3067\u7ba1\u7406\u3055\u308c\u3066\u3044\u307e\u3059\u3002"
+            ],
+            "Header association": [
+                "\u898b\u51fa\u3057\u3068\u306e\u95a2\u9023\u4ed8\u3051"
+            ],
+            "Column": [
+                "\u5217"
+            ],
+            "Row": [
+                "\u884c"
+            ],
+            "Column group": [
+                "\u5217\u30b0\u30eb\u30fc\u30d7"
+            ],
+            "Row group": [
+                "\u884c\u30b0\u30eb\u30fc\u30d7"
+            ],
+            "Cell text": [
+                "\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8"
+            ],
+            "Enter cell text\u2026": [
+                "\u30bb\u30eb\u306e\u30c6\u30ad\u30b9\u30c8\u3092\u5165\u529b\u2026"
+            ],
+            "Row %1$d, column %2$d": [
+                "%1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "Paste table data or enter CSV.": [
+                "\u8868\u306e\u30c7\u30fc\u30bf\u3092\u8cbc\u308a\u4ed8\u3051\u308b\u304b\u3001CSV\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Import exceeds the limit: 100 rows, 50 columns, 1,000,000 input characters or 200,000 text characters. Nothing was imported.": [
+                "\u53d6\u308a\u8fbc\u307f\u4e0a\u9650\uff08100\u884c\u30fb50\u5217\u3001\u5165\u529b100\u4e07\u6587\u5b57\u30fb\u672c\u658720\u4e07\u6587\u5b57\uff09\u3092\u8d85\u3048\u3066\u3044\u307e\u3059\u3002\u53d6\u308a\u8fbc\u307f\u306f\u884c\u3063\u3066\u3044\u307e\u305b\u3093\u3002"
+            ],
+            "The quoted fields are incomplete or invalid. Check the delimiter and quotation marks.": [
+                "\u5f15\u7528\u7b26\u3067\u56f2\u307e\u308c\u305f\u9805\u76ee\u304c\u4e0d\u5b8c\u5168\u307e\u305f\u306f\u4e0d\u6b63\u3067\u3059\u3002\u533a\u5207\u308a\u6587\u5b57\u3068\u5f15\u7528\u7b26\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Paste exactly one HTML table. Nested tables are not supported.": [
+                "HTML\u306e\u8868\u30921\u3064\u3060\u3051\u8cbc\u308a\u4ed8\u3051\u3066\u304f\u3060\u3055\u3044\u3002\u5165\u308c\u5b50\u306e\u8868\u306b\u306f\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u305b\u3093\u3002"
+            ],
+            "The HTML table has invalid or overlapping merged cells. Check the source table or paste as tab-separated text.": [
+                "HTML\u306e\u8868\u306b\u4e0d\u6b63\u307e\u305f\u306f\u91cd\u8907\u3057\u305f\u7d50\u5408\u30bb\u30eb\u304c\u3042\u308a\u307e\u3059\u3002\u5143\u306e\u8868\u3092\u78ba\u8a8d\u3059\u308b\u304b\u3001\u30bf\u30d6\u533a\u5207\u308a\u306e\u30c6\u30ad\u30b9\u30c8\u3068\u3057\u3066\u8cbc\u308a\u4ed8\u3051\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Merged cells do not match the import range. Split the affected cells or import as a new table.": [
+                "\u7d50\u5408\u30bb\u30eb\u3068\u53d6\u308a\u8fbc\u307f\u7bc4\u56f2\u306e\u5f62\u72b6\u304c\u4e00\u81f4\u3057\u307e\u305b\u3093\u3002\u5bfe\u8c61\u30bb\u30eb\u3092\u5206\u5272\u3059\u308b\u304b\u3001\u65b0\u3057\u3044\u8868\u3068\u3057\u3066\u53d6\u308a\u8fbc\u3093\u3067\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The table grid is inconsistent. Import as a new table or repair the table first.": [
+                "\u8868\u306e\u30b0\u30ea\u30c3\u30c9\u304c\u4e0d\u6574\u5408\u3067\u3059\u3002\u65b0\u3057\u3044\u8868\u3068\u3057\u3066\u53d6\u308a\u8fbc\u3080\u304b\u3001\u5148\u306b\u8868\u3092\u4fee\u6b63\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "Choose an existing cell as the starting position.": [
+                "\u8d77\u70b9\u3068\u306a\u308b\u65e2\u5b58\u306e\u30bb\u30eb\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The table or affected contents are locked. Unlock them before importing.": [
+                "\u8868\u307e\u305f\u306f\u5bfe\u8c61\u306e\u5185\u5bb9\u304c\u30ed\u30c3\u30af\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u30ed\u30c3\u30af\u3092\u89e3\u9664\u3057\u3066\u304b\u3089\u53d6\u308a\u8fbc\u3093\u3067\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "The table changed. Close and reopen this dialog before importing.": [
+                "\u8868\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f\u3002\u3053\u306e\u753b\u9762\u3092\u9589\u3058\u3066\u958b\u304d\u76f4\u3057\u3066\u304b\u3089\u53d6\u308a\u8fbc\u3093\u3067\u304f\u3060\u3055\u3044\u3002"
+            ],
+            "%1$s (Row %2$d, column %3$d)": [
+                "%1$s\uff08%2$d\u884c\u76ee\u3001%3$d\u5217\u76ee\uff09"
+            ],
+            "Table data": [
+                "\u8868\u306e\u30c7\u30fc\u30bf"
+            ],
+            "Input format": [
+                "\u5165\u529b\u5f62\u5f0f"
+            ],
+            "Automatic": [
+                "\u81ea\u52d5\u5224\u5b9a"
+            ],
+            "CSV (comma)": [
+                "CSV\uff08\u30ab\u30f3\u30de\uff09"
+            ],
+            "Tab-separated": [
+                "\u30bf\u30d6\u533a\u5207\u308a"
+            ],
+            "CSV (semicolon)": [
+                "CSV\uff08\u30bb\u30df\u30b3\u30ed\u30f3\uff09"
+            ],
+            "HTML table": [
+                "HTML\u306e\u8868"
+            ],
+            "Destination": [
+                "\u53d6\u308a\u8fbc\u307f\u5148"
+            ],
+            "Current table": [
+                "\u73fe\u5728\u306e\u8868"
+            ],
+            "New table": [
+                "\u65b0\u3057\u3044\u8868"
+            ],
+            "%1$d rows \u00d7 %2$d columns": [
+                "%1$d\u884c \u00d7 %2$d\u5217"
+            ],
+            "Some rows have missing fields. Existing contents at those positions will be kept; explicit empty fields clear contents.": [
+                "\u9805\u76ee\u304c\u4e0d\u8db3\u3057\u3066\u3044\u308b\u884c\u304c\u3042\u308a\u307e\u3059\u3002\u4e0d\u8db3\u4f4d\u7f6e\u306e\u65e2\u5b58\u5185\u5bb9\u306f\u4fdd\u6301\u3057\u307e\u3059\u3002\u660e\u793a\u7684\u306a\u7a7a\u6b04\u306f\u5185\u5bb9\u3092\u6d88\u53bb\u3057\u307e\u3059\u3002"
+            ],
+            "Starting at row %1$d, column %2$d": [
+                "\u8d77\u70b9\uff1a%1$d\u884c\u76ee\u3001%2$d\u5217\u76ee"
+            ],
+            "Replace contents in %d cells. This also removes images and other inner blocks.": [
+                "%d\u500b\u306e\u30bb\u30eb\u306e\u5185\u5bb9\u3092\u7f6e\u304d\u63db\u3048\u307e\u3059\u3002\u753b\u50cf\u306a\u3069\u306e\u5185\u90e8\u30d6\u30ed\u30c3\u30af\u3082\u524a\u9664\u3057\u307e\u3059\u3002"
+            ],
+            "Expand to %1$d rows \u00d7 %2$d columns and import": [
+                "%1$d\u884c \u00d7 %2$d\u5217\u306b\u62e1\u5f35\u3057\u3066\u53d6\u308a\u8fbc\u3080"
+            ],
+            "Import": [
+                "\u53d6\u308a\u8fbc\u3080"
+            ],
+            "Starting cell": [
+                "\u8d77\u70b9\u306e\u30bb\u30eb"
+            ],
+            "Import preview": [
+                "\u53d6\u308a\u8fbc\u307f\u30d7\u30ec\u30d3\u30e5\u30fc"
+            ],
+            "stripe direction\u0004Rows": [
+                "\u884c"
+            ],
+            "stripe direction\u0004Columns": [
+                "\u5217"
+            ],
+            "block title\u0004Cell text": [
+                "\u30bb\u30eb\u30c6\u30ad\u30b9\u30c8"
+            ],
+            "block title\u0004Table Cell": [
+                "\u30c6\u30fc\u30d6\u30eb\u30bb\u30eb"
+            ],
+            "block title\u0004Modular Table": [
+                "\u30e2\u30b8\u30e5\u30e9\u30fc\u30c6\u30fc\u30d6\u30eb"
+            ],
+            "block description\u0004Text for a table cell, with inline formatting and no wrapper tag.": [
+                "\u30a4\u30f3\u30e9\u30a4\u30f3\u66f8\u5f0f\u3092\u5229\u7528\u3067\u304d\u3001\u30e9\u30c3\u30d1\u30fc\u30bf\u30b0\u3092\u51fa\u529b\u3057\u306a\u3044\u30bb\u30eb\u7528\u30c6\u30ad\u30b9\u30c8\u3067\u3059\u3002"
+            ],
+            "block description\u0004A table with independently editable cells.": [
+                "\u30bb\u30eb\u3092\u305d\u308c\u305e\u308c\u72ec\u7acb\u3057\u3066\u7de8\u96c6\u3067\u304d\u308b\u30c6\u30fc\u30d6\u30eb\u3067\u3059\u3002"
+            ]
+        }
+    }
+}

@@ -1,0 +1,42 @@
+# Dependencies.
+node_modules/
+
+# Local IDE and OS files.
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Local environment settings (keep example files).
+.env
+.env.*
+!.env.example
+!.env.*.example
+/.wp-env.override.json
+/.wp-env.*.override.json
+
+# Generated reports and caches.
+playwright-report/
+test-results/
+blob-report/
+coverage/
+.cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Logs and editor temporary files.
+*.log
+*.swp
+*.swo
+*~
+
+# Distribution archive.
+/modular-table-blocks.zip
+
+# Local icon design brief.
+/ICON_REQUIREMENTS.local.md
+
+# Local historical documentation.
+/docs/decisions/

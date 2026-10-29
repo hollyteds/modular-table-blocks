@@ -1,0 +1,140 @@
+/* Neutralize tag defaults without resetting content blocks or native styles. */
+@mixin inherited-text {
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	letter-spacing: inherit;
+	text-align: inherit;
+	text-transform: inherit;
+	text-decoration: inherit;
+	writing-mode: inherit;
+}
+
+@mixin typography {
+
+	@include inherited-text;
+
+	color: var(--mtb-text-color, inherit);
+	font-size: var(--mtb-font-size, inherit);
+	line-height: var(--mtb-line-height, inherit);
+}
+
+@mixin table {
+
+	@include typography;
+
+	box-sizing: border-box;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	background-image: none;
+	width: var(--mtb-w, 100%);
+	background-color: var(--mtb-background-color, transparent);
+	word-break: normal;
+	overflow-wrap: anywhere;
+}
+
+@mixin section {
+
+	@include inherited-text;
+
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	height: auto;
+}
+
+@mixin caption {
+
+	@include inherited-text;
+
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	margin: 0;
+	padding: 0.5em;
+	border: 0;
+	background: transparent;
+
+	/* A native table background is not painted behind its caption. */
+	background-color: inherit;
+	box-shadow: none;
+	text-align: start;
+	overflow-wrap: anywhere;
+	caption-side: top;
+
+	&[data-mtb-caption-side="bottom"] {
+		caption-side: bottom;
+	}
+
+}
+
+@mixin header {
+	font-weight: 700;
+}
+
+@mixin border-layout {
+	border-collapse: collapse;
+	border-spacing: var(--mtb-border-spacing-x, 0) var(--mtb-border-spacing-y, 0);
+
+	&[data-mtb-border-collapse="separate"] {
+		border-collapse: separate;
+	}
+}
+
+@mixin column-layout {
+	/* stylelint-disable length-zero-no-unit -- Used as a length in column calc(). */
+	--mtb-column-gap: 0px;
+
+	table-layout: auto;
+
+	&[data-mtb-border-collapse="separate"] {
+		--mtb-column-gap: var(--mtb-border-spacing-x, 0px);
+	}
+
+	&[data-mtb-column-width-mode="equal"] {
+		table-layout: fixed;
+	}
+	/* stylelint-enable length-zero-no-unit */
+}
+
+@mixin cell($padding-priority: null) {
+
+	@include typography;
+
+	box-sizing: border-box;
+	margin: 0;
+	border-radius: 0;
+	box-shadow: none;
+	background-image: none;
+	padding: var(--mtb-cell-pt, 0.75em) var(--mtb-cell-pr, 1em) var(--mtb-cell-pb, 0.75em) var(--mtb-cell-pl, 1em) $padding-priority;
+	border-width: var(--mtb-cell-border-t-width, 1px) var(--mtb-cell-border-r-width, 1px) var(--mtb-cell-border-b-width, 1px) var(--mtb-cell-border-l-width, 1px);
+	border-style: var(--mtb-cell-border-t-style, solid) var(--mtb-cell-border-r-style, solid) var(--mtb-cell-border-b-style, solid) var(--mtb-cell-border-l-style, solid);
+	border-color: var(--mtb-cell-border-t-color, currentColor) var(--mtb-cell-border-r-color, currentColor) var(--mtb-cell-border-b-color, currentColor) var(--mtb-cell-border-l-color, currentColor);
+	background-color: var(--mtb-cell-bg, transparent);
+
+	@include cell-background;
+	vertical-align: var(--mtb-cell-vertical-align, top);
+	word-break: normal;
+	overflow-wrap: anywhere;
+}
+
+/* Derived logical positions are shared by Grid, semantic table and preview. */
+@mixin cell-background {
+
+	&[data-mtb-bg="header"] {
+		background-color: var(--mtb-cell-header-bg, var(--mtb-cell-bg, transparent));
+	}
+
+	&[data-mtb-bg="stripe"] {
+		background-color: var(--mtb-cell-stripe-bg, var(--mtb-cell-bg, transparent));
+	}
+
+	&[data-mtb-bg-local] {
+		background-color: var(--mtb-cell-bg, transparent);
+	}
+}

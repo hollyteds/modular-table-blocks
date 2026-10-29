@@ -1,0 +1,905 @@
+# Copyright (C) 2026 
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Modular Table Blocks 0.2.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/modular-table-blocks\n"
+"POT-Creation-Date: 2026-10-28T05:49:45+00:00\n"
+"PO-Revision-Date: 2026-10-26 00:00+0900\n"
+"Last-Translator: Modular Table Blocks contributors\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: modular-table-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Modular Table Blocks"
+msgstr "Modular Table Blocks"
+
+#. Description of the plugin
+msgid "Independently editable table and cell blocks."
+msgstr "テーブルとセルをそれぞれ独立して編集できるブロック。"
+
+#: includes/render-table.php:213
+msgid "Scrollable table"
+msgstr "横スクロール可能なテーブル"
+
+#: build/index.js:1
+#: build/index.js:16
+msgid "Table width"
+msgstr "テーブルの幅"
+
+#: build/index.js:1
+msgid "Clear"
+msgstr "クリア"
+
+#: build/index.js:1
+msgid "Theme"
+msgstr "テーマ"
+
+#: build/index.js:1
+msgid "Custom"
+msgstr "カスタム"
+
+#: build/index.js:1
+msgid "Cell background rules"
+msgstr "セル背景のルール"
+
+#: build/index.js:1
+msgid "Header background (TH)"
+msgstr "見出し背景色（TH）"
+
+#: build/index.js:1
+msgid "Data cell stripes (TD)"
+msgstr "データセルのストライプ（TD）"
+
+#: build/index.js:1
+msgid "Row stripes start in the body; merged cells use their top-left position."
+msgstr "行ストライプは本文から数え、結合セルは左上の位置で判定します。"
+
+#: build/index.js:1
+#: build/index.js:16
+msgid "None"
+msgstr "なし"
+
+#: build/index.js:1
+msgid "Stripe background"
+msgstr "ストライプ背景色"
+
+#: build/index.js:1
+msgid "Border layout"
+msgstr "罫線の配置"
+
+#: build/index.js:1
+msgid "Collapse borders"
+msgstr "重ねる"
+
+#: build/index.js:1
+msgid "Separate borders"
+msgstr "分離する"
+
+#: build/index.js:1
+msgid "Spacing"
+msgstr "間隔"
+
+#: build/index.js:1
+msgid "Unlink axes"
+msgstr "横・縦を個別に設定"
+
+#: build/index.js:1
+msgid "Link axes"
+msgstr "横・縦をまとめて設定"
+
+#: build/index.js:1
+msgid "Horizontal and vertical spacing"
+msgstr "横・縦の間隔"
+
+#: build/index.js:1
+#: build/index.js:10
+msgid "Multiple values"
+msgstr "複数の値"
+
+#: build/index.js:1
+msgid "Horizontal spacing"
+msgstr "横方向の間隔"
+
+#: build/index.js:1
+msgid "Vertical spacing"
+msgstr "縦方向の間隔"
+
+#: build/index.js:1
+msgid "Delete other cell contents?"
+msgstr "他のセルの内容を削除しますか？"
+
+#: build/index.js:1
+#. translators: %d: number of non-origin cells containing blocks.
+msgid ""
+"Only the starting cell content will remain. Contents in %d other cell will "
+"be deleted, including locked blocks. You can undo this change."
+msgid_plural ""
+"Only the starting cell content will remain. Contents in %d other cells will "
+"be deleted, including locked blocks. You can undo this change."
+msgstr[0] "起点セルの内容だけを残します。他の%d個のセルの内容は、ロックされたブロックも含めて削除します。この変更は元に戻せます。"
+
+#: build/index.js:1
+#. translators: 1: origin row, 2: origin column.
+msgid "Start: row %1$d, column %2$d"
+msgstr "起点：%1$d行目、%2$d列目"
+
+#: build/index.js:1
+#. translators: 1: row, 2: column of a cell whose contents will be deleted.
+msgid "Delete contents: row %1$d, column %2$d"
+msgstr "内容を削除：%1$d行目、%2$d列目"
+
+#: build/index.js:1
+#. translators: %d: number of additional cells whose contents will be deleted.
+msgid "And %d more cell."
+msgid_plural "And %d more cells."
+msgstr[0] "ほか%d個のセル。"
+
+#: build/index.js:1
+msgid "The table changed. Close and reopen this dialog before merging."
+msgstr "表が変更されました。結合するには、この画面を閉じて開き直してください。"
+
+#: build/index.js:1
+#: build/table-import.js:2
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: build/index.js:1
+msgid "Back to range selection"
+msgstr "範囲選択に戻る"
+
+#: build/index.js:1
+msgid "Delete contents and merge"
+msgstr "内容を削除して結合"
+
+#: build/index.js:1
+msgid "Merge cells"
+msgstr "セルを結合"
+
+#: build/index.js:1
+msgid "Only complete cells within the same header or body section can be merged."
+msgstr "見出しと本文をまたがず、セル全体を含む範囲で結合できます。"
+
+#: build/index.js:1
+msgid ""
+"Only the starting cell content and settings will remain. If other cells "
+"contain blocks, you will be asked to confirm deleting them, including "
+"locked blocks. Splitting later creates empty cells."
+msgstr ""
+"起点セルの内容と設定だけを残します。他のセルにブロックがある場合は、ロックされたブロックも含めて削除する確認を行います。後から分割すると空セルを作成しま"
+"す。"
+
+#: build/index.js:1
+msgid "Merge range preview"
+msgstr "結合範囲のプレビュー"
+
+#: build/index.js:1
+msgid "End cell"
+msgstr "終点セル"
+
+#: build/index.js:1
+#. translators: 1: origin row, 2: origin column.
+msgid "Start cell: row %1$d, column %2$d"
+msgstr "起点セル：%1$d行目、%2$d列目"
+
+#: build/index.js:1
+#. translators: 1: end row, 2: end column.
+msgid "End at row %1$d, column %2$d"
+msgstr "終点：%1$d行目、%2$d列目"
+
+#: build/index.js:1
+msgid "Start"
+msgstr "起点"
+
+#: build/index.js:1
+#. translators: 1: selected row count, 2: selected column count.
+msgid "Merge range: %1$d rows × %2$d columns"
+msgstr "結合範囲：%1$d行×%2$d列"
+
+#: build/index.js:1
+msgid "Choose an end cell."
+msgstr "終点セルを選択してください。"
+
+#: build/index.js:1
+msgid "There are no cells that can be merged from this starting cell."
+msgstr "この起点から結合できるセルはありません。"
+
+#: build/index.js:1
+msgid "The table grid is inconsistent. Structure changes are disabled."
+msgstr "テーブルの行と列の構成に不整合があるため、構造を変更できません。"
+
+#: build/index.js:1
+msgid "Split cells spanning these rows before moving or duplicating a row."
+msgstr "行を移動・複製する前に、対象の行にまたがる結合セルを分割してください。"
+
+#: build/index.js:1
+msgid "Split cells spanning these columns before moving or duplicating a column."
+msgstr "これらの列をまたぐ結合セルを分割してから、列を移動・複製してください。"
+
+#: build/index.js:1
+msgid "Choose a rectangular range inside the table."
+msgstr "テーブル内の長方形の範囲を選択してください。"
+
+#: build/index.js:1
+msgid ""
+"The range must contain at least two complete cells. Include every part of "
+"existing merged cells."
+msgstr "範囲には2つ以上のセル全体を含めてください。既存の結合セルは全体を範囲に含める必要があります。"
+
+#: build/index.js:1
+msgid "This cell is not merged."
+msgstr "このセルは結合されていません。"
+
+#: build/index.js:1
+msgid ""
+"This operation would cross a header or section boundary. Split the affected "
+"cells first."
+msgstr "見出しまたはセクションの境界をまたぐ操作です。先に対象のセルを分割してください。"
+
+#: build/index.js:1
+msgid "The selection changed. Select the row or cell again."
+msgstr "選択状態が変わりました。行またはセルを選択し直してください。"
+
+#: build/index.js:1
+msgid "The last row cannot be deleted."
+msgstr "最後の行は削除できません。"
+
+#: build/index.js:1
+msgid "The last column cannot be deleted."
+msgstr "最後の列は削除できません。"
+
+#: build/index.js:1
+msgid "Tables support up to 100 rows and 50 columns."
+msgstr "テーブルは最大100行・50列まで対応しています。"
+
+#: build/index.js:1
+msgid "The table changed while confirmation was open. Review the operation again."
+msgstr "確認中にテーブルが変更されました。操作内容を確認し直してください。"
+
+#: build/index.js:1
+msgid "The operation could not be applied."
+msgstr "操作を適用できませんでした。"
+
+#: build/index.js:1
+msgid "Confirm deletion of other cell contents before merging."
+msgstr "結合する前に、他のセルの内容を削除することを確認してください。"
+
+#: build/index.js:1
+msgid "Add row at end"
+msgstr "末尾に行を追加"
+
+#: build/index.js:1
+msgid "Add column at end"
+msgstr "末尾に列を追加"
+
+#: build/index.js:1
+msgid "Insert row above"
+msgstr "上に行を挿入"
+
+#: build/index.js:1
+msgid "Insert row below"
+msgstr "下に行を挿入"
+
+#: build/index.js:1
+msgid "Duplicate row"
+msgstr "行を複製"
+
+#: build/index.js:1
+msgid "Delete row"
+msgstr "行を削除"
+
+#: build/index.js:1
+msgid "Insert column before"
+msgstr "前に列を挿入"
+
+#: build/index.js:1
+msgid "Insert column after"
+msgstr "後ろに列を挿入"
+
+#: build/index.js:1
+msgid "Duplicate column"
+msgstr "列を複製"
+
+#: build/index.js:1
+msgid "Delete column"
+msgstr "列を削除"
+
+#: build/index.js:1
+msgid "Move row up"
+msgstr "行を上へ移動"
+
+#: build/index.js:1
+msgid "Move row down"
+msgstr "行を下へ移動"
+
+#: build/index.js:1
+msgid "Move column left"
+msgstr "列を左へ移動"
+
+#: build/index.js:1
+msgid "Move column right"
+msgstr "列を右へ移動"
+
+#: build/index.js:1
+#: build/index.js:16
+#: build/table-import.js:2
+msgid "Import data"
+msgstr "データを取り込む"
+
+#: build/index.js:1
+msgid "Table structure"
+msgstr "テーブルの構造"
+
+#: build/index.js:1
+msgid "Move rows and columns"
+msgstr "行・列の移動"
+
+#: build/index.js:1
+msgid "Merge and split cells"
+msgstr "セルの結合・分割"
+
+#: build/index.js:1
+msgid "Delete content?"
+msgstr "内容を削除しますか？"
+
+#: build/index.js:1
+msgid ""
+"This row or column contains content. Deleting it will remove that content. "
+"You can undo this change."
+msgstr "この行または列には内容が含まれています。削除すると内容も削除されます。この操作は元に戻せます。"
+
+#: build/index.js:1
+msgid "Delete content"
+msgstr "内容を削除"
+
+#: build/index.js:1
+#. translators: %d: one-based column number.
+msgid "Column %d width"
+msgstr "%d列目の幅"
+
+#: build/index.js:1
+msgid "Cell selection"
+msgstr "セルの選択"
+
+#: build/index.js:1
+msgid "All cells"
+msgstr "全セル"
+
+#: build/index.js:4
+#. translators: %d: column number.
+msgid "Column %d"
+msgstr "列%d"
+
+#: build/index.js:7
+#. translators: %d: row number.
+msgid "Row %d"
+msgstr "行%d"
+
+#: build/index.js:10
+#. translators: %1$d: row number, %2$d: column number.
+msgid "Cell at row %1$d, column %2$d"
+msgstr "行%1$d、列%2$dのセル"
+
+#: build/index.js:10
+msgid "Text color"
+msgstr "文字色"
+
+#: build/index.js:10
+msgid "Font size"
+msgstr "文字サイズ"
+
+#: build/index.js:10
+msgid "Font"
+msgstr "フォント"
+
+#: build/index.js:10
+msgid "Default"
+msgstr "デフォルト"
+
+#: build/index.js:10
+msgid "Appearance"
+msgstr "外観"
+
+#: build/index.js:10
+msgid "Line height"
+msgstr "行間"
+
+#: build/index.js:10
+msgid "Letter spacing"
+msgstr "文字間隔"
+
+#: build/index.js:10
+msgid "Decoration"
+msgstr "文字装飾"
+
+#: build/index.js:10
+msgid "Letter case"
+msgstr "大文字・小文字"
+
+#: build/index.js:10
+msgid "Orientation"
+msgstr "文字方向"
+
+#: build/index.js:10
+msgid "Typography"
+msgstr "タイポグラフィ"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Alignment"
+msgstr "位置揃え"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Cell type"
+msgstr "セルの種類"
+
+#: build/index.js:10
+msgid "Vertical alignment"
+msgstr "垂直揃え"
+
+#: build/index.js:10
+msgid "Horizontal alignment"
+msgstr "水平揃え"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Cell background"
+msgstr "セルの背景色"
+
+#: build/index.js:10
+msgid "Border width"
+msgstr "罫線の太さ"
+
+#: build/index.js:10
+msgid "Border style"
+msgstr "罫線の種類"
+
+#: build/index.js:10
+msgid "Border color"
+msgstr "罫線の色"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Padding"
+msgstr "余白"
+
+#: build/index.js:10
+msgid "Top"
+msgstr "上揃え"
+
+#: build/index.js:10
+msgid "Middle"
+msgstr "中央揃え"
+
+#: build/index.js:10
+msgid "Center"
+msgstr "中央揃え"
+
+#: build/index.js:10
+msgid "Right"
+msgstr "右揃え"
+
+#: build/index.js:10
+msgid "Bottom"
+msgstr "下揃え"
+
+#: build/index.js:10
+msgid "Left"
+msgstr "左揃え"
+
+#: build/index.js:10
+msgid "Header-row cells are managed by the table and are excluded from this change."
+msgstr "見出し行のセルは親テーブルで管理されるため、この変更の対象外です。"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Data cell (TD)"
+msgstr "データセル（TD）"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Header cell (TH)"
+msgstr "見出しセル（TH）"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Border"
+msgstr "罫線"
+
+#: build/index.js:10
+#: build/index.js:16
+msgid "Bulk edit cells"
+msgstr "セルの一括設定"
+
+#: build/index.js:10
+msgid "Notifications"
+msgstr "通知"
+
+#: build/index.js:10
+msgid ""
+"Merged cells extend beyond the selection. Only complete cell edges inside "
+"the selected rows or columns can change. Other edges are kept. Cell type, "
+"background, typography and alignment apply to the whole merged cell even "
+"when it is only partly selected."
+msgstr ""
+"結合セルが選択範囲を越えています。罫線・余白は選択した行・列に辺全体が収まる場合だけ変更し、それ以外の辺は保持します。セルの種類・背景色・タイポグラフィ"
+"ー・位置揃えは、一部の選択でも結合セル全体へ反映します。"
+
+#: build/index.js:10
+msgid "The table structure changed. Close and reopen this dialog before applying."
+msgstr "表の構造が変更されました。適用するには、この画面を閉じて開き直してください。"
+
+#: build/index.js:10
+msgid "The settings could not be applied. Check the values and table structure."
+msgstr "設定を適用できませんでした。入力値と表の構造を確認してください。"
+
+#: build/index.js:10
+msgid "Changes applied."
+msgstr "変更を適用しました。"
+
+#: build/index.js:13
+#. translators: %d: number of physical cells.
+msgid "%d cells selected"
+msgstr "%d個のセルを選択中"
+
+#: build/index.js:13
+msgid "Close"
+msgstr "閉じる"
+
+#: build/index.js:16
+#. translators: %d: number of physical cells.
+msgid "Apply to %d cells"
+msgstr "%d個のセルに適用"
+
+#: build/index.js:16
+msgid "Display caption"
+msgstr "キャプションを表示"
+
+#: build/index.js:16
+msgid "Caption position"
+msgstr "キャプションの位置"
+
+#: build/index.js:16
+msgid "Above table"
+msgstr "表の上"
+
+#: build/index.js:16
+msgid "Below table"
+msgstr "表の下"
+
+#: build/index.js:16
+msgid "Caption alignment"
+msgstr "キャプションの文字揃え"
+
+#: build/index.js:16
+msgid ""
+"Unsupported value or unit. Border: 0–20px or 0–1em/rem; padding: 0–200px or "
+"0–10em/rem."
+msgstr "対応していない値または単位です。罫線は0〜20pxまたは0〜1em/rem、余白は0〜200pxまたは0〜10em/remで指定してください。"
+
+#: build/index.js:16
+msgid "Background"
+msgstr "背景"
+
+#: build/index.js:16
+msgid ""
+"Use one Cell text block on its own, or other blocks without Cell text. "
+"Convert Cell text to a paragraph to add more blocks."
+msgstr "セルテキストは1つだけ配置するか、セルテキスト以外のブロックを使用してください。他のブロックを追加するには、セルテキストを段落へ変換してください。"
+
+#: build/index.js:16
+msgid "Caption"
+msgstr "キャプション"
+
+#: build/index.js:16
+msgid "Write caption…"
+msgstr "キャプションを入力…"
+
+#: build/index.js:16
+msgid "Table settings"
+msgstr "テーブル設定"
+
+#: build/index.js:16
+#: build/table-import.js:2
+msgid "Use first row as headers (TH)"
+msgstr "先頭行を見出しにする（TH）"
+
+#: build/index.js:16
+msgid "Replaces TH/TD settings in the first row."
+msgstr "先頭行のTH・TD設定を置き換えます。"
+
+#: build/index.js:16
+msgid "Split cells crossing the first row before enabling the header row."
+msgstr "見出し行を有効にする前に、先頭行をまたぐ結合セルを分割してください。"
+
+#: build/index.js:16
+msgid "Horizontal scrolling"
+msgstr "横スクロール"
+
+#: build/index.js:16
+msgid "Column widths"
+msgstr "列幅"
+
+#: build/index.js:16
+msgid "Column width mode"
+msgstr "列幅の設定"
+
+#: build/index.js:16
+msgid "Equal width"
+msgstr "均等幅"
+
+#: build/index.js:16
+msgid "Automatic width"
+msgstr "自動幅"
+
+#: build/index.js:16
+msgid "Custom widths"
+msgstr "幅指定"
+
+#: build/index.js:16
+msgid "Cell spacing"
+msgstr "セル間隔"
+
+#: build/index.js:16
+msgid "Modular Table"
+msgstr "モジュラーテーブル"
+
+#: build/index.js:16
+msgid "Choose 1–20 rows and columns."
+msgstr "行数と列数を1〜20で指定してください。"
+
+#: build/index.js:16
+#: build/table-import.js:1
+msgid "Rows"
+msgstr "行数"
+
+#: build/index.js:16
+msgid "Columns"
+msgstr "列数"
+
+#: build/index.js:16
+msgid "Create table"
+msgstr "テーブルを作成"
+
+#: build/index.js:16
+msgid ""
+"The table grid is inconsistent. Content is preserved; automatic repair is "
+"not available."
+msgstr "テーブルの行と列の構成に不整合があります。内容は保持されていますが、自動修復には対応していません。"
+
+#: build/index.js:16
+#. translators: 1: row number, 2: column number.
+msgid "Table cell: row %1$d, column %2$d"
+msgstr "テーブルセル: %1$d行目、%2$d列目"
+
+#: build/index.js:16
+msgid "Table cell"
+msgstr "テーブルセル"
+
+#: build/index.js:16
+msgid "Cell settings"
+msgstr "セル設定"
+
+#: build/index.js:16
+msgid ""
+"This cell contains Cell text alongside other blocks. Content has been "
+"preserved. Convert Cell text to paragraphs or remove extra blocks."
+msgstr ""
+"このセルにはセルテキストの重複、または他のブロックとの混在があります。内容は保持されています。セルテキストを段落へ変換するか、不要なブロックを削除してく"
+"ださい。"
+
+#: build/index.js:16
+msgid "Managed by the table header row (TH)."
+msgstr "親テーブルの見出し行（TH）設定で管理されています。"
+
+#: build/index.js:16
+msgid "Header association"
+msgstr "見出しとの関連付け"
+
+#: build/index.js:16
+msgid "Column"
+msgstr "列"
+
+#: build/index.js:16
+msgid "Row"
+msgstr "行"
+
+#: build/index.js:16
+msgid "Column group"
+msgstr "列グループ"
+
+#: build/index.js:16
+msgid "Row group"
+msgstr "行グループ"
+
+#: build/index.js:16
+msgid "Cell text"
+msgstr "セルテキスト"
+
+#: build/index.js:16
+msgid "Enter cell text…"
+msgstr "セルのテキストを入力…"
+
+#: build/table-import.js:1
+#. translators: 1: row number, 2: column number.
+msgid "Row %1$d, column %2$d"
+msgstr "%1$d行目、%2$d列目"
+
+#: build/table-import.js:1
+#: build/table-import.js:2
+msgid "Paste table data or enter CSV."
+msgstr "表のデータを貼り付けるか、CSVを入力してください。"
+
+#: build/table-import.js:1
+msgid ""
+"Import exceeds the limit: 100 rows, 50 columns, 1,000,000 input characters "
+"or 200,000 text characters. Nothing was imported."
+msgstr "取り込み上限（100行・50列、入力100万文字・本文20万文字）を超えています。取り込みは行っていません。"
+
+#: build/table-import.js:1
+msgid ""
+"The quoted fields are incomplete or invalid. Check the delimiter and "
+"quotation marks."
+msgstr "引用符で囲まれた項目が不完全または不正です。区切り文字と引用符を確認してください。"
+
+#: build/table-import.js:1
+msgid "Paste exactly one HTML table. Nested tables are not supported."
+msgstr "HTMLの表を1つだけ貼り付けてください。入れ子の表には対応していません。"
+
+#: build/table-import.js:1
+msgid ""
+"The HTML table has invalid or overlapping merged cells. Check the source "
+"table or paste as tab-separated text."
+msgstr "HTMLの表に不正または重複した結合セルがあります。元の表を確認するか、タブ区切りのテキストとして貼り付けてください。"
+
+#: build/table-import.js:1
+msgid ""
+"Merged cells do not match the import range. Split the affected cells or "
+"import as a new table."
+msgstr "結合セルと取り込み範囲の形状が一致しません。対象セルを分割するか、新しい表として取り込んでください。"
+
+#: build/table-import.js:1
+msgid ""
+"The table grid is inconsistent. Import as a new table or repair the table "
+"first."
+msgstr "表のグリッドが不整合です。新しい表として取り込むか、先に表を修正してください。"
+
+#: build/table-import.js:1
+msgid "Choose an existing cell as the starting position."
+msgstr "起点となる既存のセルを選択してください。"
+
+#: build/table-import.js:1
+msgid "The table or affected contents are locked. Unlock them before importing."
+msgstr "表または対象の内容がロックされています。ロックを解除してから取り込んでください。"
+
+#: build/table-import.js:1
+msgid "The table changed. Close and reopen this dialog before importing."
+msgstr "表が変更されました。この画面を閉じて開き直してから取り込んでください。"
+
+#: build/table-import.js:2
+#. translators: 1: error message, 2: row number, 3: column number.
+msgid "%1$s (Row %2$d, column %3$d)"
+msgstr "%1$s（%2$d行目、%3$d列目）"
+
+#: build/table-import.js:2
+msgid "Table data"
+msgstr "表のデータ"
+
+#: build/table-import.js:2
+msgid "Input format"
+msgstr "入力形式"
+
+#: build/table-import.js:2
+msgid "Automatic"
+msgstr "自動判定"
+
+#: build/table-import.js:2
+msgid "CSV (comma)"
+msgstr "CSV（カンマ）"
+
+#: build/table-import.js:2
+msgid "Tab-separated"
+msgstr "タブ区切り"
+
+#: build/table-import.js:2
+msgid "CSV (semicolon)"
+msgstr "CSV（セミコロン）"
+
+#: build/table-import.js:2
+msgid "HTML table"
+msgstr "HTMLの表"
+
+#: build/table-import.js:2
+msgid "Destination"
+msgstr "取り込み先"
+
+#: build/table-import.js:2
+msgid "Current table"
+msgstr "現在の表"
+
+#: build/table-import.js:2
+msgid "New table"
+msgstr "新しい表"
+
+#: build/table-import.js:2
+#. translators: 1: row count, 2: column count.
+msgid "%1$d rows × %2$d columns"
+msgstr "%1$d行 × %2$d列"
+
+#: build/table-import.js:2
+msgid ""
+"Some rows have missing fields. Existing contents at those positions will be "
+"kept; explicit empty fields clear contents."
+msgstr "項目が不足している行があります。不足位置の既存内容は保持します。明示的な空欄は内容を消去します。"
+
+#: build/table-import.js:2
+#. translators: 1: row number, 2: column number.
+msgid "Starting at row %1$d, column %2$d"
+msgstr "起点：%1$d行目、%2$d列目"
+
+#: build/table-import.js:2
+#. translators: %d: number of cells with existing contents.
+msgid ""
+"Replace contents in %d cells. This also removes images and other inner "
+"blocks."
+msgstr "%d個のセルの内容を置き換えます。画像などの内部ブロックも削除します。"
+
+#: build/table-import.js:2
+#. translators: 1: resulting rows, 2: resulting columns.
+msgid "Expand to %1$d rows × %2$d columns and import"
+msgstr "%1$d行 × %2$d列に拡張して取り込む"
+
+#: build/table-import.js:2
+msgid "Import"
+msgstr "取り込む"
+
+#: build/table-import.js:2
+msgid "Starting cell"
+msgstr "起点のセル"
+
+#: build/table-import.js:2
+msgid "Import preview"
+msgstr "取り込みプレビュー"
+
+#: build/index.js:1
+msgctxt "stripe direction"
+msgid "Rows"
+msgstr "行"
+
+#: build/index.js:1
+msgctxt "stripe direction"
+msgid "Columns"
+msgstr "列"
+
+#: build/blocks/cell-text/block.json
+msgctxt "block title"
+msgid "Cell text"
+msgstr "セルテキスト"
+
+#: build/blocks/cell/block.json
+msgctxt "block title"
+msgid "Table Cell"
+msgstr "テーブルセル"
+
+#: build/blocks/table/block.json
+msgctxt "block title"
+msgid "Modular Table"
+msgstr "モジュラーテーブル"
+
+#: build/blocks/cell-text/block.json
+msgctxt "block description"
+msgid "Text for a table cell, with inline formatting and no wrapper tag."
+msgstr "インライン書式を利用でき、ラッパータグを出力しないセル用テキストです。"
+
+#: build/blocks/table/block.json
+msgctxt "block description"
+msgid "A table with independently editable cells."
+msgstr "セルをそれぞれ独立して編集できるテーブルです。"

@@ -1,0 +1,81 @@
+.modular-table-blocks-import {
+	width: min(1100px, calc(100vw - 32px));
+
+	&__layout {
+		display: grid;
+		grid-template-columns: 280px minmax(0, 1fr);
+		gap: 24px;
+	}
+
+	&__settings {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	&__preview {
+		min-width: 0;
+	}
+
+	&__scroll {
+		max-height: 45vh;
+		overflow: auto;
+		border: 1px solid #ddd;
+
+		&:focus-visible {
+			outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td,
+		th {
+			border: 1px solid #ddd;
+			padding: 4px;
+		}
+
+		th {
+			background: #f0f0f0;
+		}
+
+		td {
+			min-width: 64px;
+			max-width: 240px;
+			white-space: pre-wrap;
+			overflow-wrap: anywhere;
+		}
+
+		button {
+			width: 100%;
+			height: auto;
+			min-height: 32px;
+			white-space: pre-wrap;
+			overflow-wrap: anywhere;
+		}
+
+		[data-mtb-import-selected] {
+			outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+			outline-offset: -2px;
+		}
+
+		[data-mtb-import-added] {
+			background: #edfaef;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	@media (max-width: 782px) {
+
+		&__layout {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+}

@@ -1,0 +1,52 @@
+{
+	"names": {
+		"textColor": "--mtb-text-color",
+		"backgroundColor": "--mtb-background-color",
+		"cellBackgroundColor": "--mtb-cell-bg",
+		"fontSize": "--mtb-font-size",
+		"lineHeight": "--mtb-line-height",
+		"tableWidth": "--mtb-w",
+		"borderSpacingHorizontal": "--mtb-border-spacing-x",
+		"borderSpacingVertical": "--mtb-border-spacing-y",
+		"borderTopColor": "--mtb-cell-border-t-color",
+		"borderRightColor": "--mtb-cell-border-r-color",
+		"borderBottomColor": "--mtb-cell-border-b-color",
+		"borderLeftColor": "--mtb-cell-border-l-color",
+		"borderTopWidth": "--mtb-cell-border-t-width",
+		"borderRightWidth": "--mtb-cell-border-r-width",
+		"borderBottomWidth": "--mtb-cell-border-b-width",
+		"borderLeftWidth": "--mtb-cell-border-l-width",
+		"borderTopStyle": "--mtb-cell-border-t-style",
+		"borderRightStyle": "--mtb-cell-border-r-style",
+		"borderBottomStyle": "--mtb-cell-border-b-style",
+		"borderLeftStyle": "--mtb-cell-border-l-style",
+		"cellPaddingTop": "--mtb-cell-pt",
+		"cellPaddingRight": "--mtb-cell-pr",
+		"cellPaddingBottom": "--mtb-cell-pb",
+		"cellPaddingLeft": "--mtb-cell-pl",
+		"headerBackgroundColor": "--mtb-cell-header-bg",
+		"stripeBackgroundColor": "--mtb-cell-stripe-bg"
+	},
+	"shorthands": {
+		"borderColor": [
+			"borderTopColor",
+			"borderRightColor",
+			"borderBottomColor",
+			"borderLeftColor"
+		],
+		"borderWidth": [
+			"borderTopWidth",
+			"borderRightWidth",
+			"borderBottomWidth",
+			"borderLeftWidth"
+		],
+		"borderStyle": [
+			"borderTopStyle",
+			"borderRightStyle",
+			"borderBottomStyle",
+			"borderLeftStyle"
+		],
+		"cellPaddingBlock": ["cellPaddingTop", "cellPaddingBottom"],
+		"cellPaddingInline": ["cellPaddingRight", "cellPaddingLeft"]
+	}
+}
