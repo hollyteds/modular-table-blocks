@@ -3,6 +3,8 @@
  * Plugin Name: Modular Table Blocks
  * Description: Independently editable table and cell blocks.
  * Version: 0.2.0
+ * Author: ht-CODE
+ * Author URI: https://ht-code.jp
  * Requires at least: 6.6
  * Requires PHP: 7.4
  * License: GPL-2.0-or-later
