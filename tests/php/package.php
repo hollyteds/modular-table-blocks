@@ -1,12 +1,12 @@
 <?php
 namespace ModularTableBlocks\Tests\Package;
 
-$archive = \dirname(__DIR__, 2) . '/modular-table-blocks.zip';
+$package = \json_decode(\file_get_contents(\dirname(__DIR__, 2) . '/package.json'), true);
+$archive = \dirname(__DIR__, 2) . '/dist/modular-table-blocks-' . $package['version'] . '.zip';
 if (!\is_file($archive)) {
     throw new \RuntimeException('Run npm run package before checking the ZIP.');
 }
 require_once __DIR__ . '/artifacts.php';
-$package = \json_decode(\file_get_contents(\dirname(__DIR__, 2) . '/package.json'), true);
 $zip = new \PharData($archive);
 $prefix = 'phar://' . $archive . '/';
 $files = array();
@@ -27,6 +27,9 @@ foreach (array('build/manifest.json', 'THIRD_PARTY_NOTICES.md', 'includes/style-
 }
 $destination = \sys_get_temp_dir() . '/mtb-package-' . \substr(\hash_file('sha256', $archive), 0, 16);
 $zip->extractTo($destination, null, true);
+if (!\is_file($destination . '/modular-table-blocks/includes/updates.php')) {
+    throw new \RuntimeException('ZIP is missing the updater.');
+}
 \ModularTableBlocks\Tests\Artifacts\check_build($destination . '/modular-table-blocks');
 // Load the active plugin from the archive, independently of the mounted sources.
 \define('WP_PLUGIN_DIR', $destination);
@@ -37,6 +40,11 @@ $asset = require $destination . '/modular-table-blocks/build/index.asset.php';
 \ModularTableBlocks\Tests\check(\wp_scripts()->registered['mtb-editor']->ver === $asset['version'], 'Packaged assets were not registered');
 $plugin = \get_file_data($destination . '/modular-table-blocks/modular-table-blocks.php', array('Version' => 'Version', 'License' => 'License'), 'plugin');
 $package = \json_decode(\file_get_contents($destination . '/modular-table-blocks/package.json'), true);
+$release = \json_decode(\file_get_contents(\dirname(__DIR__, 2) . '/dist/modular-table-blocks.json'), true);
+\ModularTableBlocks\Tests\check(\ModularTableBlocks\Updates\validate_manifest($release, \ModularTableBlocks\Updates\plugin_data()['UpdateURI']) !== null, 'Generated update manifest is invalid');
+\ModularTableBlocks\Tests\check($release['version'] === $package['version'], 'Generated update manifest version differs from ZIP');
+\ModularTableBlocks\Tests\check(\basename(\parse_url($release['package'], PHP_URL_PATH)) === \basename($archive), 'Generated download URL does not name the ZIP');
+\ModularTableBlocks\Tests\check(\is_file($destination . '/modular-table-blocks/docs/update-manifest.example.json'), 'ZIP is missing the release template');
 \ModularTableBlocks\Tests\check($plugin['Version'] === $package['version'] && $plugin['License'] === 'GPL-2.0-or-later', 'Packaged version or license mismatch');
 foreach (array('table', 'cell', 'cell-text') as $name) {
     $metadata = \json_decode(\file_get_contents($destination . '/modular-table-blocks/build/blocks/' . $name . '/block.json'), true);

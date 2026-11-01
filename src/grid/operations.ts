@@ -1,6 +1,8 @@
 import { TABLE_LIMITS } from './limits';
 import { validateGrid } from './build-grid';
 import { CELL_TEXT_BLOCK } from '../content';
+import { validColumnWidth } from '../styles/columns';
+import { cellSemantics } from './cell-type';
 import { tableGrid, placements, placeCells, headerCount } from './layout';
 import type { Placement } from './layout';
 
@@ -16,11 +18,14 @@ export interface BlockTree {
 export type TableOperation =
 	| { type: 'initialize'; rows: number; columns: number }
 	| {
+			type: 'insertRow' | 'insertColumn';
+			index: number;
+			sourceIndex?: number;
+	  }
+	| {
 			type:
-				| 'insertRow'
 				| 'deleteRow'
 				| 'duplicateRow'
-				| 'insertColumn'
 				| 'deleteColumn'
 				| 'duplicateColumn';
 			index: number;
@@ -56,6 +61,58 @@ export function emptyCell(): BlockTree {
 			},
 		],
 	};
+}
+
+function copyStyleValue(value: unknown): unknown {
+	if (Array.isArray(value)) {
+		return value.map(copyStyleValue);
+	}
+	return value && typeof value === 'object'
+		? Object.fromEntries(
+				Object.entries(value).map(([key, item]) => [
+					key,
+					copyStyleValue(item),
+				])
+			)
+		: value;
+}
+
+/**
+ * Copy explicit decoration and cell type; content, identity and locks stay separate.
+ * @param source
+ * @param table
+ */
+function styledEmptyCell(source: BlockTree, table: BlockTree): BlockTree {
+	const cell = emptyCell();
+	for (const key of [
+		'style',
+		'styleTokens',
+		'textColor',
+		'backgroundColor',
+		'fontSize',
+		'fontFamily',
+		'className',
+		'horizontalAlign',
+		'verticalAlign',
+	]) {
+		if (source.attributes[key] !== undefined) {
+			cell.attributes[key] = copyStyleValue(source.attributes[key]);
+		}
+	}
+	const { tag, isManagedHeader } = cellSemantics(
+		table.attributes,
+		source.attributes
+	);
+	cell.attributes.tag = tag;
+	const scope = isManagedHeader ? 'col' : source.attributes.scope;
+	if (
+		tag === 'th' &&
+		typeof scope === 'string' &&
+		['', 'col', 'row', 'colgroup', 'rowgroup'].includes(scope)
+	) {
+		cell.attributes.scope = scope;
+	}
+	return cell;
 }
 
 function withoutIds(block: BlockTree): BlockTree {
@@ -321,6 +378,28 @@ export function planOperation(
 	) {
 		return reject('invalid-index');
 	}
+	const sourceIndex = inserting
+		? (operation.sourceIndex ?? Math.min(operation.index, size - 1))
+		: 0;
+	if (
+		inserting &&
+		(!Number.isInteger(sourceIndex) ||
+			sourceIndex < 0 ||
+			sourceIndex >= size)
+	) {
+		return reject('invalid-index');
+	}
+	// Resolve occupied slots in the original table, before shifting or extending merges.
+	const sourceGrid = inserting ? tableGrid(table) : null;
+	const insertedCell = (row: number, column: number) =>
+		styledEmptyCell(
+			table.innerBlocks[
+				sourceGrid!.slots[columnOperation ? row : sourceIndex][
+					columnOperation ? sourceIndex : column
+				]!.origin.cellIndex
+			],
+			table
+		);
 	switch (operation.type) {
 		case 'insertRow':
 		case 'duplicateRow': {
@@ -375,7 +454,7 @@ export function planOperation(
 						column: c,
 						width: 1,
 						height: 1,
-						cell: emptyCell(),
+						cell: insertedCell(index, c),
 					});
 				}
 			}
@@ -441,7 +520,13 @@ export function planOperation(
 			if (columns.length >= TABLE_LIMITS.columns) {
 				return reject('size-limit');
 			}
-			columns.splice(operation.index, 0, {});
+			columns.splice(
+				operation.index,
+				0,
+				validColumnWidth(columns[sourceIndex].width)
+					? { width: columns[sourceIndex].width }
+					: {}
+			);
 			cells = cells.map((p) => {
 				if (p.column >= operation.index) {
 					return { ...p, column: p.column + 1 };
@@ -466,7 +551,7 @@ export function planOperation(
 						column: operation.index,
 						width: 1,
 						height: 1,
-						cell: emptyCell(),
+						cell: insertedCell(r, operation.index),
 					});
 				}
 			}

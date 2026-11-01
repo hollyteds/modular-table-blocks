@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { openEditor } from './login';
+import { editorCanvas } from './editor-canvas';
 import {
 	clearBulkSelection,
 	resetBulkPanel,
@@ -60,8 +61,7 @@ test.beforeEach(async ({ page, context }) => {
 			.editPost({ title: 'Bulk cell settings' });
 	});
 	await expect(
-		page
-			.frameLocator('iframe[name="editor-canvas"]')
+		(await editorCanvas(page))
 			.locator('.modular-table-blocks-editor__cell')
 			.first()
 	).toBeVisible();
@@ -2287,6 +2287,36 @@ test('whole-table defaults clear only changed overrides and later row edits rema
 	const before = await source(page);
 	await open(page);
 	const modal = dialog(page);
+	// Keep this inheritance test independent of the installed theme's palette.
+	await page.evaluate(() => {
+		const settings = window.wp.data
+			.select('core/block-editor')
+			.getSettings();
+		const features = settings.__experimentalFeatures as Record<
+			string,
+			unknown
+		>;
+		window.wp.data.dispatch('core/block-editor').updateSettings({
+			...settings,
+			colors: [{ name: 'Contrast', slug: 'contrast', color: '#000000' }],
+			__experimentalFeatures: {
+				...features,
+				color: {
+					custom: true,
+					defaultPalette: false,
+					palette: {
+						theme: [
+							{
+								name: 'Contrast',
+								slug: 'contrast',
+								color: '#000000',
+							},
+						],
+					},
+				},
+			},
+		});
+	});
 	await panel(page, 'Typography');
 	const size = modal.getByRole('spinbutton', {
 		name: /^(Font size|Custom)$/,
@@ -2377,9 +2407,9 @@ test('whole-table defaults clear only changed overrides and later row edits rema
 		window.wp.data.dispatch('core/editor').savePost()
 	);
 	await page.reload();
-	const cells = page
-		.frameLocator('iframe[name="editor-canvas"]')
-		.locator('.modular-table-blocks-editor__cell');
+	const cells = (await editorCanvas(page)).locator(
+		'.modular-table-blocks-editor__cell'
+	);
 	await expect(cells.first()).toHaveCSS('font-size', '10px');
 	await expect(cells.last()).toHaveCSS('font-size', '12px');
 	await expect(cells.last()).toHaveCSS('align-content', 'center');
@@ -2399,7 +2429,7 @@ test('whole-table defaults clear only changed overrides and later row edits rema
 		.getByRole('menuitem', { name: 'Add column at end', exact: true })
 		.click();
 	await expect(cells).toHaveCount(15);
-	await expect(cells.nth(4)).toHaveCSS('font-size', '12px');
+	await expect(cells.nth(4)).toHaveCSS('font-size', '10px');
 	await expect(cells.nth(4)).toHaveCSS('align-content', 'center');
 	await page.evaluate(() =>
 		window.wp.data.dispatch('core/editor').savePost()
@@ -2408,7 +2438,7 @@ test('whole-table defaults clear only changed overrides and later row edits rema
 	const table = page.locator('table.wp-block-modular-table-blocks-table');
 	await expect(table).toHaveCSS('background-color', 'rgb(255, 255, 0)');
 	await expect(table.locator('td').first()).toHaveCSS('font-size', '10px');
-	await expect(table.locator('td').nth(4)).toHaveCSS('font-size', '12px');
+	await expect(table.locator('td').nth(4)).toHaveCSS('font-size', '10px');
 	await expect(table.locator('td').nth(4)).toHaveCSS(
 		'vertical-align',
 		'middle'

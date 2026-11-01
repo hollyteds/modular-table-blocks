@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import { openEditor, openAuthorEditor } from './login';
+import { editorCanvas } from './editor-canvas';
 test.beforeEach(async ({ page, context }) => {
 	await openEditor(page, context);
 	await page.evaluate(() => {
@@ -328,11 +329,11 @@ test('row and column operations are atomic, preserve contents and support undo/r
 	]);
 	expect((await tree(page))[0].attributes.columns).toEqual([
 		{ width: '40%' },
-		{},
+		{ width: '40%' },
 		{ width: '60%' },
 	]);
 	expect((await tree(page))[1]).toEqual(before[1]);
-	const canvas = page.frameLocator('iframe[name="editor-canvas"]');
+	const canvas = await editorCanvas(page);
 	await expect
 		.poll(async () => {
 			const bounds = await canvas

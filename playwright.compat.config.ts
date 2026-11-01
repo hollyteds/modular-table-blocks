@@ -4,6 +4,8 @@ import config from './playwright.config';
 export default defineConfig({
 	...config,
 	testMatch: [
+		'**/insert-styles.spec.ts',
+		'**/plugin-updates.spec.ts',
 		'**/icons.spec.ts',
 		'**/import.spec.ts',
 		'**/bulk-typography.spec.ts',

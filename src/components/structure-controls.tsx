@@ -91,12 +91,20 @@ export default function StructureControls({
 				makeControl(
 					__('Insert row above', 'modular-table-blocks'),
 					icons.insertRowAbove,
-					{ type: 'insertRow', index: rowIndex }
+					{
+						type: 'insertRow',
+						index: rowIndex,
+						sourceIndex: rowIndex,
+					}
 				),
 				makeControl(
 					__('Insert row below', 'modular-table-blocks'),
 					icons.insertRowBelow,
-					{ type: 'insertRow', index: rowIndex + 1 }
+					{
+						type: 'insertRow',
+						index: rowIndex + 1,
+						sourceIndex: rowIndex,
+					}
 				),
 				makeControl(
 					__('Duplicate row', 'modular-table-blocks'),
@@ -114,13 +122,18 @@ export default function StructureControls({
 				makeControl(
 					__('Insert column before', 'modular-table-blocks'),
 					icons.insertColumnBefore,
-					{ type: 'insertColumn', index: columnIndex }
+					{
+						type: 'insertColumn',
+						index: columnIndex,
+						sourceIndex: columnIndex,
+					}
 				),
 				makeControl(
 					__('Insert column after', 'modular-table-blocks'),
 					icons.insertColumnAfter,
 					{
 						type: 'insertColumn',
+						sourceIndex: columnIndex,
 						index: position
 							? position.column + position.width
 							: columnIndex + 1,

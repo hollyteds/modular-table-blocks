@@ -1,6 +1,7 @@
 import { planOperation, structureErrors } from '../../src/grid/operations';
 import type { BlockTree, TableOperation } from '../../src/grid/operations';
 import { placements } from '../../src/grid/layout';
+import { cellSemantics } from '../../src/grid/cell-type';
 import { columnTemplate, validColumnWidth } from '../../src/styles/columns';
 
 function table(rows = 2, columns = 2): BlockTree {
@@ -113,6 +114,268 @@ test.each(['insertRow', 'insertColumn'] as const)(
 						?.innerBlocks
 				).toBe(cell.innerBlocks);
 			}
+		}
+	}
+);
+test.each(['insertRow', 'insertColumn'] as const)(
+	'%s copies each source cell style and type before and after the selected line without copying identity or content',
+	(type) => {
+		for (const index of [1, 2]) {
+			const source = table(3, 3);
+			source.innerBlocks.forEach((cell, i) => {
+				Object.assign(cell.attributes, {
+					styleTokens: {
+						cellBackgroundColor: '#ffeecc',
+						cellPaddingTop: `${i}px`,
+						borderBottomWidth: '2px',
+					},
+					style: {
+						color: { text: '#123456' },
+						typography: {
+							fontSize: `${i + 16}px`,
+							textAlign: 'right',
+						},
+					},
+					fontSize: 'large',
+					fontFamily: 'serif',
+					textColor: 'contrast',
+					backgroundColor: 'base',
+					horizontalAlign: 'center',
+					verticalAlign: 'middle',
+					tag: 'th',
+					scope: 'row',
+					lock: { move: true, remove: true },
+					metadata: { name: 'Keep identity' },
+					anchor: 'unique-anchor',
+					className: 'custom-cell',
+				});
+			});
+			const next = apply(source, { type, index, sourceIndex: 1 });
+			const added = next.innerBlocks.filter((cell) => !cell.clientId);
+			expect(added).toHaveLength(3);
+			added.forEach((cell, i) => {
+				const origin =
+					source.innerBlocks[
+						type === 'insertRow' ? 3 + i : i * 3 + 1
+					];
+				const { row, column, lock, metadata, anchor, ...styles } =
+					origin.attributes;
+				expect(cell.attributes).toEqual({
+					...styles,
+					row: type === 'insertRow' ? index : i,
+					column: type === 'insertColumn' ? index : i,
+				});
+				expect(cell.innerBlocks[0].attributes.content).toBe('');
+				expect(cell.attributes.style).not.toBe(origin.attributes.style);
+				expect(cell.attributes.styleTokens).not.toBe(
+					origin.attributes.styleTokens
+				);
+			});
+			const style = added[0].attributes.style as {
+				typography: { fontSize: string };
+			};
+			style.typography.fontSize = '99px';
+			expect(
+				source.innerBlocks.every(
+					(cell) =>
+						(cell.attributes.style as typeof style).typography
+							.fontSize !== '99px'
+				)
+			).toBe(true);
+		}
+	}
+);
+test.each(['insertRow', 'insertColumn'] as const)(
+	'%s at the end copies the final line and keeps inherited styles unspecified',
+	(type) => {
+		const source = table();
+		source.innerBlocks[3].attributes.styleTokens = {
+			cellPaddingTop: '13px',
+		};
+		const next = apply(source, { type, index: 2 });
+		const added = next.innerBlocks.filter((cell) => !cell.clientId);
+		expect(added[0].attributes.styleTokens).toBeUndefined();
+		expect(added[0].attributes.style).toBeUndefined();
+		expect(added[1].attributes.styleTokens).toEqual({
+			cellPaddingTop: '13px',
+		});
+	}
+);
+test.each(['insertRow', 'insertColumn'] as const)(
+	'%s resolves covered source slots without creating merged new cells',
+	(type) => {
+		let source = table(3, 3);
+		source.innerBlocks[0].attributes.styleTokens = {
+			cellBackgroundColor: '#123456',
+		};
+		source = apply(source, {
+			type: 'mergeCells',
+			top: 0,
+			left: 0,
+			bottom: type === 'insertColumn' ? 1 : 0,
+			right: type === 'insertRow' ? 1 : 0,
+		});
+		const next = apply(source, { type, index: 0, sourceIndex: 0 });
+		const added = next.innerBlocks.filter((cell) => !cell.clientId);
+		expect(added).toHaveLength(3);
+		for (const cell of added.slice(0, 2)) {
+			expect(cell.attributes.styleTokens).toEqual({
+				cellBackgroundColor: '#123456',
+			});
+			expect(cell.attributes.colSpan ?? 1).toBe(1);
+			expect(cell.attributes.rowSpan ?? 1).toBe(1);
+		}
+	}
+);
+test.each(['insertRow', 'insertColumn'] as const)(
+	'%s expands intersecting merges and styles only newly created cells',
+	(type) => {
+		let source = table();
+		source.innerBlocks.forEach((cell) => {
+			cell.attributes.styleTokens = { cellPaddingTop: '12px' };
+		});
+		source = apply(source, {
+			type: 'mergeCells',
+			top: 0,
+			left: 0,
+			bottom: type === 'insertRow' ? 1 : 0,
+			right: type === 'insertColumn' ? 1 : 0,
+		});
+		const next = apply(source, { type, index: 1, sourceIndex: 0 });
+		const added = next.innerBlocks.filter((cell) => !cell.clientId);
+		expect(added).toHaveLength(1);
+		expect(added[0].attributes.styleTokens).toEqual({
+			cellPaddingTop: '12px',
+		});
+		expect(
+			next.innerBlocks.find((cell) => cell.clientId === 'cell-0')!
+				.attributes[type === 'insertRow' ? 'rowSpan' : 'colSpan']
+		).toBe(3);
+	}
+);
+test.each(['insertRow', 'insertColumn'] as const)(
+	'%s keeps mixed TH/TD types and valid header associations for inserts and appends',
+	(type) => {
+		const source = table(3, 3);
+		source.innerBlocks.forEach((cell, i) => {
+			cell.attributes.tag = i % 2 ? 'td' : 'th';
+			cell.attributes.scope = 'rowgroup';
+		});
+		for (const [index, sourceIndex] of [
+			[1, 1],
+			[2, 1],
+			[3, 2],
+		]) {
+			const next = apply(source, { type, index, sourceIndex });
+			const added = next.innerBlocks.filter((cell) => !cell.clientId);
+			added.forEach((cell, i) => {
+				const origin =
+					source.innerBlocks[
+						type === 'insertRow'
+							? sourceIndex * 3 + i
+							: i * 3 + sourceIndex
+					];
+				expect(cell.attributes.tag).toBe(origin.attributes.tag);
+				expect(cell.attributes.scope).toBe(
+					origin.attributes.tag === 'th' ? 'rowgroup' : undefined
+				);
+			});
+		}
+	}
+);
+test('row insertion copies the effective managed header type and scope while the destination still follows headerRows', () => {
+	const source = table();
+	source.attributes.headerRows = 1;
+	source.innerBlocks.forEach((cell) => {
+		cell.attributes.tag = 'td';
+		cell.attributes.scope = 'row';
+	});
+	const below = apply(source, {
+		type: 'insertRow',
+		index: 1,
+		sourceIndex: 0,
+	});
+	expect(below.attributes.headerRows).toBe(1);
+	for (const cell of below.innerBlocks.filter((entry) => !entry.clientId)) {
+		expect(cell.attributes).toMatchObject({ tag: 'th', scope: 'col' });
+		expect(cellSemantics(below.attributes, cell.attributes)).toEqual({
+			tag: 'th',
+			isManagedHeader: false,
+		});
+	}
+	const above = apply(source, {
+		type: 'insertRow',
+		index: 0,
+		sourceIndex: 1,
+	});
+	for (const cell of above.innerBlocks.filter((entry) => !entry.clientId)) {
+		expect(cell.attributes.tag).toBe('td');
+		expect(cell.attributes.scope).toBeUndefined();
+		expect(cellSemantics(above.attributes, cell.attributes)).toEqual({
+			tag: 'th',
+			isManagedHeader: true,
+		});
+	}
+});
+test('column insertion copies managed TH and body TD independently and ignores invalid source types and scopes', () => {
+	const source = table();
+	source.attributes.headerRows = 1;
+	source.innerBlocks[0].attributes.tag = 'td';
+	source.innerBlocks[0].attributes.scope = 'row';
+	source.innerBlocks[2].attributes.tag = 'invalid';
+	source.innerBlocks[2].attributes.scope = 'col';
+	const next = apply(source, {
+		type: 'insertColumn',
+		index: 1,
+		sourceIndex: 0,
+	});
+	const added = next.innerBlocks.filter((cell) => !cell.clientId);
+	expect(added[0].attributes).toMatchObject({ tag: 'th', scope: 'col' });
+	expect(added[1].attributes.tag).toBe('td');
+	expect(added[1].attributes.scope).toBeUndefined();
+	source.innerBlocks[2].attributes.tag = 'th';
+	source.innerBlocks[2].attributes.scope = 'invalid';
+	const invalidScope = apply(source, {
+		type: 'insertColumn',
+		index: 1,
+		sourceIndex: 0,
+	});
+	const copied = invalidScope.innerBlocks.find(
+		(cell) => !cell.clientId && cell.attributes.row === 1
+	)!;
+	expect(copied.attributes.tag).toBe('th');
+	expect(copied.attributes.scope).toBeUndefined();
+});
+test('column insertion copies only a valid source width and leaves unrelated column metadata on the source', () => {
+	const source = table();
+	source.attributes.columns = [
+		{ width: '180px', identity: 'original' },
+		{ width: 'invalid' },
+	];
+	expect(
+		apply(source, { type: 'insertColumn', index: 1, sourceIndex: 0 })
+			.attributes.columns
+	).toEqual([
+		{ width: '180px', identity: 'original' },
+		{ width: '180px' },
+		{ width: 'invalid' },
+	]);
+	expect(
+		apply(source, { type: 'insertColumn', index: 1, sourceIndex: 1 })
+			.attributes.columns
+	).toEqual([
+		{ width: '180px', identity: 'original' },
+		{},
+		{ width: 'invalid' },
+	]);
+});
+test.each(['insertRow', 'insertColumn'] as const)(
+	'%s rejects an invalid style source',
+	(type) => {
+		for (const sourceIndex of [-1, 2, 0.5, NaN]) {
+			expect(
+				planOperation(table(), { type, index: 0, sourceIndex }).errors
+			).toEqual(['invalid-index']);
 		}
 	}
 );

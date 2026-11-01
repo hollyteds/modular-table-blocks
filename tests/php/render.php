@@ -348,3 +348,5 @@ check(\strpos($figure_margin_style, 'margin-left:24px') !== false && \strpos($fi
 check(\strpos($figure_margin_style, '--mtb-w:100%') !== false && \strpos($figure_margin_style, 'width:') === false, 'Explicit width token must remain without a calculated width declaration');
 check(\strpos($margin_xpath->query('//table')->item(0)->getAttribute('style'), 'margin') === false, 'Horizontal margins must not be duplicated inside the figure');
 echo "Native horizontal margins without calculated widths passed.\n";
+
+require __DIR__ . '/updates.php';

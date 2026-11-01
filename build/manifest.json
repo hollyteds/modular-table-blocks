@@ -3,13 +3,13 @@
     "style-index-rtl.css": "ce647e2a42a2e62cf43c0dd68f2a8a0a5dc706eee249e066f381e1ab3f78cc18",
     "style-index.css": "4109bd8b04f2df15d4660791057f3b0fe9eec8ee3150220ec931e12adf0e636d",
     "858.js": "1850d6b565881c099263da8e0640ae2d0e52b22b9efe30d220faf81790e4d81b",
-    "blocks/cell-text/block.json": "989b7bafc249138eb6af0c150986294e8237f383635c7fdfb18d29d7e6ffd4c8",
-    "blocks/cell/block.json": "b75885f8dc1ddfa8d2267e8bb6cf46af4d7aff0ce63cf610bb13ae1616d3245e",
-    "blocks/table/block.json": "82118cdc168aa6a94fcce482e6ea8a0676a14211fce19026ba9f3bb511998bb6",
+    "blocks/cell-text/block.json": "8f452968fdd57203faa83ebec0405118f458beb14eaa59fad4712721c4490477",
+    "blocks/cell/block.json": "8fbfd996f224f8d5427c30efb29abb50cf65f941b635abe1a2c9476a2fa1252c",
+    "blocks/table/block.json": "0a84d22ca2cb23353a64b1a667e992a60d7c53ab8ccea7c4b42965959cf6a8ad",
     "index-rtl.css": "6f1a6d0483183471795aa7912f432729dcda93e4d09ede210357aa8aca60d50b",
-    "index.asset.php": "a2a85e6e2a793f0c752a14f6f85c7ba1e15cf54ad9c1a884a388a6af54c35a5a",
+    "index.asset.php": "0925dcbc8d595331a3424fa3065bfa36e68a8989d41b897d4d31ccb79a8e8ab5",
     "index.css": "722447ba836cbdb0ec602dd581e6fe7db0974d139487b3e0f1c82c0550ee424b",
-    "index.js": "aed1384d31bfb21bb48a2a0367ccecf67bba2648dad3e78a06e91028f883db7a",
+    "index.js": "8cebae001ecfe2a8535722fb2351114304c8c06276bab8a6b24b2d057e02abb9",
     "table-import.js": "e9d87a236b1681a0e14d2e08f56d2386a86b420dbba3c7ebe8517b39d8a5d390"
   }
 }

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import type { Page } from '@playwright/test';
 import { openEditor, openAuthorEditor } from './login';
+import { editorCanvas } from './editor-canvas';
 import type { TestBlock } from './browser';
 
 const tree = (page: Page) =>
@@ -305,8 +306,7 @@ for (const author of [false, true]) {
 		);
 		await page.reload();
 		await expect(
-			page
-				.frameLocator('iframe[name="editor-canvas"]')
+			(await editorCanvas(page))
 				.locator('.modular-table-blocks-editor')
 				.first()
 				.locator('.modular-table-blocks-editor__cell')

@@ -1,0 +1,13 @@
+{
+  "slug": "modular-table-blocks",
+  "version": "0.2.1",
+  "author": "ht-CODE",
+  "requires": "6.6",
+  "requires_php": "7.4",
+  "url": "https://ht-code.jp/",
+  "package": "https://ht-code.jp/updates/modular-table-blocks-0.2.1.zip",
+  "sections": {
+    "description": "<p>セルごとに文章・画像・リストなどを配置できるテーブルブロックです。</p>",
+    "changelog": "<h4>0.2.1</h4><ul><li>開発版（正式リリース前）</li></ul>"
+  }
+}

@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Modular Table Blocks 0.2.0\n"
+"Project-Id-Version: Modular Table Blocks 0.2.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/modular-table-blocks\n"
 "POT-Creation-Date: 2026-10-28T05:49:45+00:00\n"
@@ -28,6 +28,10 @@ msgstr "テーブルとセルをそれぞれ独立して編集できるブロッ
 #: includes/render-table.php:213
 msgid "Scrollable table"
 msgstr "横スクロール可能なテーブル"
+
+#: includes/updates.php
+msgid "Update information is currently unavailable."
+msgstr "現在、更新情報を取得できません。"
 
 #: build/index.js:1
 #: build/index.js:16

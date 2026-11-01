@@ -1203,7 +1203,7 @@ describe('table defaults and cell overrides', () => {
 		});
 		expect(updates.table).not.toHaveProperty('columns');
 	});
-	test('new cells inherit table defaults, while partial selections do not create row metadata', () => {
+	test('inserted cells copy source overrides while unspecified styles inherit table defaults without row metadata', () => {
 		const source = table();
 		const global = projectBulkDraft(
 			source,
@@ -1225,13 +1225,26 @@ describe('table defaults and cell overrides', () => {
 		const added = inserted.innerBlocks.find(
 			(cell) => cell.attributes.row === 0 && cell.attributes.column === 1
 		)!;
-		expect(
-			fieldValue(added.attributes, 'cellBackgroundColor')
-		).toBeUndefined();
+		expect(fieldValue(added.attributes, 'cellBackgroundColor')).toBe(
+			'#0f0'
+		);
 		expect(
 			resolvedFieldValue(
 				inserted,
 				added.attributes,
+				'cellBackgroundColor'
+			)
+		).toBe('#0f0');
+		const inherited = inserted.innerBlocks.find(
+			(cell) => cell.attributes.row === 1 && cell.attributes.column === 1
+		)!;
+		expect(
+			fieldValue(inherited.attributes, 'cellBackgroundColor')
+		).toBeUndefined();
+		expect(
+			resolvedFieldValue(
+				inserted,
+				inherited.attributes,
 				'cellBackgroundColor'
 			)
 		).toBe('#f00');

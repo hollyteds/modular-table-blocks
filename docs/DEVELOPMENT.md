@@ -42,7 +42,7 @@ npx playwright install chromium firefox webkit
 | `npm run test:e2e:compat` | 設定済みの対象をFirefox・WebKit、両環境で検証 |
 | `npm run i18n:pot` | 配布用生成物から翻訳テンプレートを抽出 |
 | `npm run i18n:build` | POからMOとJavaScript翻訳JSONを生成 |
-| `npm run package` | 再ビルドして配布用ZIPを生成。リリース・配布を行う作業で使う |
+| `npm run package` | 再ビルドし、バージョン付きZIPと更新用JSONをdist/へ生成。リリース・配布を行う作業で使う |
 | `npm run test:package` / `npm run test:package:latest` | ZIP展開物の登録・描画を検証 |
 | `npm run env:stop` | 6.6の環境を停止 |
 
@@ -122,7 +122,7 @@ POTの抽出対象とJSON生成の--no-purge・対応表はpackage.jsonに定義
 
 ## 5. Gitと配布物
 
-ソース、必要なbuild/・翻訳、依存固定用package-lock.jsonと共通設定はGitで管理する。個人のIDE設定・ローカル環境設定・node_modules・キャッシュ・テスト結果・ログ・ZIPは[.gitignore](../.gitignore)で除外する。
+ソース、必要なbuild/・翻訳、依存固定用package-lock.jsonと共通設定はGitで管理する。個人のIDE設定・ローカル環境設定・node_modules・キャッシュ・テスト結果・ログ・配布物のdist/は[.gitignore](../.gitignore)で除外する。
 
 ライセンスは[GPL-2.0-or-later](../LICENSE)、同梱ライブラリの表記は[THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md)。配布対象と許可範囲はpackage.jsonのfilesを正本とし、[tests/php/package.php](../tests/php/package.php)も同じ定義を使う。webpackが出力するbuild/manifest.jsonに全生成ファイルとSHA-256を記録し、通常のPHP検証とZIP展開物の検証で分割JSを含む欠落・改変を検出する。
 
@@ -133,7 +133,7 @@ THIRD_PARTY_NOTICES.mdとビルドmanifestは配布に必要。ZIPを生成せ�
 1. 現行仕様・公開CSS・利用ガイドを更新し、未実装・未確認事項を整理する。暫定履歴だけに必要な情報を残さない。
 2. Unreleasedの内容を確認し、エントリーPHP、package.json、package-lock.json、各src/blocks/*/block.jsonのバージョンを揃える。開発中の変更ごとには上げない。
 3. 必要な検証と翻訳生成を行い、build/全体を生成する。ライセンス表記と配布・ZIP検証の定義を一致させる。
-4. 次節に従って暫定履歴がGit管理・配布対象外であることを確認し、恒久文書から履歴への必須参照がないことを再確認する。
+4. [暫定履歴資料の除外手順](#暫定履歴資料のgit管理からの除外)に従って暫定履歴がGit管理・配布対象外であることを確認し、恒久文書から履歴への必須参照がないことを再確認する。
 5. 配布用ZIPを作り、両WordPress環境で展開物を検証する。WordPress ScriptsのZIPはnpmの梱包規則によりロックファイルを含まないため、再現用のpackage-lock.jsonは開発リポジトリで管理する。
 6. 実際のリリース操作に合わせてCHANGELOGの日付・バージョンを確定し、コミット・タグ・push・公開は依頼された範囲で実施する。
 
@@ -142,6 +142,19 @@ npm run package
 npm run test:package
 npm run test:package:latest
 ```
+
+### 独自配信サーバーでの更新配布
+
+更新機能の契約は[現行仕様](ARCHITECTURE.md#11-配布元からのプラグイン更新)を参照する。エントリーPHPの`Update URI`は`https://ht-code.jp/updates/modular-table-blocks.json`。別の配信先へ変更する場合は、このヘッダーを変更して検証し、JSON内のURLと本節の配置例も揃える。ヘッダーを変えるだけでは、既存サイトの取得先は切り替わらないため、旧配信先から移行版を配布してから旧URLを廃止する。
+
+1. 本節の前にあるリリース手順でバージョン・翻訳・ビルド・ZIP検証を完了する。生成前に[更新情報のひな形](update-manifest.example.json)の作者名・説明・必要環境・変更履歴を実際の配布版に合わせる。開発作業だけではバージョンを上げない。
+2. `npm run package`は`dist/modular-table-blocks-<version>.zip`と`dist/modular-table-blocks.json`をまとめて生成する。版番号はpackage.jsonから取得し、エントリーPHPと不一致なら生成を拒否する。ひな形は編集せず、出力JSONの`version`と`package`のZIPファイル名だけを配布版へ揃える。配信ディレクトリはひな形の`package`のURLを使い、Update URIと同じHTTPSオリジンに限定する。再実行すると同じ版のZIPとJSONを上書きし、古い版のZIPは保持する。ZIPの最上位は`modular-table-blocks/`を維持し、JSONのひな形も再生成用に同梱する。出力されたZIPをその名前のままサーバーの`/updates/`へ置く。公開済みのZIPは上書きせず、新版を別名で置く。
+3. `dist/modular-table-blocks.json`の内容とZIPの対応を確認する。`sections.changelog`は新しい版から順に、バージョン見出し（`h4`）と利用者向けの短い箇条書き（`ul`・`li`）で記載する。見出しの版番号はひな形で手動更新する。正式リリースまでは「開発版（正式リリース前）」の1項目に省略し、正式リリース後は機能改善・修正・対応環境の変更などを簡潔に記す。開発用の`CHANGELOG.md`全文や内部実装・検証の詳細は転記しない。`tested`を加える場合は実際に確認したWordPress版だけを書く。キーと値の制約は現行仕様を参照する。
+4. ZIPのHTTPSダウンロードと展開内容を先に確認し、最後にJSONを`/updates/modular-table-blocks.json`へ公開する。JSONはHTTP 200・`Content-Type: application/json`で、リダイレクト・ログイン・Cookieなしに取得できるようにする。ZIPも同じホストから直接配信する。JSONのCDN／サーバーキャッシュが古い版を返さないことを確認する。
+5. 更新機能のない導入済みサイトへは、更新機能を含むZIPを最初の1回だけ標準アップロードで上書きする。以後は、有効化中のプラグインが新しい版を検出すると、標準の管理画面で更新できる。
+6. 検証用サイトで旧版から新版への更新・有効状態の維持・保存済みの表の再読み込みと公開表示を確認する。WordPressの「ダッシュボード → 更新 → 再確認」で更新情報を取り直せる。通常の取得間隔はWordPress本体に従い、JSON公開直後に全サイトが一斉に更新を認識するものではない。
+
+認証を伴わない配布方式なので、ZIPのURLを知っている人はダウンロードできる。配信サーバーの保護は更新コードの配布権限に直結するため、HTTPSと公開権限を管理する。リリース前の検証では`pre_http_request`で通信を差し替え、実サーバーに問い合わせず、正常・通信失敗・不正応答・キャッシュ・再確認・WordPress本体の版比較をPHP検証で確認する。実サーバーでの配信と導入済みサイトの更新は、公開後に別途確認する。
 
 ### 暫定履歴資料のGit管理からの除外
 

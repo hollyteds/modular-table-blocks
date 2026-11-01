@@ -1,6 +1,6 @@
 {
   "name": "modular-table-blocks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Nested table blocks for the WordPress block editor.",
   "engines": {
@@ -26,7 +26,7 @@
     "env:stop": "wp-env stop",
     "env:cli": "wp-env run cli",
     "test:php": "wp-env run tests-cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/render.php",
-    "package": "npm run build && wp-scripts plugin-zip",
+    "package": "npm run build && wp-scripts plugin-zip && node scripts/package-release.cjs",
     "test:package": "wp-env run tests-cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/package.php",
     "test:package:latest": "wp-env --config=.wp-env.latest.json run cli php /var/www/html/wp-content/plugins/modular-table-blocks/tests/php/package.php",
     "test:e2e:compat": "playwright test --config=playwright.compat.config.ts",
@@ -78,7 +78,8 @@
     "tsconfig.json",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md",
-    "scripts/"
+    "scripts/",
+    "docs/update-manifest.example.json"
   ],
   "license": "GPL-2.0-or-later"
 }
